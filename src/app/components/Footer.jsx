@@ -84,6 +84,30 @@ const Footer = () => {
               </nav>
             </div>
 
+            {/* Regionen */}
+            <div className="col-12">
+              <div className="footer_regionen" style={{ padding: "24px 0 16px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                <p style={{ fontSize: "0.8rem", fontWeight: "600", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "12px" }}>
+                  Mitarbeitergewinnung in der Region
+                </p>
+                <nav aria-label="Regionale Seiten" style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px" }}>
+                  <Link href="/blog/mitarbeitergewinnung-maerkischer-kreis" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Märkischer Kreis</Link>
+                  <Link href="/blog/mitarbeitergewinnung-suedwestfalen" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Südwestfalen</Link>
+                  <span style={{ color: "rgba(255,255,255,0.15)" }}>|</span>
+                  <Link href="/blog/mitarbeitergewinnung-iserlohn" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Iserlohn</Link>
+                  <Link href="/blog/mitarbeitergewinnung-hemer" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Hemer</Link>
+                  <Link href="/blog/mitarbeitergewinnung-menden" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Menden</Link>
+                  <Link href="/blog/mitarbeitergewinnung-hagen" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Hagen</Link>
+                  <Link href="/blog/mitarbeitergewinnung-luedenscheid" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Lüdenscheid</Link>
+                  <Link href="/blog/mitarbeitergewinnung-dortmund" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Dortmund</Link>
+                  <Link href="/blog/mitarbeitergewinnung-arnsberg" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Arnsberg</Link>
+                  <Link href="/blog/mitarbeitergewinnung-unna" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Unna</Link>
+                  <Link href="/blog/mitarbeitergewinnung-schwerte" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Schwerte</Link>
+                  <Link href="/blog/mitarbeitergewinnung-altena" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Altena</Link>
+                </nav>
+              </div>
+            </div>
+
             {/* Bottom Bar */}
             <div className="col-12">
               <div className="btm_bar">
