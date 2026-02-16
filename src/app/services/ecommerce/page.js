@@ -1,3 +1,11 @@
 "use client";
-import ECommerce from "../eComerce/page";
-export default ECommerce;
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+export default function EcommerceRedirect() {
+  const router = useRouter();
+  useEffect(() => {
+    router.replace("/services/eComerce");
+  }, [router]);
+  return null;
+}
