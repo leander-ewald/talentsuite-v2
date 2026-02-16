@@ -360,21 +360,26 @@
 }
 @media (min-width: 300px) and (max-width: 767px) {
   h1 {
-    font-size: 40px !important;
+    font-size: 32px !important;
+    line-height: 1.2 !important;
   }
   h2 {
-    font-size: 36px !important;
-    line-height: normal !important;
+    font-size: 26px !important;
+    line-height: 1.3 !important;
   }
   h3 {
-    font-size: 26px !important;
+    font-size: 22px !important;
+  }
+  h4 {
+    font-size: 30px !important;
   }
   .accordion-button:not(.collapsed),
   .accordion-item button {
-    font-size: 24px !important;
+    font-size: 18px !important;
+    line-height: 1.4 !important;
   }
   p {
-    font-size: 18px;
+    font-size: 16px;
   }
   .header .navbar .logo {
     max-width: 150px;
@@ -385,13 +390,12 @@
     display: flex;
     align-items: center;
   }
-
   .image_row img {
     height: 210px;
     border-radius: 30px;
   }
   .newsletter_box form input {
-    min-width: 270px;
+    min-width: 200px;
   }
   .process_steps {
     gap: 20px 30px;
@@ -430,10 +434,10 @@
     padding: 5px 2px;
   }
   .stats span {
-    font-size: 15px;
+    font-size: 13px;
   }
   .stats h3 {
-    font-size: 30px !important;
+    font-size: 26px !important;
   }
 
   /* campaign */
@@ -475,10 +479,10 @@
   /* .testimonial */
   .testimonial_card span,
   .testimonial_card p {
-    font-size: 15px;
+    font-size: 14px;
   }
   .testimonial_card {
-    min-height: 300px;
+    min-height: auto;
     flex-wrap: wrap;
     gap: 15px;
     padding: 20px 0 0 20px !important;
@@ -517,369 +521,66 @@
   .image_column {
     gap: 20px;
   }
-}
-@media (min-width: 300px) and (max-width: 600px) {
-  .newsletter_box form input {
-    min-width: 190px;
-  }
-  /* campaign */
-  .social_icos_bx .social_icons {
-    gap: 15px;
-  }
-  .social_icos_bx .social_icons a {
-    width: 50px;
-    height: 50px;
-  }
-  .social_icos_bx .social_icons a:nth-child(3) {
-    width: 70px;
-    height: 70px;
-    transform: translateY(48px);
-  }
-  .social_icos_bx img {
-    width: 100%;
-    height: 100%;
-    min-width: 300px;
-  }
-  .social_icos_bx {
-    height: 180px;
-    margin-bottom: -30px;
-    transform: translateY(-35px);
-  }
-  .social_icos_bx .social_icons a:nth-child(2),
-  .social_icos_bx .social_icons a:nth-child(4) {
-    transform: translateY(67px);
-  }
-  .social_icos_bx .social_icons a:first-child,
-  .social_icos_bx .social_icons a:nth-child(5) {
-    transform: translateY(90px);
-  }
-  .social_icos_bx .social_icons a i {
-    font-size: 18px;
-  }
-  .navbar .btns {
-    display: none;
-  }
-  .header .navbar {
-    padding: 26px 90px 28px 30px;
-  }
-  .traditional_card:first-child {
-    margin-top: -10px;
-  }
-  .traditional_card:nth-child(4) {
-    margin-top: 0;
+  /* Service pages */
+  .services_img {
+    max-width: 300px !important;
+    margin: 20px auto !important;
   }
   .traditional_card {
-    flex: 0 0 calc(100% - 10px);
-    height: 210px;
-    padding: 30px;
-  }
-  .services_section .service_card {
-    padding: 20px !important;
-  }
-  .blogs_section .service_card,
-  .campaigns_section .service_card {
-    padding: 16px;
-  }
-  .btm_bar,
-  .accordion-item {
-    border-radius: 20px !important;
-    padding: 16px 16px !important;
-  }
-  .appointment_section .appointment_content {
-    border-radius: 30px;
-    padding: 30px;
-  }
-  .solution_card.h-100 {
-    margin-bottom: 20px;
+    flex: 0 0 100% !important;
     height: auto !important;
-  }
-  .solution_card h3 {
-    font-size: 40px !important;
-  }
-}
-@media (min-width: 300px) and (max-width: 480px) {
-  .newsletter_box form input {
-    min-width: 190px;
-  }
-  .testimonial_card {
-    gap: 6px;
-    min-height: 300px;
-    padding: 12px 0 0 12px !important;
-  }
-  .testimonial_card h3 {
-    font-size: 16px !important;
-  }
-  .testimonial_card span,
-  .testimonial_card p {
-    font-size: 14px;
-  }
-  footer .container {
-    padding: 35px 16px 16px !important;
-  }
-}
-
-/* ============================================
-   MOBILE RESPONSIVE FIXES - Feb 2026
-   ============================================ */
-
-/* --- Global Mobile Overrides --- */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 28px !important;
-    line-height: 1.2 !important;
-  }
-  h2 {
-    font-size: 24px !important;
-    line-height: 1.3 !important;
-  }
-  h3 {
-    font-size: 20px !important;
-    line-height: 1.3 !important;
-  }
-  h4 {
-    font-size: 28px !important;
-  }
-  p {
-    font-size: 15px !important;
-  }
-  .accordion-button:not(.collapsed),
-  .accordion-item button {
-    font-size: 16px !important;
-    padding: 14px 16px !important;
-    line-height: 1.4 !important;
-  }
-  section {
-    padding: 40px 0 !important;
-  }
-  .titles {
-    padding-bottom: 20px;
-  }
-}
-
-/* --- Small Mobile (< 380px) --- */
-@media (max-width: 380px) {
-  h1 {
-    font-size: 24px !important;
-  }
-  h2 {
-    font-size: 22px !important;
-  }
-  h3 {
-    font-size: 18px !important;
-  }
-  p {
-    font-size: 14px !important;
-  }
-  .container,
-  .container-sm {
-    padding: 0 12px !important;
-  }
-}
-
-/* --- Header Mobile --- */
-@media (max-width: 600px) {
-  .header .navbar {
-    padding: 12px 70px 12px 16px !important;
-  }
-  .header .navbar .logo {
-    max-width: 130px !important;
-  }
-  .navbar-toggler {
-    width: 44px !important;
-    height: 44px !important;
-    right: 12px !important;
-  }
-  .navbar-collapse {
-    top: 70px !important;
-    padding: 16px;
-  }
-  .header {
-    top: 10px !important;
-  }
-}
-
-/* --- Hero Section Mobile --- */
-@media (max-width: 767px) {
-  .hero-section {
     min-height: auto !important;
-    padding: 100px 0 40px !important;
+    padding: 24px !important;
   }
-  .hero-left h1 {
-    font-size: 28px !important;
-    line-height: 1.2 !important;
-    margin-bottom: 1rem !important;
+  .traditional_card:nth-child(1) {
+    margin-top: 0 !important;
   }
-  .hero-left p {
-    font-size: 16px !important;
-    margin-bottom: 1.5rem !important;
+  .traditional_card:nth-child(4) {
+    margin-top: 0 !important;
   }
-  .hero_content {
-    text-align: center;
-  }
-  .video-buttons {
-    transform: translate(-50%, -50%) !important;
-    left: 50% !important;
-  }
-  .control-btn {
-    width: 50px !important;
-    height: 50px !important;
-    font-size: 1.2rem !important;
-  }
-  .trusted_partner {
-    justify-content: center;
+  .traditional_text {
+    font-size: 22px !important;
     margin-top: 20px !important;
   }
-  .trusted_partner img {
-    height: 40px !important;
-    width: 90px !important;
+  .traditional_card .grid_bx {
+    width: 120px;
   }
-  .stats_section {
-    width: 100% !important;
-    float: none !important;
-    justify-content: center !important;
-    margin: 20px auto 0 !important;
-    padding: 10px !important;
+  .solution_card {
+    padding: 30px 20px 20px !important;
+    border-radius: 20px !important;
   }
-  .stats {
-    gap: 8px !important;
+  .solution_card h3 {
+    font-size: 32px !important;
+  }
+  .solution_card h4 {
+    font-size: 20px !important;
+  }
+  .solution_card.h-100 {
+    height: auto !important;
+    margin-bottom: 16px;
+  }
+  .appointment_section .appointment_content {
+    padding: 24px !important;
+    border-radius: 20px !important;
+    align-items: center !important;
+    text-align: center;
+  }
+  /* Buttons */
+  .btns,
+  .web_btns {
+    font-size: 14px !important;
+    padding: 10px 20px !important;
+  }
+  .hero_buttons {
+    gap: 10px !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
   }
-  .stats div {
-    padding: 6px 10px !important;
-    text-align: center;
-  }
-  .stats h3 {
-    font-size: 24px !important;
-  }
-  .stats span {
-    font-size: 12px !important;
-  }
-  .bdr {
-    display: none !important;
-  }
-  /* Risk reversal bullets */
-  .hero-left small,
-  .hero-left .risk-reversal {
-    font-size: 13px !important;
-    display: block;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-section {
-    padding: 80px 0 30px !important;
-  }
-  .hero-left h1 {
-    font-size: 24px !important;
-  }
-  .hero-left p {
-    font-size: 14px !important;
-  }
-  .stats h3 {
-    font-size: 20px !important;
-  }
-  .stats span {
-    font-size: 11px !important;
-  }
-}
-
-/* --- About Section Mobile --- */
-@media (max-width: 767px) {
-  .about_content {
-    flex-direction: column !important;
-    gap: 20px !important;
-  }
-  .image_row {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-  }
-  .image_row img {
-    height: 180px !important;
-    border-radius: 16px !important;
-    width: 100% !important;
-    object-fit: cover;
-  }
-  .image_column {
-    margin-top: 20px !important;
-    gap: 12px !important;
-  }
-}
-
-/* --- Services Cards Mobile --- */
-@media (max-width: 767px) {
-  .service_card {
-    padding: 16px !important;
-    border-radius: 16px !important;
-    margin-bottom: 12px;
-  }
-  .service_card h3 {
-    font-size: 20px !important;
-  }
-  .service_card p {
-    font-size: 14px !important;
-  }
-  .services_section .service_card {
-    padding: 16px !important;
-  }
-  /* Service result badges */
-  .service_card .badge,
-  .service_card .result-badge {
-    font-size: 11px !important;
-    padding: 4px 10px !important;
-  }
-}
-
-/* --- Testimonials Mobile --- */
-@media (max-width: 767px) {
-  .testimonial_section .row {
-    gap: 16px !important;
-  }
-  .testimonial_card {
-    flex-direction: column !important;
-    min-height: auto !important;
-    padding: 16px !important;
-    border-radius: 16px !important;
-  }
-  .testimonial_card .card_left {
-    min-width: auto !important;
-    width: 100% !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 12px !important;
-  }
-  .testimonial_card .card_left img {
-    width: 60px !important;
-    height: 60px !important;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  .testimonial_card .card_right {
-    padding: 12px !important;
-    border-radius: 12px !important;
-  }
-  .testimonial_card h3 {
-    font-size: 16px !important;
-  }
-  .testimonial_card p {
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-  }
-  .grid_bx {
-    width: 60px !important;
-  }
-  .location span {
-    font-size: 12px !important;
-  }
-}
-
-/* --- Process Section Mobile --- */
-@media (max-width: 767px) {
+  /* Process on mobile */
   .process_steps {
     flex-direction: column !important;
     gap: 24px !important;
-    padding: 0 !important;
+    align-items: center;
   }
   .process {
     max-width: 100% !important;
@@ -895,32 +596,129 @@
   .process_icon img {
     width: 50px !important;
   }
-}
-
-/* --- FAQ Section Mobile --- */
-@media (max-width: 767px) {
-  .accordion-item {
-    border-radius: 14px !important;
-    padding: 8px 12px !important;
-    margin-bottom: 8px !important;
+  /* Video */
+  .video-buttons {
+    transform: translate(-50%, -50%) !important;
+    left: 50% !important;
   }
-  .accordion-button {
+  .control-btn {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.2rem !important;
+  }
+  /* Hero */
+  .hero-section {
+    min-height: auto !important;
+  }
+  .hero-left h1 {
+    margin-bottom: 1rem !important;
+  }
+  .hero-left p {
     font-size: 16px !important;
-    padding: 12px !important;
-    line-height: 1.4 !important;
+    margin-bottom: 1.5rem !important;
   }
-  .accordion-body {
-    padding: 8px 12px 16px !important;
+  .trusted_partner img {
+    height: 40px !important;
+    width: 90px !important;
+  }
+  /* Blog */
+  .blogs_section .service_card {
+    padding: 14px !important;
+  }
+  /* Logo Scroll */
+  .scroll-item {
+    padding: 16px !important;
+  }
+  .scroll-item img {
+    max-height: 30px !important;
+  }
+  .brands_logos:after,
+  .brands_logos:before {
+    width: 30px !important;
+  }
+  /* Legal pages */
+  .policies {
+    padding: 20px 0 !important;
+  }
+  .policies h2 {
+    font-size: 20px !important;
+    margin-top: 24px !important;
+  }
+  .policies h3 {
+    font-size: 18px !important;
+  }
+  .policies p,
+  .policies li {
     font-size: 14px !important;
+    line-height: 1.6 !important;
   }
 }
 
-/* --- Campaigns Section Mobile --- */
-@media (max-width: 767px) {
+/* ============================================
+   SMALL MOBILE (≤600px)
+   ============================================ */
+@media (max-width: 600px) {
+  .navbar .btns {
+    display: none;
+  }
+  .header .navbar {
+    padding: 14px 70px 14px 16px !important;
+  }
+  .header .navbar .logo {
+    max-width: 130px !important;
+  }
+  .navbar-toggler {
+    width: 44px !important;
+    height: 44px !important;
+    right: 12px !important;
+  }
+  .navbar-collapse {
+    top: 65px !important;
+    padding: 16px;
+  }
+  .header {
+    top: 10px !important;
+  }
+  /* Traditional cards */
+  .traditional_card:first-child {
+    margin-top: 0;
+  }
+  .traditional_card:nth-child(4) {
+    margin-top: 0;
+  }
+  .traditional_card {
+    flex: 0 0 100%;
+    height: auto;
+    padding: 24px;
+  }
+  .services_section .service_card {
+    padding: 16px !important;
+  }
+  .blogs_section .service_card,
+  .campaigns_section .service_card {
+    padding: 14px;
+  }
+  .btm_bar,
+  .accordion-item {
+    border-radius: 16px !important;
+    padding: 14px 14px !important;
+  }
+  .appointment_section .appointment_content {
+    border-radius: 20px;
+    padding: 24px;
+  }
+  .solution_card.h-100 {
+    margin-bottom: 16px;
+    height: auto !important;
+  }
+  .solution_card h3 {
+    font-size: 30px !important;
+  }
+  /* Campaign icons - flatten on mobile */
   .social_icos_bx {
     transform: none !important;
     height: auto !important;
-    margin-bottom: 0 !important;
+    margin-bottom: 10px !important;
   }
   .social_icos_bx .social_icons {
     gap: 12px !important;
@@ -940,125 +738,51 @@
   .social_icos_bx .social_icons a i {
     font-size: 18px !important;
   }
-  .campaigns_section .service_card {
-    padding: 14px !important;
+}
+
+/* ============================================
+   EXTRA SMALL MOBILE (≤480px)
+   ============================================ */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 26px !important;
+    line-height: 1.2 !important;
   }
-  .campaigns_section h3 {
+  h2 {
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+  }
+  h3 {
     font-size: 18px !important;
   }
-}
-
-/* --- Blog Section Mobile --- */
-@media (max-width: 767px) {
-  .blogs_section .service_card {
-    padding: 14px !important;
+  h4 {
+    font-size: 24px !important;
   }
-  .blogs_section h3 {
-    font-size: 18px !important;
-  }
-  .blog_reading span {
-    font-size: 13px !important;
-  }
-}
-
-/* --- Logo Scroll Mobile --- */
-@media (max-width: 767px) {
-  .scroll-item {
-    padding: 16px !important;
-  }
-  .scroll-item img {
-    max-height: 28px !important;
-  }
-  .brands_logos:after,
-  .brands_logos:before {
-    width: 30px !important;
-  }
-}
-
-/* --- Footer Mobile --- */
-@media (max-width: 767px) {
-  footer {
-    text-align: center !important;
-    padding: 30px 0 0 !important;
-  }
-  footer .container {
-    padding: 24px 16px 16px !important;
-    border-radius: 16px !important;
-  }
-  footer .logo {
-    width: 180px !important;
-  }
-  footer .footer_menu {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-  footer .footer_menu a {
+  p {
     font-size: 14px !important;
   }
-  footer .social_icons {
-    flex-direction: row !important;
-    justify-content: center !important;
-    gap: 12px !important;
+  section {
+    padding: 40px 0 !important;
   }
-  footer .social_icons a {
-    width: 40px !important;
-    height: 40px !important;
+  .titles {
+    padding-bottom: 16px;
   }
-  .newsletter_box {
-    justify-content: center !important;
+  .accordion-button:not(.collapsed),
+  .accordion-item button {
+    font-size: 16px !important;
+    padding: 12px 14px !important;
+    line-height: 1.4 !important;
   }
-  .newsletter_box form {
-    flex-direction: column !important;
-    gap: 10px !important;
-    width: 100% !important;
-  }
-  .newsletter_box form input {
-    min-width: auto !important;
-    width: 100% !important;
-  }
-  .btm_bar {
-    flex-direction: column !important;
-    gap: 8px !important;
-    text-align: center !important;
-    padding: 16px !important;
-    border-radius: 14px !important;
-  }
-  .btm_bar span,
-  .btm_bar a {
+  .accordion-body {
+    padding: 8px 12px 16px !important;
     font-size: 13px !important;
   }
-  /* Pre-footer CTA */
-  .pre-footer-cta,
-  footer .cta-section {
-    padding: 24px !important;
-    border-radius: 16px !important;
-  }
-  .pre-footer-cta h2 {
+  .stats h3 {
     font-size: 22px !important;
   }
-  .pre-footer-cta p {
-    font-size: 14px !important;
+  .stats span {
+    font-size: 11px !important;
   }
-}
-
-/* --- Buttons Mobile --- */
-@media (max-width: 767px) {
-  .btns,
-  .web_btns,
-  .hero_buttons .btns {
-    font-size: 14px !important;
-    padding: 10px 20px !important;
-    white-space: nowrap;
-  }
-  .hero_buttons {
-    gap: 10px !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-  }
-}
-
-@media (max-width: 480px) {
   .btns,
   .web_btns {
     font-size: 13px !important;
@@ -1067,10 +791,28 @@
     text-align: center;
     justify-content: center;
   }
-}
-
-/* --- Cookie Consent Mobile --- */
-@media (max-width: 600px) {
+  .newsletter_box form input {
+    min-width: 160px;
+  }
+  .testimonial_card {
+    gap: 6px;
+    min-height: auto;
+    padding: 12px 0 0 12px !important;
+  }
+  .testimonial_card h3 {
+    font-size: 16px !important;
+  }
+  .testimonial_card span,
+  .testimonial_card p {
+    font-size: 13px;
+  }
+  .grid_bx {
+    width: 70px !important;
+  }
+  footer .container {
+    padding: 24px 16px 16px !important;
+  }
+  /* Cookie banner */
   .cookie-banner {
     padding: 16px !important;
     margin: 8px !important;
@@ -1086,54 +828,188 @@
     font-size: 13px !important;
     padding: 8px 16px !important;
   }
-}
-
-/* --- Service Detail Pages Mobile --- */
-@media (max-width: 767px) {
-  .appointment_section .appointment_content {
-    border-radius: 16px !important;
-    padding: 20px !important;
+  /* Pre-footer CTA */
+  .pre-footer-cta {
+    padding: 24px 16px !important;
+    border-radius: 20px !important;
   }
-  .traditional_card {
-    flex: 0 0 100% !important;
-    height: auto !important;
-    min-height: auto !important;
-    padding: 20px !important;
+  .pre-footer-cta h2 {
+    font-size: 22px !important;
   }
-  .solution_card.h-100 {
-    margin-bottom: 16px !important;
-    height: auto !important;
-  }
-  .solution_card h3 {
-    font-size: 28px !important;
+  .pre-footer-cta-text {
+    font-size: 14px !important;
   }
 }
 
-/* --- Legal Pages Mobile (Impressum, Datenschutz, AGB) --- */
-@media (max-width: 767px) {
-  .policies {
-    padding: 20px 0 !important;
+/* ============================================
+   TINY MOBILE (≤380px)
+   ============================================ */
+@media (max-width: 380px) {
+  h1 {
+    font-size: 22px !important;
   }
-  .policies h2 {
+  h2 {
     font-size: 20px !important;
-    margin-top: 24px !important;
   }
-  .policies h3 {
+  h3 {
+    font-size: 16px !important;
+  }
+  p {
+    font-size: 13px !important;
+  }
+  .container,
+  .container-sm {
+    padding: 0 10px !important;
+  }
+}
+
+/* ============================================
+   FOOTER MOBILE FIXES
+   ============================================ */
+@media (max-width: 991px) {
+  /* Footer social icons - ONLY icons, no text */
+  footer .social_icons,
+  footer .footer-social {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+  footer .social_icons a,
+  footer .footer-social a {
+    width: 48px !important;
+    height: 48px !important;
+    padding: 12px !important;
+    font-size: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+  footer .social_icons a i,
+  footer .footer-social a i {
     font-size: 18px !important;
   }
-  .policies p,
-  .policies li {
+  /* Newsletter form */
+  .newsletter_box {
+    justify-content: center !important;
+    width: 100%;
+  }
+  .newsletter_box form {
+    width: 100% !important;
+    max-width: 400px;
+    flex-wrap: nowrap !important;
+  }
+  .newsletter_box form input {
+    min-width: 0 !important;
+    flex: 1;
+  }
+  .newsletter-disclaimer {
+    text-align: center;
+    font-size: 13px !important;
+  }
+  /* Footer menu */
+  footer .footer_menu {
+    justify-content: center !important;
+    gap: 12px 20px !important;
+    flex-wrap: wrap !important;
+  }
+  footer .footer_menu a {
     font-size: 14px !important;
-    line-height: 1.6 !important;
+    white-space: nowrap;
+  }
+  /* Divider */
+  .devider {
+    margin: 30px 0 !important;
+  }
+  /* Bottom bar */
+  .btm_bar {
+    flex-direction: column !important;
+    gap: 10px !important;
+    text-align: center !important;
+    margin-top: 20px !important;
+  }
+  .btm_bar p {
+    font-size: 14px !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+  /* Footer logo */
+  footer .logo {
+    width: 200px !important;
+    margin: 0 auto 20px !important;
+    display: block !important;
   }
 }
 
-/* --- Prevent Horizontal Overflow --- */
+@media (max-width: 600px) {
+  .newsletter_box form {
+    flex-direction: column !important;
+    border-radius: 20px !important;
+    padding: 12px !important;
+    gap: 8px !important;
+  }
+  .newsletter_box form input {
+    min-width: auto !important;
+    width: 100% !important;
+    text-align: center;
+  }
+  .newsletter_box form button {
+    width: 100% !important;
+    border-radius: 100px !important;
+  }
+  footer .footer_menu {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  .btm_bar p {
+    font-size: 13px !important;
+  }
+  footer .container {
+    padding: 24px 16px 16px !important;
+    border-radius: 20px !important;
+    margin: 0 8px 16px !important;
+  }
+}
+
+/* ============================================
+   DESKTOP TESTIMONIAL OVERFLOW FIX
+   ============================================ */
+.testimonial_section {
+  overflow: hidden !important;
+}
+.testimonial_section .row {
+  overflow: visible;
+}
+.testimonial_section .swiper {
+  overflow: visible;
+  padding: 20px 0;
+}
+.testimonial_section .swiper-wrapper {
+  align-items: stretch;
+}
+
+/* ============================================
+   GLOBAL OVERFLOW PREVENTION
+   ============================================ */
 html, body {
   max-width: 100vw;
   overflow-x: clip;
 }
-
 section {
   max-width: 100%;
+  overflow-x: clip;
+}
+
+/* ============================================
+   SERVICE PAGES - DESKTOP FIXES
+   ============================================ */
+.traditional_content {
+  overflow: hidden;
+}
+.traditional_card {
+  overflow: hidden;
+  position: relative;
 }
