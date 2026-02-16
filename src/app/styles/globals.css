@@ -79,7 +79,7 @@ p {
   padding: 12px 12px 12px 40px;
   backdrop-filter: blur(50px);
   border-radius: 100px;
-  max-width: 1670px !important;
+  max-width: 1200px !important;
   margin: auto;
   width: 100%;
   display: flex;
@@ -158,6 +158,8 @@ section {
   width: 100%;
   overflow: hidden;
   align-items: center;
+  padding-top: 20px !important;
+  padding-bottom: 40px !important;
 }
 /* #box1 {
   width: 130px;
@@ -241,13 +243,15 @@ section {
   width: 100%;
 }
 .hero-left h1 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+  line-height: 1.15;
 }
 
 .hero-left p {
-  font-size: 22px;
-  margin-bottom: 2.5rem;
+  font-size: 18px;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
 }
 
 .hero_right {
@@ -1578,7 +1582,7 @@ footer .footer_menu a:hover {
 .pre-footer-cta {
   background: linear-gradient(135deg, rgba(2, 59, 91, 0.4), rgba(9, 22, 34, 0.8));
   border-radius: 40px;
-  padding: 120px 80px;
+  padding: 140px 80px 120px;
   border: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: blur(30px);
   margin: 0 auto;
