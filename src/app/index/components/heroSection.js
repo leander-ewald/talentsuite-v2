@@ -108,7 +108,7 @@ const HeroSection = () => {
             <div className="col-12 col-md-11 col-lg-9 col-xl-6">
               <div className="hero-left">
                 {/* SEO: Optimierte H1 mit Ziel-Keywords + Verkaufspsychologie */}
-                <h1>Keine Bewerber? Keine Neukunden? Wir ändern das – mit System.</h1>
+                <h1>Keine Bewerber?<br />Keine Neukunden?<br />Wir ändern das – mit System.</h1>
                 <p>
                   50+ Unternehmen im DACH-Raum vertrauen auf TalentSuite als ihre Fullservice-Agentur
                   für Performance Recruiting, Neukundengewinnung und E-Commerce.
