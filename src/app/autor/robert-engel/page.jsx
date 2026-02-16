@@ -3,11 +3,6 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 
-export const metadata = {
-  title: "Robert Engel – Performance Recruiting Experte | TalentSuite",
-  description: "Robert Engel ist Gründer von TalentSuite und Experte für Performance Recruiting, Social Media Marketing und Fachkräftegewinnung für den Mittelstand in Südwestfalen.",
-};
-
 const AuthorPage = () => {
   const personSchema = {
     "@context": "https://schema.org",
