@@ -867,29 +867,27 @@
    FOOTER MOBILE FIXES
    ============================================ */
 @media (max-width: 991px) {
-  /* Footer social icons - ONLY icons, no text */
-  footer .social_icons,
-  footer .footer-social {
+  /* Footer social icons - centered, icon only */
+  footer .social_icons {
     flex-direction: row !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
-    gap: 10px !important;
+    gap: 12px !important;
   }
-  footer .social_icons a,
-  footer .footer-social a {
-    width: 48px !important;
-    height: 48px !important;
-    padding: 12px !important;
+  footer .social_icons a {
+    width: 50px !important;
+    height: 50px !important;
+    padding: 0 !important;
     font-size: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    white-space: nowrap !important;
     overflow: hidden !important;
+    border-radius: 100px !important;
   }
-  footer .social_icons a i,
-  footer .footer-social a i {
-    font-size: 18px !important;
+  footer .social_icons a i {
+    font-size: 20px !important;
+    color: white !important;
   }
   /* Newsletter form */
   .newsletter_box {
@@ -899,7 +897,7 @@
   .newsletter_box form {
     width: 100% !important;
     max-width: 400px;
-    flex-wrap: nowrap !important;
+    margin: 0 auto;
   }
   .newsletter_box form input {
     min-width: 0 !important;
@@ -912,12 +910,11 @@
   /* Footer menu */
   footer .footer_menu {
     justify-content: center !important;
-    gap: 12px 20px !important;
+    gap: 10px 20px !important;
     flex-wrap: wrap !important;
   }
   footer .footer_menu a {
     font-size: 14px !important;
-    white-space: nowrap;
   }
   /* Divider */
   .devider {
@@ -941,6 +938,10 @@
     margin: 0 auto 20px !important;
     display: block !important;
   }
+  /* Footer text alignment */
+  footer {
+    text-align: center !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -949,6 +950,7 @@
     border-radius: 20px !important;
     padding: 12px !important;
     gap: 8px !important;
+    flex-wrap: wrap !important;
   }
   .newsletter_box form input {
     min-width: auto !important;
@@ -965,12 +967,20 @@
     gap: 10px !important;
   }
   .btm_bar p {
-    font-size: 13px !important;
+    font-size: 12px !important;
   }
   footer .container {
     padding: 24px 16px 16px !important;
     border-radius: 20px !important;
     margin: 0 8px 16px !important;
+  }
+  /* Pre-footer mobile */
+  .pre-footer-cta {
+    padding: 40px 20px !important;
+    border-radius: 24px !important;
+  }
+  .pre-footer-cta-section {
+    padding: 40px 0 20px !important;
   }
 }
 
