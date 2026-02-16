@@ -106,7 +106,7 @@ const CustomerAcquisition = () => {
         title={<>Kunden gewinnen geht nicht<br />mehr über Kaltakquise.</>}
         description="Wir entwickeln digitale Kundengewinnungsstrecken, die genau deine Zielgruppe ansprechen – messbar, automatisiert und planbar skalierbar."
         buttonText="Jetzt Strategiegespräch vereinbaren"
-        buttonLink="https://calendar.app.google/mU29snzEsgqsnMXy8"
+        buttonLink="https://calendly.com/talentsuite"
         imageSrc="/assets/services-img.png"
         imageAlt="Neukundengewinnung – Digitale Leadgenerierung mit System"
       />
@@ -128,7 +128,7 @@ const CustomerAcquisition = () => {
       <Testimonials
         title="Kundenstimmen"
         description="Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse aus verschiedenen Branchen."
-        link="https://calendar.app.google/mU29snzEsgqsnMXy8"
+        link="https://calendly.com/talentsuite"
         linkText="Auch so wachsen? Jetzt Termin sichern"
         testimonialData={customerAcquisitionTestimonials}
       />
@@ -136,7 +136,7 @@ const CustomerAcquisition = () => {
       <Appointment
         heading="Wir zeigen dir in einem unverbindlichen Gespräch, wie du neue Kunden mit System gewinnst – ganz ohne Kaltakquise."
         buttonText="Jetzt Erstgespräch buchen"
-        buttonLink="https://calendar.app.google/mU29snzEsgqsnMXy8"
+        buttonLink="https://calendly.com/talentsuite"
       />
     </>
   );

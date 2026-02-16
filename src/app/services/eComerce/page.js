@@ -106,7 +106,7 @@ const ECommerce = () => {
         title={<>Dein E-Commerce braucht<br />mehr als nur einen Shop.</>}
         description="Wir begleiten dich von der Strategie über Technik bis hin zu Marketing – damit dein Onlinehandel nachhaltig wächst."
         buttonText="Jetzt Beratungsgespräch anfragen"
-        buttonLink="https://calendar.app.google/mU29snzEsgqsnMXy8"
+        buttonLink="https://calendly.com/talentsuite"
         imageSrc="/assets/services-img.png"
         imageAlt="E-Commerce Agentur – Shopify Entwicklung und Online-Shop Marketing"
       />
@@ -128,7 +128,7 @@ const ECommerce = () => {
       <Testimonials
         title="Kundenstimmen"
         description="Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse aus dem E-Commerce."
-        link="https://calendar.app.google/mU29snzEsgqsnMXy8"
+        link="https://calendly.com/talentsuite"
         linkText="Auch so wachsen? Jetzt Termin sichern"
         testimonialData={ecommerceTestimonials}
       />
@@ -136,7 +136,7 @@ const ECommerce = () => {
       <Appointment
         heading="Lass uns gemeinsam deine E-Commerce-Potenziale entfesseln. Vereinbare jetzt ein kostenloses Erstgespräch."
         buttonText="Jetzt Termin anfragen"
-        buttonLink="https://calendar.app.google/mU29snzEsgqsnMXy8"
+        buttonLink="https://calendly.com/talentsuite"
       />
     </>
   );
