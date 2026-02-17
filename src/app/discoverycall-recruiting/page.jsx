@@ -3,264 +3,199 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 // ============================================================
-// DISCOVERY CALL PAGE - talentsuite.io/discoverycall-recruiting
-// Stufe 1: Interessent füllt vor dem Call aus
-// Stufe 2: Robert füllt während des Calls aus (passwortgeschützt)
+// ONBOARDING CALL TOOL – basierend auf SOP v2.0 Phase 2
+// Stufe 1: Interessent füllt Kurzformular aus (öffentlich)
+// Stufe 2: Robert füllt SOP-Checkliste während Call aus (intern)
+// Ergebnis: Copy-Paste zu ClickUp
 // ============================================================
 
 const BRAND = "#023B5B";
-const BRAND_LIGHT = "#E8F4FD";
-const ACCENT = "#0EA5E9";
-const SUCCESS = "#10B981";
-const CALENDAR_LINK = "https://calendar.app.google/CQpLAnRw8tzQUEQz5";
+const BL = "#E8F4FD";
+const OK = "#10B981";
+const WARN = "#F59E0B";
+const CAL = "https://calendar.app.google/CQpLAnRw8tzQUEQz5";
 
-// Branchen-Optionen
+// === BRANCHEN ===
 const BRANCHEN = [
-  "SHK (Sanitär, Heizung, Klima)",
-  "Elektro & Elektrotechnik",
-  "Metallbau & Maschinenbau",
-  "Baugewerbe & Hochbau",
-  "Pflege & Gesundheitswesen",
-  "Gastronomie & Hotellerie",
-  "Logistik & Transport",
-  "Automotive & KFZ",
-  "Industrie & Produktion",
-  "Immobilien",
-  "IT & Software",
-  "Sonstige",
+  "SHK (Sanitär, Heizung, Klima)", "Elektro & Elektrotechnik", "Metallbau & Maschinenbau",
+  "Baugewerbe & Hochbau", "Pflege & Gesundheitswesen", "Gastronomie & Hotellerie",
+  "Logistik & Transport", "Automotive & KFZ", "Industrie & Produktion",
+  "Immobilien", "IT & Software", "Sonstige",
 ];
 
-const MITARBEITER = ["1-10", "11-25", "26-50", "51-100", "100+"];
-const OFFENE_STELLEN = ["1-2", "3-5", "6-10", "10+"];
-const BUDGET = [
-  "Noch kein Budget geplant",
-  "500-1.000€/Monat",
-  "1.000-2.000€/Monat",
-  "2.000-5.000€/Monat",
-  "5.000€+/Monat",
-];
-const HERAUSFORDERUNGEN = [
-  "Zu wenig Bewerbungen",
-  "Falsche/unqualifizierte Bewerber",
-  "Bewerber springen ab",
-  "Stellenanzeigen bringen nichts",
-  "Keine Zeit für aktives Recruiting",
-  "Hohe Fluktuation",
-  "Konkurrenz zahlt mehr",
-  "Kein Employer Branding",
-];
-const ZEITRAHMEN = [
-  "Sofort – so schnell wie möglich",
-  "In den nächsten 2-4 Wochen",
-  "In 1-3 Monaten",
-  "Erstmal nur informieren",
-];
-const BISHERIGE_METHODEN = [
-  "Stellenanzeigen (StepStone, Indeed, etc.)",
-  "Arbeitsagentur",
-  "Zeitarbeit / Personaldienstleister",
-  "Social Media (selbst gemacht)",
-  "Recruiting-Agentur",
-  "Mund-zu-Mund / Empfehlungen",
-  "Noch nichts Konkretes",
+// === SOP SEKTIONEN (Phase 2: Onboarding Call) ===
+const SOP = [
+  {
+    id: "unternehmen", icon: "🏢", label: "2.1 Unternehmen",
+    fields: [
+      { key: "konkurrenz", label: "Wer ist die Konkurrenz des Kunden?", type: "textarea", ph: "Konkurrenzbetriebe..." },
+      { key: "usp", label: "USP – Was unterscheidet den Kunden?", type: "textarea", ph: "Alleinstellungsmerkmale..." },
+    ],
+  },
+  {
+    id: "stelle", icon: "📋", label: "2.2 Stelleninfo",
+    hint: "Für bis zu 3 Stellen wiederholen. Jede Stelle erhält eigene Seite.",
+    fields: [
+      { key: "berufsbezeichnung", label: "Genaue Berufsbezeichnung", type: "text", ph: "z.B. Anlagenmechaniker SHK" },
+      { key: "arbeitszeit", label: "Voll- oder Teilzeit?", type: "chips", opts: ["Vollzeit", "Teilzeit", "Beides möglich"] },
+      { key: "standort", label: "Standort und Suchradius", type: "text", ph: "z.B. Iserlohn, 30km Radius" },
+      { key: "besetzung", label: "Gewünschter Besetzungszeitpunkt", type: "chips", opts: ["Sofort", "In 2-4 Wochen", "In 1-3 Monaten", "Flexibel"] },
+      { key: "aufgaben", label: "Aufgaben der Position", type: "textarea", ph: "Was macht der Mitarbeiter im Alltag?" },
+      { key: "qualifikationen", label: "Qualifikationsanforderungen (Ausbildung, Erfahrung, Zertifikate, Führerschein, Softskills)", type: "textarea", ph: "Alle Anforderungen auflisten..." },
+      { key: "quereinstieg", label: "Quereinstieg möglich?", type: "chips", opts: ["Ja", "Nein"] },
+      { key: "quereinstiegDetail", label: "Wenn ja: Mindestqualifikationen?", type: "text", ph: "z.B. Handwerkliche Erfahrung, Führerschein B", cond: "quereinstieg", condVal: "Ja" },
+      { key: "ausschluss", label: "Ausschlusskriterien (z.B. Sprache, Weiterbildung)", type: "textarea", ph: "Was MUSS der Bewerber mitbringen?" },
+      { key: "idealkandidat", label: "Idealen Kandidaten beschreiben", type: "textarea", ph: "Wie sieht der Traumkandidat aus?" },
+    ],
+  },
+  {
+    id: "stelle2", icon: "📋", label: "2.2b Weitere Stelle", optional: true,
+    fields: [
+      { key: "beruf2", label: "Berufsbezeichnung (Stelle 2)", type: "text", ph: "z.B. Elektroniker" },
+      { key: "zeit2", label: "Voll-/Teilzeit?", type: "chips", opts: ["Vollzeit", "Teilzeit", "Beides"] },
+      { key: "ort2", label: "Standort & Radius", type: "text", ph: "z.B. Hemer, 25km" },
+      { key: "aufg2", label: "Aufgaben", type: "textarea", ph: "Aufgaben der Position..." },
+      { key: "qual2", label: "Qualifikationen", type: "textarea", ph: "Anforderungen..." },
+      { key: "ideal2", label: "Idealer Kandidat", type: "textarea", ph: "Traumkandidat..." },
+    ],
+  },
+  {
+    id: "landingpage", icon: "🌐", label: "2.3 Landingpage",
+    fields: [
+      { key: "ansprache", label: "Du- oder Sie-Form?", type: "chips", opts: ["Du", "Sie"] },
+      { key: "gendern", label: "Gendern?", type: "chips", opts: ["Ja", "Nein"] },
+      { key: "logo", label: "Logo vorhanden?", type: "chips", opts: ["Ja – wird zugesendet", "Nein"] },
+      { key: "ciFarben", label: "CI-Farben", type: "text", ph: "z.B. #023B5B, Dunkelblau + Weiß" },
+      { key: "ciFont", label: "CI-Schriftart", type: "text", ph: "z.B. Montserrat, Open Sans" },
+      { key: "firmaText", label: "Kurze Unternehmensbeschreibung", type: "textarea", ph: "2-3 Sätze über das Unternehmen..." },
+      { key: "benefits", label: "Mitarbeiter-Benefits", type: "textarea", ph: "Firmenwagen, 30 Tage Urlaub, Weiterbildung..." },
+      { key: "testimonials", label: "Testimonials vorhanden?", type: "chips", opts: ["Ja – Schrift", "Ja – Video", "Beides", "Nein"] },
+      { key: "maBilder", label: "Bilder von Mitarbeitern?", type: "chips", opts: ["Ja", "Nein – Stock", "Nein – Vor-Ort planen"] },
+      { key: "kontaktBewerber", label: "Ansprechpartner für Bewerber (Name, E-Mail, Tel)", type: "textarea", ph: "Name:\nE-Mail:\nTelefon:" },
+    ],
+  },
+  {
+    id: "creatives", icon: "🎨", label: "2.4 Creatives",
+    fields: [
+      { key: "material", label: "Foto-/Videomaterial vorhanden?", type: "chips", opts: ["Ja – Fotos", "Ja – Videos", "Beides", "Nein"] },
+      { key: "keinMat", label: "Falls nein: Stockfootage oder Vor-Ort?", type: "chips", opts: ["Stockfootage", "Vor-Ort-Aufnahmen", "N/A"], cond: "material", condVal: "Nein" },
+      { key: "zertifikate", label: "Zertifikate vorhanden? (FOCUS, DEKRA etc.)", type: "text", ph: "z.B. Top Arbeitgeber 2025" },
+      { key: "logoHQ", label: "Logo in hoher Auflösung?", type: "chips", opts: ["Erhalten", "Angefragt", "Noch anfragen"] },
+      { key: "ortCreatives", label: "Standort für Creatives", type: "text", ph: "z.B. Firmengebäude, Werkstatt" },
+    ],
+  },
+  {
+    id: "meta", icon: "📱", label: "2.5 Meta Ads",
+    fields: [
+      { key: "fbSeite", label: "Facebook-Seite vorhanden?", type: "chips", opts: ["Ja", "Nein – erstellen"] },
+      { key: "fbZugriff", label: "Wer hat Facebook-Zugriffsrechte?", type: "text", ph: "Name + Rolle" },
+      { key: "fbAnfrage", label: "Zugriffsanfrage TalentSuite", type: "chips", opts: ["Erledigt", "Ausstehend"] },
+    ],
+  },
+  {
+    id: "google", icon: "🔍", label: "2.6 Google Ads",
+    hint: "Nur bei höher qualifizierten Jobs (Bachelor+).",
+    fields: [
+      { key: "gRelevant", label: "Google Ads relevant?", type: "chips", opts: ["Ja", "Nein"] },
+      { key: "gKonto", label: "Google Ads Konto vorhanden?", type: "chips", opts: ["Ja", "Nein – erstellen"], cond: "gRelevant", condVal: "Ja" },
+      { key: "gZugriff", label: "Zugriffsrechte?", type: "text", ph: "Name", cond: "gRelevant", condVal: "Ja" },
+      { key: "gAnfrage", label: "Zugriffsanfrage", type: "chips", opts: ["Erledigt", "Ausstehend"], cond: "gRelevant", condVal: "Ja" },
+    ],
+  },
+  {
+    id: "bewerbungen", icon: "📨", label: "2.7 Bewerbungen",
+    fields: [
+      { key: "kontaktPerson", label: "Wer ruft Bewerber am selben/nächsten Tag an?", type: "text", ph: "Name + Telefon" },
+      { key: "erstgespraechTS", label: "Erstgespräch durch TalentSuite?", type: "chips", opts: ["Ja (Upsell!)", "Nein – Kunde selbst"] },
+    ],
+  },
+  {
+    id: "abschluss", icon: "✅", label: "Abschluss & Nächste Schritte",
+    fields: [
+      { key: "paket", label: "Empfohlenes Paket", type: "chips", opts: ["Starter (ab 990€)", "Professional (ab 1.490€)", "Premium (ab 2.490€)", "Enterprise"] },
+      { key: "laufzeit", label: "Laufzeit", type: "chips", opts: ["1 Monat", "3 Monate", "6 Monate", "12 Monate"] },
+      { key: "start", label: "Gewünschtes Startdatum", type: "text", ph: "z.B. 01.03.2026" },
+      { key: "next", label: "Nächste Schritte", type: "textarea", ph: "Angebot senden, Zugänge anfragen..." },
+      { key: "notizen", label: "Sonstige Notizen", type: "textarea", ph: "Alles was noch wichtig ist..." },
+      { key: "bewertung", label: "Lead-Bewertung", type: "chips", opts: ["🔥 Hot", "🟡 Warm", "🔵 Kalt", "❌ Kein Fit"] },
+    ],
+  },
 ];
 
 // ============================================================
-// STUFE 1: INTERESSENTEN-FORMULAR
+// STUFE 1: ÖFFENTLICHES KURZFORMULAR
 // ============================================================
-function InteressentenFormular({ onComplete }) {
+function LeadForm({ onDone }) {
   const [step, setStep] = useState(0);
-  const [data, setData] = useState({
-    firma: "",
-    name: "",
-    email: "",
-    telefon: "",
-    branche: "",
-    brancheSonstige: "",
-    mitarbeiter: "",
-    offeneStellen: "",
-    herausforderungen: [],
-    bisherige: [],
-    zeitrahmen: "",
-    anmerkungen: "",
-  });
+  const [d, setD] = useState({ firma: "", name: "", email: "", tel: "", branche: "", mitarbeiter: "", stellen: "", herausforderungen: [], zeitrahmen: "", anmerkung: "" });
+  const u = (k, v) => setD((p) => ({ ...p, [k]: v }));
+  const tog = (k, v) => setD((p) => ({ ...p, [k]: p[k].includes(v) ? p[k].filter((x) => x !== v) : [...p[k], v] }));
 
-  const update = (key, val) => setData((d) => ({ ...d, [key]: val }));
-  const toggleArray = (key, val) => {
-    setData((d) => ({
-      ...d,
-      [key]: d[key].includes(val)
-        ? d[key].filter((v) => v !== val)
-        : [...d[key], val],
-    }));
-  };
+  const HERAUSF = ["Zu wenig Bewerbungen", "Falsche/unqualifizierte Bewerber", "Bewerber springen ab", "Stellenanzeigen bringen nichts", "Keine Zeit für Recruiting", "Hohe Fluktuation", "Konkurrenz zahlt mehr", "Kein Employer Branding"];
+  const ZEIT = ["Sofort", "In 2-4 Wochen", "In 1-3 Monaten", "Erstmal informieren"];
+  const MA = ["1-10", "11-25", "26-50", "51-100", "100+"];
+  const ST = ["1-2", "3-5", "6-10", "10+"];
 
   const steps = [
-    // Step 0: Kontaktdaten
-    {
-      title: "Über Sie & Ihr Unternehmen",
-      subtitle: "Damit wir uns optimal auf das Gespräch vorbereiten können",
-      icon: "👤",
-      content: (
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <InputField label="Firmenname *" value={data.firma} onChange={(v) => update("firma", v)} placeholder="z.B. Müller Heizungsbau GmbH" />
-          <InputField label="Ihr Name *" value={data.name} onChange={(v) => update("name", v)} placeholder="z.B. Thomas Müller" />
-          <InputField label="E-Mail *" value={data.email} onChange={(v) => update("email", v)} placeholder="z.B. t.mueller@firma.de" type="email" />
-          <InputField label="Telefon" value={data.telefon} onChange={(v) => update("telefon", v)} placeholder="z.B. 0171 1234567" type="tel" />
+    { t: "Über Sie", sub: "Damit wir uns optimal vorbereiten können", icon: "👤", ok: d.firma && d.name && d.email,
+      c: (
+        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          <Inp l="Firmenname *" v={d.firma} set={(v) => u("firma", v)} ph="z.B. Müller Heizungsbau GmbH" />
+          <Inp l="Ihr Name *" v={d.name} set={(v) => u("name", v)} ph="z.B. Thomas Müller" />
+          <Inp l="E-Mail *" v={d.email} set={(v) => u("email", v)} ph="z.B. t.mueller@firma.de" />
+          <Inp l="Telefon" v={d.tel} set={(v) => u("tel", v)} ph="z.B. 0171 1234567" />
         </div>
       ),
-      valid: data.firma && data.name && data.email,
     },
-    // Step 1: Branche & Größe
-    {
-      title: "Branche & Unternehmensgröße",
-      subtitle: "Hilft uns, branchenspezifische Lösungen vorzubereiten",
-      icon: "🏢",
-      content: (
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <div>
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 8, display: "block" }}>Branche *</label>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {BRANCHEN.map((b) => (
-                <ChipButton key={b} label={b} selected={data.branche === b} onClick={() => update("branche", b)} />
-              ))}
-            </div>
-            {data.branche === "Sonstige" && (
-              <InputField label="" value={data.brancheSonstige} onChange={(v) => update("brancheSonstige", v)} placeholder="Welche Branche?" style={{ marginTop: 8 }} />
-            )}
-          </div>
-          <div>
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 8, display: "block" }}>Mitarbeiteranzahl *</label>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {MITARBEITER.map((m) => (
-                <ChipButton key={m} label={m} selected={data.mitarbeiter === m} onClick={() => update("mitarbeiter", m)} />
-              ))}
-            </div>
-          </div>
-          <div>
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 8, display: "block" }}>Wie viele Stellen sind aktuell offen? *</label>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {OFFENE_STELLEN.map((o) => (
-                <ChipButton key={o} label={o} selected={data.offeneStellen === o} onClick={() => update("offeneStellen", o)} />
-              ))}
-            </div>
-          </div>
+    { t: "Branche & Größe", sub: "Hilft uns bei der Vorbereitung", icon: "🏢", ok: d.branche && d.mitarbeiter && d.stellen,
+      c: (
+        <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+          <ChipGroup l="Branche *" opts={BRANCHEN} val={d.branche} set={(v) => u("branche", v)} />
+          <ChipGroup l="Mitarbeiteranzahl *" opts={MA} val={d.mitarbeiter} set={(v) => u("mitarbeiter", v)} />
+          <ChipGroup l="Aktuell offene Stellen *" opts={ST} val={d.stellen} set={(v) => u("stellen", v)} />
         </div>
       ),
-      valid: data.branche && data.mitarbeiter && data.offeneStellen,
     },
-    // Step 2: Herausforderungen
-    {
-      title: "Ihre aktuelle Situation",
-      subtitle: "Was sind Ihre größten Recruiting-Herausforderungen?",
-      icon: "🎯",
-      content: (
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+    { t: "Ihre Situation", sub: "Was sind Ihre Recruiting-Herausforderungen?", icon: "🎯", ok: d.herausforderungen.length > 0,
+      c: (
+        <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div>
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 8, display: "block" }}>Größte Herausforderungen (mehrere möglich) *</label>
+            <label style={lbl}>Größte Herausforderungen (mehrere möglich) *</label>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {HERAUSFORDERUNGEN.map((h) => (
-                <ChipButton key={h} label={h} selected={data.herausforderungen.includes(h)} onClick={() => toggleArray("herausforderungen", h)} />
-              ))}
+              {HERAUSF.map((h) => <Chip key={h} t={h} on={d.herausforderungen.includes(h)} click={() => tog("herausforderungen", h)} />)}
             </div>
           </div>
+          <ChipGroup l="Wann sollen Stellen besetzt werden? *" opts={ZEIT} val={d.zeitrahmen} set={(v) => u("zeitrahmen", v)} />
           <div>
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 8, display: "block" }}>Was haben Sie bisher probiert? (mehrere möglich)</label>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {BISHERIGE_METHODEN.map((b) => (
-                <ChipButton key={b} label={b} selected={data.bisherige.includes(b)} onClick={() => toggleArray("bisherige", b)} />
-              ))}
-            </div>
+            <label style={lbl}>Anmerkungen (optional)</label>
+            <textarea value={d.anmerkung} onChange={(e) => u("anmerkung", e.target.value)} placeholder="Bestimmte Positionen, Wünsche..." rows={3} style={ta} />
           </div>
         </div>
       ),
-      valid: data.herausforderungen.length > 0,
-    },
-    // Step 3: Zeitrahmen & Abschluss
-    {
-      title: "Zeitrahmen & Anmerkungen",
-      subtitle: "Wann möchten Sie starten?",
-      icon: "⏰",
-      content: (
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <div>
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 8, display: "block" }}>Wann sollen die Stellen besetzt werden? *</label>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {ZEITRAHMEN.map((z) => (
-                <ChipButton key={z} label={z} selected={data.zeitrahmen === z} onClick={() => update("zeitrahmen", z)} />
-              ))}
-            </div>
-          </div>
-          <div>
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 8, display: "block" }}>Gibt es noch etwas, das wir wissen sollten?</label>
-            <textarea
-              value={data.anmerkungen}
-              onChange={(e) => update("anmerkungen", e.target.value)}
-              placeholder="z.B. bestimmte Positionen, besondere Anforderungen, Wünsche..."
-              rows={3}
-              style={{ width: "100%", padding: "12px 14px", borderRadius: 8, border: "1.5px solid #ddd", fontSize: 14, fontFamily: "inherit", resize: "vertical", outline: "none", boxSizing: "border-box" }}
-            />
-          </div>
-        </div>
-      ),
-      valid: data.zeitrahmen,
     },
   ];
 
-  const currentStep = steps[step];
-  const isLast = step === steps.length - 1;
-
-  const handleSubmit = () => {
-    onComplete(data);
-  };
-
+  const s = steps[step];
   return (
     <div>
-      {/* Progress Bar */}
-      <div style={{ display: "flex", gap: 6, marginBottom: 32 }}>
-        {steps.map((_, i) => (
-          <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i <= step ? BRAND : "#e0e0e0", transition: "background 0.3s" }} />
-        ))}
+      <div style={{ display: "flex", gap: 6, marginBottom: 28 }}>
+        {steps.map((_, i) => <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i <= step ? BRAND : "#e0e0e0", transition: "all .3s" }} />)}
       </div>
-
-      {/* Step Header */}
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-          <span style={{ fontSize: 24 }}>{currentStep.icon}</span>
-          <span style={{ fontSize: 12, color: "#999", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1 }}>Schritt {step + 1} von {steps.length}</span>
+      <div style={{ marginBottom: 20 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 2 }}>
+          <span style={{ fontSize: 22 }}>{s.icon}</span>
+          <span style={{ fontSize: 11, color: "#999", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1 }}>Schritt {step + 1} / {steps.length}</span>
         </div>
-        <h2 style={{ fontSize: 22, fontWeight: 700, color: BRAND, margin: "4px 0" }}>{currentStep.title}</h2>
-        <p style={{ fontSize: 14, color: "#666", margin: 0 }}>{currentStep.subtitle}</p>
+        <h2 style={{ fontSize: 21, fontWeight: 700, color: BRAND, margin: "4px 0 2px" }}>{s.t}</h2>
+        <p style={{ fontSize: 13, color: "#777", margin: 0 }}>{s.sub}</p>
       </div>
-
-      {/* Step Content */}
-      {currentStep.content}
-
-      {/* Navigation */}
-      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 28, paddingTop: 20, borderTop: "1px solid #eee" }}>
-        <button
-          onClick={() => setStep((s) => s - 1)}
-          disabled={step === 0}
-          style={{ padding: "10px 24px", borderRadius: 8, border: `1.5px solid ${BRAND}`, background: "#fff", color: BRAND, cursor: step === 0 ? "not-allowed" : "pointer", fontSize: 14, fontWeight: 600, opacity: step === 0 ? 0.3 : 1 }}
-        >
-          ← Zurück
-        </button>
-        {isLast ? (
-          <button
-            onClick={handleSubmit}
-            disabled={!currentStep.valid}
-            style={{ padding: "12px 32px", borderRadius: 8, border: "none", background: currentStep.valid ? SUCCESS : "#ccc", color: "#fff", cursor: currentStep.valid ? "pointer" : "not-allowed", fontSize: 15, fontWeight: 700 }}
-          >
-            ✓ Absenden & Termin buchen
-          </button>
+      {s.c}
+      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 24, paddingTop: 18, borderTop: "1px solid #eee" }}>
+        <button onClick={() => setStep((x) => x - 1)} disabled={step === 0} style={{ ...navBtn, border: `1.5px solid ${BRAND}`, background: "#fff", color: BRAND, opacity: step === 0 ? 0.3 : 1, cursor: step === 0 ? "not-allowed" : "pointer" }}>← Zurück</button>
+        {step < steps.length - 1 ? (
+          <button onClick={() => setStep((x) => x + 1)} disabled={!s.ok} style={{ ...navBtn, border: "none", background: s.ok ? BRAND : "#ccc", color: "#fff", cursor: s.ok ? "pointer" : "not-allowed" }}>Weiter →</button>
         ) : (
-          <button
-            onClick={() => setStep((s) => s + 1)}
-            disabled={!currentStep.valid}
-            style={{ padding: "12px 28px", borderRadius: 8, border: "none", background: currentStep.valid ? BRAND : "#ccc", color: "#fff", cursor: currentStep.valid ? "pointer" : "not-allowed", fontSize: 14, fontWeight: 600 }}
-          >
-            Weiter →
-          </button>
+          <button onClick={() => onDone(d)} disabled={!s.ok} style={{ ...navBtn, border: "none", background: s.ok ? OK : "#ccc", color: "#fff", cursor: s.ok ? "pointer" : "not-allowed", fontWeight: 700 }}>✓ Absenden & Termin buchen</button>
         )}
       </div>
     </div>
@@ -268,196 +203,180 @@ function InteressentenFormular({ onComplete }) {
 }
 
 // ============================================================
-// STUFE 2: DISCOVERY CALL TOOL (internes Tool für Robert)
+// STUFE 2: INTERNES SOP-TOOL
 // ============================================================
-function DiscoveryCallTool({ leadData }) {
-  const [data, setData] = useState({
-    budget: "",
-    entscheider: "",
-    entscheiderRolle: "",
-    timeline: "",
-    schmerzpunkt: "",
-    aktuelleKosten: "",
-    erwartungen: "",
-    einwaende: "",
-    naechsteSchritte: "",
-    bewertung: "",
-    notizen: "",
-    empfohlenesPaket: "",
-  });
+function SopTool({ lead }) {
+  const [active, setActive] = useState(SOP[0].id);
+  const [d, setD] = useState({});
+  const [skip, setSkip] = useState({});
   const [copied, setCopied] = useState(false);
+  const u = (k, v) => setD((p) => ({ ...p, [k]: v }));
 
-  const update = (key, val) => setData((d) => ({ ...d, [key]: val }));
-
-  const PAKETE = ["Starter (ab 990€)", "Professional (ab 1.490€)", "Premium (ab 2.490€)", "Enterprise (individuell)"];
-  const BEWERTUNGEN = ["🔥 Hot – sofort abschlussbereit", "🟡 Warm – Follow-up nötig", "🔵 Kalt – langfristiger Lead", "❌ Kein Fit"];
-
-  const generateClickUpText = () => {
-    const lead = leadData || {};
-    return `📋 DISCOVERY CALL – ${lead.firma || "N/A"}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-👤 KONTAKT
-Firma: ${lead.firma || "N/A"}
-Ansprechpartner: ${lead.name || "N/A"}
-E-Mail: ${lead.email || "N/A"}
-Telefon: ${lead.telefon || "N/A"}
-
-🏢 UNTERNEHMEN
-Branche: ${lead.branche || "N/A"}${lead.brancheSonstige ? ` (${lead.brancheSonstige})` : ""}
-Mitarbeiter: ${lead.mitarbeiter || "N/A"}
-Offene Stellen: ${lead.offeneStellen || "N/A"}
-
-🎯 SITUATION (vom Interessenten)
-Herausforderungen: ${lead.herausforderungen?.join(", ") || "N/A"}
-Bisherige Methoden: ${lead.bisherige?.join(", ") || "N/A"}
-Zeitrahmen: ${lead.zeitrahmen || "N/A"}
-Anmerkungen: ${lead.anmerkungen || "-"}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📞 DISCOVERY CALL NOTIZEN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-💰 Budget: ${data.budget || "N/A"}
-👔 Entscheider: ${data.entscheider || "N/A"} (${data.entscheiderRolle || "N/A"})
-⏰ Timeline: ${data.timeline || "N/A"}
-🔥 Größter Schmerzpunkt: ${data.schmerzpunkt || "N/A"}
-💸 Aktuelle Recruiting-Kosten: ${data.aktuelleKosten || "N/A"}
-📊 Erwartungen: ${data.erwartungen || "N/A"}
-⚠️ Einwände: ${data.einwaende || "N/A"}
-
-📦 Empfohlenes Paket: ${data.empfohlenesPaket || "N/A"}
-📝 Nächste Schritte: ${data.naechsteSchritte || "N/A"}
-
-${data.bewertung || ""}
-
-💬 Zusätzliche Notizen:
-${data.notizen || "-"}`;
+  const prog = (sec) => {
+    const vis = sec.fields.filter((f) => !f.cond || d[f.cond] === f.condVal);
+    const fill = vis.filter((f) => d[f.key] && d[f.key] !== "");
+    return { f: fill.length, t: vis.length };
   };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(generateClickUpText());
-    setCopied(true);
-    setTimeout(() => setCopied(false), 3000);
+  const genText = () => {
+    let t = `📋 ONBOARDING CALL – ${lead?.firma || "N/A"}\n━━━━━━━━━━━━━━━━━━━━━━━━━━\nDatum: ${new Date().toLocaleDateString("de-DE")}\n\n`;
+    // Lead data first
+    if (lead) {
+      t += `👤 KONTAKT (vom Interessenten)\n────────────────────────\n`;
+      t += `Firma: ${lead.firma}\nName: ${lead.name}\nE-Mail: ${lead.email}\nTelefon: ${lead.tel || "-"}\n`;
+      t += `Branche: ${lead.branche}\nMitarbeiter: ${lead.mitarbeiter}\nOffene Stellen: ${lead.stellen}\n`;
+      t += `Herausforderungen: ${lead.herausforderungen?.join(", ")}\nZeitrahmen: ${lead.zeitrahmen}\n`;
+      if (lead.anmerkung) t += `Anmerkungen: ${lead.anmerkung}\n`;
+      t += `\n`;
+    }
+    SOP.forEach((sec) => {
+      if (skip[sec.id]) return;
+      const hasData = sec.fields.some((f) => d[f.key] && d[f.key] !== "");
+      if (!hasData) return;
+      t += `${sec.icon} ${sec.label.toUpperCase()}\n────────────────────────\n`;
+      sec.fields.forEach((f) => {
+        if (f.cond && d[f.cond] !== f.condVal) return;
+        if (d[f.key] && d[f.key] !== "") t += `${f.label}: ${d[f.key]}\n`;
+      });
+      t += `\n`;
+    });
+    return t;
   };
+
+  const copy = () => { navigator.clipboard.writeText(genText()); setCopied(true); setTimeout(() => setCopied(false), 3000); };
+  const sec = SOP.find((s) => s.id === active);
+  const idx = SOP.findIndex((s) => s.id === active);
 
   return (
-    <div>
-      <div style={{ background: "#FFF7ED", border: "1px solid #FED7AA", borderRadius: 10, padding: 16, marginBottom: 24 }}>
-        <p style={{ margin: 0, fontSize: 13, color: "#9A3412" }}>
-          🔒 <strong>Internes Tool</strong> — Nur für dich während des Discovery Calls sichtbar. Fülle die Felder aus und kopiere am Ende alles als ClickUp-Task.
-        </p>
-      </div>
-
-      {/* Lead-Zusammenfassung */}
-      {leadData && (
-        <div style={{ background: BRAND_LIGHT, borderRadius: 10, padding: 16, marginBottom: 24 }}>
-          <h4 style={{ margin: "0 0 8px 0", fontSize: 14, color: BRAND }}>📋 Lead-Daten (vom Interessenten ausgefüllt):</h4>
-          <div style={{ fontSize: 13, color: "#333", lineHeight: 1.6 }}>
-            <strong>{leadData.firma}</strong> · {leadData.branche} · {leadData.mitarbeiter} MA · {leadData.offeneStellen} offene Stellen<br />
-            {leadData.name} · {leadData.email} · {leadData.telefon}<br />
-            Herausforderungen: {leadData.herausforderungen?.join(", ")}<br />
-            Zeitrahmen: {leadData.zeitrahmen}
+    <div style={{ display: "flex", gap: 20 }}>
+      {/* Sidebar */}
+      <div style={{ width: 240, flexShrink: 0 }}>
+        <div style={{ background: "#fff", borderRadius: 12, padding: 8, boxShadow: "0 1px 8px rgba(0,0,0,.06)", position: "sticky", top: 20 }}>
+          {/* Lead Summary */}
+          {lead && (
+            <div style={{ background: BL, borderRadius: 8, padding: "10px 12px", marginBottom: 8, fontSize: 12, lineHeight: 1.5 }}>
+              <strong style={{ color: BRAND }}>{lead.firma}</strong><br />
+              {lead.name} · {lead.branche}<br />
+              {lead.mitarbeiter} MA · {lead.stellen} Stellen
+            </div>
+          )}
+          {SOP.map((s) => {
+            const p = prog(s);
+            const act = active === s.id;
+            const sk = skip[s.id];
+            return (
+              <button key={s.id} onClick={() => setActive(s.id)} style={{
+                display: "flex", alignItems: "center", gap: 8, width: "100%",
+                padding: "9px 10px", borderRadius: 8, border: "none",
+                background: act ? BL : "transparent", cursor: "pointer", textAlign: "left", marginBottom: 1, opacity: sk ? 0.4 : 1,
+              }}>
+                <span style={{ fontSize: 15 }}>{s.icon}</span>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: act ? 700 : 500, color: act ? BRAND : "#333" }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: p.f === p.t && p.t > 0 ? OK : "#bbb" }}>{sk ? "Skip" : `${p.f}/${p.t}`}</div>
+                </div>
+                {p.f === p.t && p.t > 0 && !sk && <span style={{ color: OK, fontSize: 13 }}>✓</span>}
+              </button>
+            );
+          })}
+          <div style={{ padding: "10px 6px 4px", borderTop: "1px solid #eee", marginTop: 6 }}>
+            <button onClick={copy} style={{ width: "100%", padding: "11px 14px", borderRadius: 8, border: "none", background: copied ? OK : BRAND, color: "#fff", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>
+              {copied ? "✓ Kopiert!" : "📋 ClickUp-Task kopieren"}
+            </button>
           </div>
-        </div>
-      )}
-
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-          <InputField label="💰 Monatliches Budget" value={data.budget} onChange={(v) => update("budget", v)} placeholder="z.B. 1.500€/Monat" />
-          <InputField label="💸 Aktuelle Recruiting-Kosten" value={data.aktuelleKosten} onChange={(v) => update("aktuelleKosten", v)} placeholder="z.B. 3.000€ für Zeitarbeit" />
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-          <InputField label="👔 Wer entscheidet?" value={data.entscheider} onChange={(v) => update("entscheider", v)} placeholder="z.B. Thomas Müller" />
-          <InputField label="Rolle des Entscheiders" value={data.entscheiderRolle} onChange={(v) => update("entscheiderRolle", v)} placeholder="z.B. Geschäftsführer" />
-        </div>
-        <InputField label="⏰ Gewünschte Timeline" value={data.timeline} onChange={(v) => update("timeline", v)} placeholder="z.B. Sofort, nächste Woche starten" />
-        <InputField label="🔥 Größter Schmerzpunkt (in seinen Worten)" value={data.schmerzpunkt} onChange={(v) => update("schmerzpunkt", v)} placeholder='z.B. "Wir verlieren Aufträge weil uns Leute fehlen"' />
-        <InputField label="📊 Was erwartet der Kunde?" value={data.erwartungen} onChange={(v) => update("erwartungen", v)} placeholder="z.B. 10 Bewerbungen im ersten Monat" />
-        <InputField label="⚠️ Einwände / Bedenken" value={data.einwaende} onChange={(v) => update("einwaende", v)} placeholder='z.B. "Hatten schon mal eine Agentur, hat nicht funktioniert"' />
-
-        <div>
-          <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 8, display: "block" }}>📦 Empfohlenes Paket</label>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-            {PAKETE.map((p) => (
-              <ChipButton key={p} label={p} selected={data.empfohlenesPaket === p} onClick={() => update("empfohlenesPaket", p)} />
-            ))}
-          </div>
-        </div>
-
-        <InputField label="📝 Nächste Schritte" value={data.naechsteSchritte} onChange={(v) => update("naechsteSchritte", v)} placeholder="z.B. Angebot senden bis Freitag, Follow-up Montag" />
-
-        <div>
-          <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 8, display: "block" }}>Lead-Bewertung</label>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-            {BEWERTUNGEN.map((b) => (
-              <ChipButton key={b} label={b} selected={data.bewertung === b} onClick={() => update("bewertung", b)} />
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 8, display: "block" }}>💬 Zusätzliche Notizen</label>
-          <textarea
-            value={data.notizen}
-            onChange={(e) => update("notizen", e.target.value)}
-            placeholder="Freitext Notizen zum Call..."
-            rows={4}
-            style={{ width: "100%", padding: "12px 14px", borderRadius: 8, border: "1.5px solid #ddd", fontSize: 14, fontFamily: "inherit", resize: "vertical", outline: "none", boxSizing: "border-box" }}
-          />
         </div>
       </div>
 
-      {/* Copy Button */}
-      <button
-        onClick={handleCopy}
-        style={{
-          width: "100%", marginTop: 24, padding: "16px 24px", borderRadius: 10, border: "none",
-          background: copied ? SUCCESS : BRAND, color: "#fff", fontSize: 16, fontWeight: 700,
-          cursor: "pointer", transition: "background 0.3s",
-        }}
-      >
-        {copied ? "✓ In Zwischenablage kopiert – jetzt in ClickUp einfügen!" : "📋 Alles als ClickUp-Task kopieren"}
-      </button>
+      {/* Main */}
+      <div style={{ flex: 1 }}>
+        <div style={{ background: "#fff", borderRadius: 14, padding: "24px 28px", boxShadow: "0 1px 8px rgba(0,0,0,.06)" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ fontSize: 26 }}>{sec.icon}</span>
+              <div>
+                <h2 style={{ margin: 0, fontSize: 19, fontWeight: 700, color: BRAND }}>{sec.label}</h2>
+                {sec.hint && <p style={{ margin: "3px 0 0", fontSize: 11, color: WARN, fontWeight: 500 }}>⚠️ {sec.hint}</p>}
+              </div>
+            </div>
+            {sec.optional && (
+              <button onClick={() => setSkip((p) => ({ ...p, [active]: !p[active] }))} style={{ padding: "5px 12px", borderRadius: 6, fontSize: 11, border: "1px solid #ddd", background: skip[active] ? WARN : "#f5f5f5", color: skip[active] ? "#fff" : "#666", cursor: "pointer" }}>
+                {skip[active] ? "Aktivieren" : "Überspringen"}
+              </button>
+            )}
+          </div>
+
+          {!skip[active] ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {sec.fields.map((f) => {
+                if (f.cond && d[f.cond] !== f.condVal) return null;
+                if (f.type === "text") return <Inp key={f.key} l={f.label} v={d[f.key] || ""} set={(v) => u(f.key, v)} ph={f.ph} filled={!!d[f.key]} />;
+                if (f.type === "textarea") return (
+                  <div key={f.key}>
+                    <label style={lbl}>{f.label}</label>
+                    <textarea value={d[f.key] || ""} onChange={(e) => u(f.key, e.target.value)} placeholder={f.ph} rows={3} style={{ ...ta, borderColor: d[f.key] ? BRAND : "#ddd", background: d[f.key] ? "#fafcff" : "#fff" }} />
+                  </div>
+                );
+                if (f.type === "chips") return <ChipGroup key={f.key} l={f.label} opts={f.opts} val={d[f.key] || ""} set={(v) => u(f.key, d[f.key] === v ? "" : v)} />;
+                return null;
+              })}
+            </div>
+          ) : (
+            <div style={{ textAlign: "center", padding: "36px 0", color: "#bbb" }}>
+              <p style={{ fontSize: 13 }}>Übersprungen</p>
+              <button onClick={() => setSkip((p) => ({ ...p, [active]: false }))} style={{ padding: "7px 18px", borderRadius: 6, border: "1px solid #ddd", background: "#fff", cursor: "pointer", fontSize: 12 }}>Doch ausfüllen</button>
+            </div>
+          )}
+
+          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 24, paddingTop: 16, borderTop: "1px solid #eee" }}>
+            <button onClick={() => idx > 0 && setActive(SOP[idx - 1].id)} disabled={idx === 0} style={{ ...navBtn, border: `1.5px solid ${BRAND}`, background: "#fff", color: BRAND, opacity: idx === 0 ? 0.3 : 1, cursor: idx === 0 ? "not-allowed" : "pointer" }}>← Zurück</button>
+            {idx < SOP.length - 1 ? (
+              <button onClick={() => setActive(SOP[idx + 1].id)} style={{ ...navBtn, border: "none", background: BRAND, color: "#fff", cursor: "pointer" }}>Weiter →</button>
+            ) : (
+              <button onClick={copy} style={{ ...navBtn, border: "none", background: copied ? OK : BRAND, color: "#fff", cursor: "pointer", fontWeight: 700 }}>{copied ? "✓ Kopiert!" : "📋 ClickUp-Task kopieren"}</button>
+            )}
+          </div>
+        </div>
+        <details style={{ marginTop: 14 }}>
+          <summary style={{ fontSize: 12, color: "#aaa", cursor: "pointer" }}>📄 Vorschau ClickUp-Text</summary>
+          <pre style={{ background: "#1a1a2e", color: "#e0e0e0", padding: 18, borderRadius: 10, fontSize: 11, lineHeight: 1.6, whiteSpace: "pre-wrap", maxHeight: 360, overflow: "auto", marginTop: 6 }}>{genText()}</pre>
+        </details>
+      </div>
     </div>
   );
 }
 
 // ============================================================
-// ERFOLGS-SEITE NACH ABSENDEN
+// ERFOLGSSEITE
 // ============================================================
-function ErfolgsSeite({ data }) {
+function Success({ data }) {
   return (
     <div style={{ textAlign: "center", padding: "40px 20px" }}>
-      <div style={{ fontSize: 64, marginBottom: 16 }}>🎉</div>
-      <h2 style={{ fontSize: 26, fontWeight: 700, color: BRAND, marginBottom: 8 }}>Vielen Dank, {data.name?.split(" ")[0]}!</h2>
-      <p style={{ fontSize: 16, color: "#555", maxWidth: 480, margin: "0 auto 32px", lineHeight: 1.6 }}>
-        Wir haben Ihre Angaben erhalten und bereiten uns optimal auf Ihr Erstgespräch vor. Buchen Sie jetzt einen passenden Termin:
-      </p>
-      <a
-        href={CALENDAR_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: "inline-block", padding: "16px 40px", background: BRAND, color: "#fff",
-          borderRadius: 10, fontSize: 17, fontWeight: 700, textDecoration: "none",
-          boxShadow: "0 4px 14px rgba(2,59,91,0.3)",
-        }}
-      >
+      <div style={{ fontSize: 56, marginBottom: 12 }}>🎉</div>
+      <h2 style={{ fontSize: 24, fontWeight: 700, color: BRAND, marginBottom: 6 }}>Vielen Dank, {data.name?.split(" ")[0]}!</h2>
+      <p style={{ fontSize: 15, color: "#555", maxWidth: 460, margin: "0 auto 28px", lineHeight: 1.6 }}>Wir haben Ihre Angaben erhalten und bereiten uns optimal auf Ihr Erstgespräch vor.</p>
+      <a href={CAL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", padding: "15px 38px", background: BRAND, color: "#fff", borderRadius: 10, fontSize: 16, fontWeight: 700, textDecoration: "none", boxShadow: "0 4px 14px rgba(2,59,91,0.3)" }}>
         🗓 Jetzt Termin buchen
       </a>
-      <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 20 }}>
-        <span style={{ fontSize: 13, color: "#888" }}>✓ 100% kostenlos</span>
-        <span style={{ fontSize: 13, color: "#888" }}>✓ Unverbindlich</span>
-        <span style={{ fontSize: 13, color: "#888" }}>✓ 15-20 Minuten</span>
+      <div style={{ display: "flex", justifyContent: "center", gap: 20, marginTop: 16 }}>
+        {["✓ 100% kostenlos", "✓ Unverbindlich", "✓ 15-20 Min."].map((t) => <span key={t} style={{ fontSize: 12, color: "#999" }}>{t}</span>)}
       </div>
-
-      {/* Case Studies */}
-      <div style={{ marginTop: 48, textAlign: "left", maxWidth: 500, margin: "48px auto 0" }}>
-        <h3 style={{ fontSize: 16, fontWeight: 700, color: BRAND, marginBottom: 16, textAlign: "center" }}>Das sagen unsere Kunden:</h3>
-        <TestimonialMini emoji="🚚" firma="Spedition Huckschlag" result="150+ Lagerlogistiker & 50+ LKW-Fahrer Bewerbungen" link="https://youtu.be/X6YgtmkyGLo" />
-        <TestimonialMini emoji="🏒" firma="Iserlohn Roosters" result="70 Bewerbungen, 30 Servicekräfte eingestellt" link="https://youtu.be/uUfwkiSFnTs" />
-        <TestimonialMini emoji="🏠" firma="Specht & Partner" result="5 neue Immobilienmakler eingestellt" link="https://youtu.be/e_trKcpqhYA" />
+      <div style={{ marginTop: 40, maxWidth: 420, margin: "40px auto 0", textAlign: "left" }}>
+        <h3 style={{ fontSize: 14, fontWeight: 700, color: BRAND, marginBottom: 12, textAlign: "center" }}>Das sagen unsere Kunden:</h3>
+        {[
+          { e: "🚚", f: "Spedition Huckschlag", r: "150+ Lagerlogistiker & 50+ LKW-Fahrer", l: "https://youtu.be/X6YgtmkyGLo" },
+          { e: "🏒", f: "Iserlohn Roosters", r: "70 Bewerbungen, 30 eingestellt", l: "https://youtu.be/uUfwkiSFnTs" },
+          { e: "🏠", f: "Specht & Partner", r: "5 neue Immobilienmakler", l: "https://youtu.be/e_trKcpqhYA" },
+        ].map((c) => (
+          <a key={c.f} href={c.l} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block", marginBottom: 8 }}>
+            <div style={{ background: "#f8fafb", borderRadius: 8, padding: "10px 14px", borderLeft: `3px solid ${BRAND}` }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: "#1a1a1a" }}>{c.e} {c.f}</span>
+                <span style={{ fontSize: 10, color: BRAND }}>▶ Video</span>
+              </div>
+              <div style={{ fontSize: 12, color: "#555", marginTop: 1 }}>{c.r}</div>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );
@@ -466,53 +385,40 @@ function ErfolgsSeite({ data }) {
 // ============================================================
 // SHARED COMPONENTS
 // ============================================================
-function InputField({ label, value, onChange, placeholder, type = "text", style = {} }) {
+const lbl = { fontSize: 13, fontWeight: 600, color: "#333", marginBottom: 6, display: "block" };
+const ta = { width: "100%", padding: "10px 14px", borderRadius: 8, border: "1.5px solid #ddd", fontSize: 13, fontFamily: "inherit", outline: "none", resize: "vertical", boxSizing: "border-box" };
+const navBtn = { padding: "10px 24px", borderRadius: 8, fontSize: 13, fontWeight: 600 };
+
+function Inp({ l, v, set, ph, filled }) {
   return (
-    <div style={style}>
-      {label && <label style={{ fontSize: 14, fontWeight: 600, color: "#333", marginBottom: 6, display: "block" }}>{label}</label>}
-      <input
-        type={type}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        style={{ width: "100%", padding: "11px 14px", borderRadius: 8, border: "1.5px solid #ddd", fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", transition: "border-color 0.2s" }}
-        onFocus={(e) => (e.target.style.borderColor = BRAND)}
-        onBlur={(e) => (e.target.style.borderColor = "#ddd")}
+    <div>
+      {l && <label style={lbl}>{l}</label>}
+      <input type="text" value={v || ""} onChange={(e) => set(e.target.value)} placeholder={ph}
+        style={{ width: "100%", padding: "10px 14px", borderRadius: 8, border: `1.5px solid ${filled || v ? BRAND : "#ddd"}`, fontSize: 13, fontFamily: "inherit", outline: "none", boxSizing: "border-box", background: filled || v ? "#fafcff" : "#fff" }}
       />
     </div>
   );
 }
 
-function ChipButton({ label, selected, onClick }) {
+function Chip({ t, on, click }) {
   return (
-    <button
-      onClick={onClick}
-      style={{
-        padding: "8px 16px", borderRadius: 20,
-        border: selected ? `2px solid ${BRAND}` : "1.5px solid #ddd",
-        background: selected ? BRAND_LIGHT : "#fff",
-        color: selected ? BRAND : "#555",
-        fontSize: 13, fontWeight: selected ? 600 : 400,
-        cursor: "pointer", transition: "all 0.2s",
-        whiteSpace: "nowrap",
-      }}
-    >
-      {selected && "✓ "}{label}
+    <button onClick={click} style={{
+      padding: "7px 14px", borderRadius: 20, border: on ? `2px solid ${BRAND}` : "1.5px solid #ddd",
+      background: on ? BL : "#fff", color: on ? BRAND : "#555", fontSize: 12, fontWeight: on ? 600 : 400, cursor: "pointer", transition: "all .15s",
+    }}>
+      {on && "✓ "}{t}
     </button>
   );
 }
 
-function TestimonialMini({ emoji, firma, result, link }) {
+function ChipGroup({ l, opts, val, set }) {
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block", marginBottom: 10 }}>
-      <div style={{ background: "#f8fafb", borderRadius: 8, padding: "12px 16px", borderLeft: `3px solid ${BRAND}`, transition: "box-shadow 0.2s" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={{ fontSize: 14, fontWeight: 600, color: "#1a1a1a" }}>{emoji} {firma}</span>
-          <span style={{ fontSize: 11, color: BRAND }}>▶ Video</span>
-        </div>
-        <div style={{ fontSize: 13, color: "#555", marginTop: 2 }}>{result}</div>
+    <div>
+      <label style={lbl}>{l}</label>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
+        {opts.map((o) => <Chip key={o} t={o} on={val === o} click={() => set(o)} />)}
       </div>
-    </a>
+    </div>
   );
 }
 
@@ -520,116 +426,84 @@ function TestimonialMini({ emoji, firma, result, link }) {
 // HAUPTSEITE
 // ============================================================
 export default function DiscoveryCallPage() {
-  const [mode, setMode] = useState("lead"); // "lead" | "success" | "internal"
-  const [leadData, setLeadData] = useState(null);
-  const [showInternal, setShowInternal] = useState(false);
-  const [password, setPassword] = useState("");
-
-  const handleLeadComplete = (data) => {
-    setLeadData(data);
-    setMode("success");
-  };
-
-  const handleInternalAccess = () => {
-    if (password === "talentsuite2026") {
-      setShowInternal(true);
-    }
-  };
+  const [mode, setMode] = useState("lead"); // lead | success | internal
+  const [lead, setLead] = useState(null);
+  const [pw, setPw] = useState("");
+  const [auth, setAuth] = useState(false);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f7f9fb" }}>
+    <div style={{ minHeight: "100vh", background: "#f5f7f9", fontFamily: "system-ui, -apple-system, sans-serif" }}>
       {/* Header */}
-      <div style={{ background: BRAND, padding: "20px 0", textAlign: "center" }}>
-        <Link href="/" style={{ color: "#fff", textDecoration: "none", fontSize: 22, fontWeight: 800, letterSpacing: -0.5 }}>
-          TalentSuite
-        </Link>
+      <div style={{ background: BRAND, padding: "14px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <Link href="/" style={{ color: "#fff", textDecoration: "none", fontSize: 20, fontWeight: 800 }}>TalentSuite</Link>
+        {auth && <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 11 }}>🔒 Onboarding Call Tool · SOP v2.0</span>}
       </div>
 
-      <div style={{ maxWidth: 640, margin: "0 auto", padding: "32px 20px 60px" }}>
-
-        {/* LEAD MODUS */}
-        {mode === "lead" && (
-          <>
-            {/* Hero */}
-            <div style={{ textAlign: "center", marginBottom: 36 }}>
-              <div style={{ display: "inline-block", background: BRAND_LIGHT, color: BRAND, fontSize: 12, fontWeight: 600, padding: "4px 14px", borderRadius: 20, marginBottom: 12, textTransform: "uppercase", letterSpacing: 0.5 }}>
-                Kostenlos & Unverbindlich
-              </div>
-              <h1 style={{ fontSize: 28, fontWeight: 800, color: BRAND, margin: "0 0 8px", lineHeight: 1.2 }}>
-                Ihre kostenlose Potenzialanalyse
-              </h1>
-              <p style={{ fontSize: 15, color: "#666", margin: 0, lineHeight: 1.5 }}>
-                Füllen Sie das kurze Formular aus, damit wir uns optimal auf Ihr Erstgespräch vorbereiten können. Dauert nur 2 Minuten.
-              </p>
-            </div>
-
-            {/* Trust Badges */}
-            <div style={{ display: "flex", justifyContent: "center", gap: 20, marginBottom: 28, flexWrap: "wrap" }}>
-              {["✓ 100% kostenlos", "✓ Unverbindlich", "✓ Ergebnisse in 48h"].map((t) => (
-                <span key={t} style={{ fontSize: 12, color: "#888", fontWeight: 500 }}>{t}</span>
-              ))}
-            </div>
-
-            {/* Formular Card */}
-            <div style={{ background: "#fff", borderRadius: 16, padding: "28px 24px", boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
-              <InteressentenFormular onComplete={handleLeadComplete} />
-            </div>
-
-            {/* Social Proof */}
-            <div style={{ marginTop: 32 }}>
-              <TestimonialMini emoji="🚚" firma="Spedition Huckschlag" result="150+ Lagerlogistiker & 50+ LKW-Fahrer Bewerbungen" link="https://youtu.be/X6YgtmkyGLo" />
-              <TestimonialMini emoji="🏒" firma="Iserlohn Roosters" result="70 Bewerbungen, 30 Servicekräfte eingestellt" link="https://youtu.be/uUfwkiSFnTs" />
-              <TestimonialMini emoji="🏠" firma="Specht & Partner" result="5 neue Immobilienmakler eingestellt" link="https://youtu.be/e_trKcpqhYA" />
-            </div>
-          </>
-        )}
-
-        {/* ERFOLGS-SEITE */}
-        {mode === "success" && <ErfolgsSeite data={leadData} />}
-
-        {/* INTERNES TOOL (versteckter Zugang) */}
-        <div style={{ marginTop: 60, borderTop: "1px solid #eee", paddingTop: 20 }}>
-          {!showInternal ? (
-            <div style={{ textAlign: "center" }}>
-              <button
-                onClick={() => setMode(mode === "internal_login" ? "lead" : "internal_login")}
-                style={{ background: "none", border: "none", color: "#ccc", fontSize: 11, cursor: "pointer" }}
-              >
-                🔒
-              </button>
-              {mode === "internal_login" && (
-                <div style={{ marginTop: 12, display: "flex", gap: 8, justifyContent: "center" }}>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && handleInternalAccess()}
-                    placeholder="Passwort"
-                    style={{ padding: "8px 14px", borderRadius: 6, border: "1px solid #ddd", fontSize: 13, width: 160 }}
-                  />
-                  <button
-                    onClick={handleInternalAccess}
-                    style={{ padding: "8px 16px", borderRadius: 6, border: "none", background: BRAND, color: "#fff", fontSize: 13, cursor: "pointer" }}
-                  >
-                    →
-                  </button>
+      {/* PUBLIC LEAD FORM */}
+      {mode === "lead" && !auth && (
+        <div style={{ maxWidth: 580, margin: "0 auto", padding: "28px 16px 60px" }}>
+          <div style={{ textAlign: "center", marginBottom: 28 }}>
+            <div style={{ display: "inline-block", background: BL, color: BRAND, fontSize: 11, fontWeight: 600, padding: "4px 14px", borderRadius: 20, marginBottom: 10, textTransform: "uppercase", letterSpacing: .5 }}>Kostenlos & Unverbindlich</div>
+            <h1 style={{ fontSize: 26, fontWeight: 800, color: BRAND, margin: "0 0 6px", lineHeight: 1.2 }}>Ihre kostenlose Recruiting-Potenzialanalyse</h1>
+            <p style={{ fontSize: 14, color: "#666", margin: 0 }}>2 Minuten ausfüllen – wir bereiten Ihr Erstgespräch optimal vor.</p>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", gap: 18, marginBottom: 22, flexWrap: "wrap" }}>
+            {["✓ 100% kostenlos", "✓ Unverbindlich", "✓ Ergebnisse in 48h"].map((t) => <span key={t} style={{ fontSize: 11, color: "#999" }}>{t}</span>)}
+          </div>
+          <div style={{ background: "#fff", borderRadius: 14, padding: "24px 22px", boxShadow: "0 2px 14px rgba(0,0,0,.06)" }}>
+            <LeadForm onDone={(d) => { setLead(d); setMode("success"); }} />
+          </div>
+          <div style={{ marginTop: 28 }}>
+            {[
+              { e: "🚚", f: "Spedition Huckschlag", r: "150+ Lagerlogistiker & 50+ LKW-Fahrer", l: "https://youtu.be/X6YgtmkyGLo" },
+              { e: "🏒", f: "Iserlohn Roosters", r: "70 Bewerbungen, 30 eingestellt", l: "https://youtu.be/uUfwkiSFnTs" },
+              { e: "🏠", f: "Specht & Partner", r: "5 neue Immobilienmakler", l: "https://youtu.be/e_trKcpqhYA" },
+            ].map((c) => (
+              <a key={c.f} href={c.l} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block", marginBottom: 8 }}>
+                <div style={{ background: "#f8fafb", borderRadius: 8, padding: "10px 14px", borderLeft: `3px solid ${BRAND}` }}>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: "#1a1a1a" }}>{c.e} {c.f}</span>
+                  <span style={{ fontSize: 12, color: "#555", marginLeft: 8 }}>{c.r}</span>
                 </div>
-              )}
-            </div>
-          ) : (
-            <div style={{ background: "#fff", borderRadius: 16, padding: "28px 24px", boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
-              <h2 style={{ fontSize: 20, fontWeight: 700, color: BRAND, margin: "0 0 20px", display: "flex", alignItems: "center", gap: 8 }}>
-                📞 Discovery Call Tool
-              </h2>
-              <DiscoveryCallTool leadData={leadData} />
-            </div>
-          )}
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Footer */}
-      <div style={{ textAlign: "center", padding: "20px 0 30px", color: "#aaa", fontSize: 11 }}>
-        TalentSuite — Engel & Mühlhof GbR · <Link href="/datenschutz" style={{ color: "#aaa" }}>Datenschutz</Link> · <Link href="/impressum" style={{ color: "#aaa" }}>Impressum</Link>
+      {/* SUCCESS PAGE */}
+      {mode === "success" && !auth && (
+        <div style={{ maxWidth: 580, margin: "0 auto", padding: "28px 16px 60px" }}>
+          <div style={{ background: "#fff", borderRadius: 14, padding: "24px 22px", boxShadow: "0 2px 14px rgba(0,0,0,.06)" }}>
+            <Success data={lead} />
+          </div>
+        </div>
+      )}
+
+      {/* INTERNAL SOP TOOL */}
+      {auth && (
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 16px 60px" }}>
+          <SopTool lead={lead} />
+        </div>
+      )}
+
+      {/* Hidden Internal Access */}
+      <div style={{ textAlign: "center", padding: "16px 0 30px" }}>
+        {!auth ? (
+          <>
+            <button onClick={() => setMode(mode === "pw" ? "lead" : "pw")} style={{ background: "none", border: "none", color: "#ddd", fontSize: 10, cursor: "pointer" }}>🔒</button>
+            {mode === "pw" && (
+              <div style={{ marginTop: 8, display: "flex", gap: 6, justifyContent: "center" }}>
+                <input type="password" value={pw} onChange={(e) => setPw(e.target.value)} onKeyDown={(e) => e.key === "Enter" && pw === "talentsuite2026" && setAuth(true)} placeholder="Passwort" style={{ padding: "7px 12px", borderRadius: 6, border: "1px solid #ddd", fontSize: 12, width: 140 }} />
+                <button onClick={() => pw === "talentsuite2026" && setAuth(true)} style={{ padding: "7px 14px", borderRadius: 6, border: "none", background: BRAND, color: "#fff", fontSize: 12, cursor: "pointer" }}>→</button>
+              </div>
+            )}
+          </>
+        ) : (
+          <button onClick={() => { setAuth(false); setMode("lead"); }} style={{ background: "none", border: "none", color: "#aaa", fontSize: 11, cursor: "pointer" }}>← Zurück zur öffentlichen Ansicht</button>
+        )}
+        <div style={{ color: "#ccc", fontSize: 10, marginTop: 8 }}>
+          TalentSuite — Engel & Mühlhof GbR · <Link href="/datenschutz" style={{ color: "#ccc" }}>Datenschutz</Link> · <Link href="/impressum" style={{ color: "#ccc" }}>Impressum</Link>
+        </div>
       </div>
     </div>
   );
