@@ -518,6 +518,8 @@ section {
   filter: blur(40px);
   width: 100%;
   height: auto;
+  pointer-events: none;
+  z-index: 0;
 }
 .services_section .service_card {
   margin: 0 !important;
@@ -1602,6 +1604,7 @@ footer .footer_menu a:hover {
   text-align: center;
   position: relative;
   width: 100%;
+  z-index: 2;
 }
 .pre-footer-cta {
   background: linear-gradient(135deg, rgba(2, 59, 91, 0.4), rgba(9, 22, 34, 0.8));
