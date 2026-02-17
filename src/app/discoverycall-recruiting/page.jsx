@@ -1,14 +1,26 @@
 "use client";
 import React, { useState } from "react";
 import Head from "next/head";
-import Link from "next/link";
 
 // ============================================================
-// ONBOARDING CALL TOOL (nur intern, passwortgeschützt)
-// Passwort: talentsuite2026
+// ONBOARDING CALL TOOL – 100% INLINE STYLES
+// globals.css sets: body bg #091622, color #fff, everything !important
+// Only inline styles can reliably override this.
 // ============================================================
 
-// SOP Phase 2 Sektionen
+const C = {
+  brand: "#023B5B",
+  brandLight: "#E8F4FD",
+  white: "#ffffff",
+  bg: "#f0f4f7",
+  text: "#023B5B",
+  textMid: "#4a7a94",
+  border: "#cdd8e0",
+  green: "#10B981",
+  warn: "#F59E0B",
+  red: "#ef4444",
+};
+
 const SOP = [
   {
     id: "unternehmen", icon: "🏢", label: "2.1 Unternehmen",
@@ -113,6 +125,97 @@ const SOP = [
 ];
 
 // ============================================================
+// INLINE STYLE OBJECTS
+// ============================================================
+const S = {
+  // Login
+  loginWrap: { minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "60px 20px", background: C.bg },
+  loginBox: { background: C.white, borderRadius: 20, padding: "48px 40px", boxShadow: "0 4px 30px rgba(0,0,0,0.12)", maxWidth: 440, width: "100%", textAlign: "center" },
+  loginH2: { fontSize: 24, fontWeight: 700, color: C.text, marginBottom: 8 },
+  loginP: { fontSize: 14, color: C.textMid, marginBottom: 28 },
+  loginRow: { display: "flex", gap: 8 },
+  loginInp: { flex: 1, padding: "14px 18px", borderRadius: 12, border: `2px solid ${C.border}`, fontSize: 15, outline: "none", color: C.text, background: C.white, fontFamily: "inherit" },
+  loginInpErr: { flex: 1, padding: "14px 18px", borderRadius: 12, border: `2px solid ${C.red}`, fontSize: 15, outline: "none", color: C.text, background: C.white, fontFamily: "inherit" },
+  loginBtn: { padding: "14px 28px", borderRadius: 12, border: "none", background: C.brand, color: C.white, fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap" },
+  loginErr: { fontSize: 13, color: C.red, marginTop: 8 },
+
+  // Wrapper
+  wrapper: { background: C.bg, padding: "28px 0 60px", minHeight: "70vh" },
+  layout: { maxWidth: 1140, margin: "0 auto", padding: "0 16px", display: "flex", gap: 24 },
+
+  // Sidebar
+  side: { width: 260, flexShrink: 0, background: C.white, borderRadius: 16, padding: 14, boxShadow: "0 2px 16px rgba(0,0,0,0.06)", position: "sticky", top: 100, alignSelf: "flex-start" },
+  sideTitle: { fontSize: 15, fontWeight: 700, color: C.text, padding: "6px 10px 14px", borderBottom: "1px solid #e8edf1", marginBottom: 6 },
+  sideBtn: (isActive, isSkip) => ({
+    display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "10px 12px", borderRadius: 10,
+    border: "none", background: isActive ? C.brandLight : "transparent", cursor: "pointer", textAlign: "left",
+    marginBottom: 2, fontFamily: "inherit", opacity: isSkip ? 0.4 : 1,
+  }),
+  sideIco: { fontSize: 16 },
+  sideTxt: { flex: 1 },
+  sideLbl: (isActive) => ({ display: "block", fontSize: 13, fontWeight: isActive ? 700 : 500, color: C.text }),
+  sideCnt: (isDone) => ({ fontSize: 11, color: isDone ? C.green : "#8fa8ba", fontWeight: isDone ? 600 : 400 }),
+  sideOk: { color: C.green, fontSize: 14, fontWeight: 700 },
+  copyBtn: (copied) => ({
+    width: "100%", padding: "13px 16px", borderRadius: 10, border: "none",
+    background: copied ? C.green : C.brand, color: C.white, fontSize: 13, fontWeight: 700,
+    cursor: "pointer", marginTop: 10, fontFamily: "inherit",
+  }),
+
+  // Main
+  main: { flex: 1, minWidth: 0 },
+  card: { background: C.white, borderRadius: 16, padding: 32, boxShadow: "0 2px 16px rgba(0,0,0,0.06)", marginBottom: 20 },
+
+  // Head
+  head: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24, paddingBottom: 16, borderBottom: "1px solid #e8edf1" },
+  headRow: { display: "flex", alignItems: "center", gap: 10 },
+  headIco: { fontSize: 26 },
+  headTitle: { fontSize: 20, fontWeight: 700, color: C.text, margin: 0 },
+  headHint: { fontSize: 12, color: C.warn, fontWeight: 500, margin: "4px 0 0 36px" },
+  skipBtn: { padding: "6px 16px", borderRadius: 8, fontSize: 12, border: `1.5px solid ${C.border}`, background: C.white, color: C.textMid, cursor: "pointer", fontFamily: "inherit" },
+
+  // Fields
+  fields: { display: "flex", flexDirection: "column", gap: 18 },
+  label: { display: "block", fontSize: 13, fontWeight: 700, color: C.text, marginBottom: 7 },
+  input: (filled) => ({
+    width: "100%", padding: "12px 16px", borderRadius: 10, border: `1.5px solid ${filled ? C.brand : C.border}`,
+    fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box",
+    background: filled ? "#f8fbff" : C.white, color: C.text,
+  }),
+  textarea: (filled) => ({
+    width: "100%", padding: "12px 16px", borderRadius: 10, border: `1.5px solid ${filled ? C.brand : C.border}`,
+    fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", resize: "vertical",
+    background: filled ? "#f8fbff" : C.white, color: C.text,
+  }),
+  chips: { display: "flex", flexWrap: "wrap", gap: 8 },
+  chip: (sel) => ({
+    padding: "9px 18px", borderRadius: 22, border: sel ? `2px solid ${C.brand}` : `1.5px solid ${C.border}`,
+    background: sel ? C.brandLight : C.white, color: C.text, fontSize: 13,
+    fontWeight: sel ? 700 : 500, cursor: "pointer", fontFamily: "inherit",
+  }),
+
+  // Nav
+  nav: { display: "flex", justifyContent: "space-between", marginTop: 28, paddingTop: 20, borderTop: "1px solid #e8edf1" },
+  outBtn: (disabled) => ({
+    padding: "11px 24px", borderRadius: 10, border: `1.5px solid ${C.brand}`, background: C.white,
+    color: C.brand, fontSize: 14, fontWeight: 600, cursor: disabled ? "not-allowed" : "pointer",
+    fontFamily: "inherit", opacity: disabled ? 0.3 : 1,
+  }),
+  priBtn: (copied) => ({
+    padding: "11px 28px", borderRadius: 10, border: "none", background: copied ? C.green : C.brand,
+    color: C.white, fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+  }),
+
+  // Preview
+  prevSummary: { fontSize: 13, color: C.textMid, cursor: "pointer", padding: "8px 0" },
+  prevPre: { background: "#0f172a", color: "#e2e8f0", padding: 20, borderRadius: 12, fontSize: 12, lineHeight: 1.7, whiteSpace: "pre-wrap", maxHeight: 400, overflow: "auto" },
+
+  // Skipped
+  skipped: { textAlign: "center", padding: "40px 0" },
+  skippedP: { color: C.textMid, marginBottom: 12 },
+};
+
+// ============================================================
 // SOP TOOL
 // ============================================================
 function SopTool() {
@@ -149,127 +252,118 @@ function SopTool() {
   const idx = SOP.findIndex((s) => s.id === active);
 
   return (
-    <div className="row g-4">
-      {/* Sidebar */}
-      <div className="col-12 col-lg-3">
-        <div className="dc-sidebar">
-          <div className="dc-sidebar-title">📞 Onboarding Call</div>
+    <div style={S.wrapper}>
+      <div style={S.layout}>
+        {/* Sidebar */}
+        <div style={S.side}>
+          <div style={S.sideTitle}>📞 Onboarding Call</div>
           {SOP.map((s) => {
             const p = prog(s);
-            const isActive = active === s.id;
+            const isAct = active === s.id;
+            const isDone = p.f === p.t && p.t > 0;
             return (
-              <button key={s.id} onClick={() => setActive(s.id)}
-                className={`dc-sidebar-btn ${isActive ? "active" : ""} ${skip[s.id] ? "skipped" : ""}`}>
-                <span className="dc-sidebar-icon">{s.icon}</span>
-                <div className="dc-sidebar-info">
-                  <span className="dc-sidebar-label">{s.label}</span>
-                  <span className={`dc-sidebar-prog ${p.f === p.t && p.t > 0 ? "done" : ""}`}>
-                    {skip[s.id] ? "Übersprungen" : `${p.f} / ${p.t}`}
-                  </span>
+              <button key={s.id} onClick={() => setActive(s.id)} style={S.sideBtn(isAct, skip[s.id])}>
+                <span style={S.sideIco}>{s.icon}</span>
+                <div style={S.sideTxt}>
+                  <span style={S.sideLbl(isAct)}>{s.label}</span>
+                  <span style={S.sideCnt(isDone)}>{skip[s.id] ? "Übersprungen" : `${p.f} / ${p.t}`}</span>
                 </div>
-                {p.f === p.t && p.t > 0 && !skip[s.id] && <span className="dc-sidebar-check">✓</span>}
+                {isDone && !skip[s.id] && <span style={S.sideOk}>✓</span>}
               </button>
             );
           })}
-          <button onClick={copy} className={`dc-copy-btn ${copied ? "copied" : ""}`}>
+          <button onClick={copy} style={S.copyBtn(copied)}>
             {copied ? "✓ Kopiert!" : "📋 ClickUp-Task kopieren"}
           </button>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="col-12 col-lg-9">
-        <div className="dc-card">
-          <div className="dc-section-header">
-            <div>
-              <div className="dc-section-top">
-                <span className="dc-section-icon">{sec.icon}</span>
-                <h3 className="dc-section-title">{sec.label}</h3>
+        {/* Main */}
+        <div style={S.main}>
+          <div style={S.card}>
+            <div style={S.head}>
+              <div>
+                <div style={S.headRow}>
+                  <span style={S.headIco}>{sec.icon}</span>
+                  <h3 style={S.headTitle}>{sec.label}</h3>
+                </div>
+                {sec.hint && <p style={S.headHint}>⚠️ {sec.hint}</p>}
               </div>
-              {sec.hint && <p className="dc-hint">⚠️ {sec.hint}</p>}
+              {sec.optional && (
+                <button onClick={() => setSkip((p) => ({ ...p, [active]: !p[active] }))} style={S.skipBtn}>
+                  {skip[active] ? "Aktivieren" : "Überspringen"}
+                </button>
+              )}
             </div>
-            {sec.optional && (
-              <button onClick={() => setSkip((p) => ({ ...p, [active]: !p[active] }))} className="dc-skip-btn">
-                {skip[active] ? "Aktivieren" : "Überspringen"}
-              </button>
-            )}
-          </div>
 
-          {!skip[active] ? (
-            <div className="dc-fields">
-              {sec.fields.map((f) => {
-                if (f.cond && d[f.cond] !== f.condVal) return null;
-                if (f.type === "text") return (
-                  <div key={f.key} className="dc-field">
-                    <label className="dc-label">{f.label}</label>
-                    <input type="text" className={`dc-input ${d[f.key] ? "filled" : ""}`} value={d[f.key] || ""} onChange={(e) => u(f.key, e.target.value)} placeholder={f.ph} />
-                  </div>
-                );
-                if (f.type === "textarea") return (
-                  <div key={f.key} className="dc-field">
-                    <label className="dc-label">{f.label}</label>
-                    <textarea className={`dc-textarea ${d[f.key] ? "filled" : ""}`} value={d[f.key] || ""} onChange={(e) => u(f.key, e.target.value)} placeholder={f.ph} rows={3} />
-                  </div>
-                );
-                if (f.type === "chips") return (
-                  <div key={f.key} className="dc-field">
-                    <label className="dc-label">{f.label}</label>
-                    <div className="dc-chips">
-                      {f.opts.map((o) => (
-                        <button key={o} onClick={() => u(f.key, d[f.key] === o ? "" : o)}
-                          className={`dc-chip ${d[f.key] === o ? "selected" : ""}`}>
-                          {d[f.key] === o && "✓ "}{o}
-                        </button>
-                      ))}
+            {!skip[active] ? (
+              <div style={S.fields}>
+                {sec.fields.map((f) => {
+                  if (f.cond && d[f.cond] !== f.condVal) return null;
+                  if (f.type === "text") return (
+                    <div key={f.key}>
+                      <label style={S.label}>{f.label}</label>
+                      <input type="text" style={S.input(!!d[f.key])} value={d[f.key] || ""} onChange={(e) => u(f.key, e.target.value)} placeholder={f.ph} />
                     </div>
-                  </div>
-                );
-                return null;
-              })}
-            </div>
-          ) : (
-            <div className="dc-skipped">
-              <p>Diese Sektion wurde übersprungen.</p>
-              <button onClick={() => setSkip((p) => ({ ...p, [active]: false }))} className="dc-btn-outline">Doch ausfüllen</button>
-            </div>
-          )}
-
-          <div className="dc-nav">
-            <button className="dc-btn-outline" onClick={() => idx > 0 && setActive(SOP[idx - 1].id)} disabled={idx === 0}>← Zurück</button>
-            {idx < SOP.length - 1 ? (
-              <button className="dc-btn-primary" onClick={() => setActive(SOP[idx + 1].id)}>Weiter →</button>
+                  );
+                  if (f.type === "textarea") return (
+                    <div key={f.key}>
+                      <label style={S.label}>{f.label}</label>
+                      <textarea style={S.textarea(!!d[f.key])} value={d[f.key] || ""} onChange={(e) => u(f.key, e.target.value)} placeholder={f.ph} rows={3} />
+                    </div>
+                  );
+                  if (f.type === "chips") return (
+                    <div key={f.key}>
+                      <label style={S.label}>{f.label}</label>
+                      <div style={S.chips}>
+                        {f.opts.map((o) => (
+                          <button key={o} onClick={() => u(f.key, d[f.key] === o ? "" : o)} style={S.chip(d[f.key] === o)}>
+                            {d[f.key] === o && "✓ "}{o}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                  return null;
+                })}
+              </div>
             ) : (
-              <button className={`dc-btn-primary ${copied ? "copied" : ""}`} onClick={copy}>
-                {copied ? "✓ Kopiert!" : "📋 ClickUp-Task kopieren"}
-              </button>
+              <div style={S.skipped}>
+                <p style={S.skippedP}>Diese Sektion wurde übersprungen.</p>
+                <button onClick={() => setSkip((p) => ({ ...p, [active]: false }))} style={S.outBtn(false)}>Doch ausfüllen</button>
+              </div>
             )}
-          </div>
-        </div>
 
-        <details className="dc-preview">
-          <summary>📄 Vorschau ClickUp-Text</summary>
-          <pre>{genText()}</pre>
-        </details>
+            <div style={S.nav}>
+              <button style={S.outBtn(idx === 0)} onClick={() => idx > 0 && setActive(SOP[idx - 1].id)} disabled={idx === 0}>← Zurück</button>
+              {idx < SOP.length - 1 ? (
+                <button style={S.priBtn(false)} onClick={() => setActive(SOP[idx + 1].id)}>Weiter →</button>
+              ) : (
+                <button style={S.priBtn(copied)} onClick={copy}>{copied ? "✓ Kopiert!" : "📋 ClickUp-Task kopieren"}</button>
+              )}
+            </div>
+          </div>
+
+          <details style={{ marginTop: 12 }}>
+            <summary style={S.prevSummary}>📄 Vorschau ClickUp-Text</summary>
+            <pre style={S.prevPre}>{genText()}</pre>
+          </details>
+        </div>
       </div>
     </div>
   );
 }
 
 // ============================================================
-// HAUPTSEITE
+// LOGIN + PAGE
 // ============================================================
 export default function DiscoveryCallPage() {
   const [pw, setPw] = useState("");
   const [auth, setAuth] = useState(false);
   const [error, setError] = useState(false);
 
-  const handleLogin = () => {
-    if (pw === "talentsuite2026") {
-      setAuth(true);
-      setError(false);
-    } else {
-      setError(true);
-    }
+  const login = () => {
+    if (pw === "talentsuite2026") { setAuth(true); setError(false); }
+    else setError(true);
   };
 
   return (
@@ -279,397 +373,29 @@ export default function DiscoveryCallPage() {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
-      <style jsx global>{`
-        /* ============================================ */
-        /* DISCOVERY CALL / ONBOARDING TOOL STYLES      */
-        /* All text: dark blue on white backgrounds     */
-        /* ============================================ */
-        :root {
-          --dc-brand: #023B5B;
-          --dc-brand-light: #E8F4FD;
-          --dc-green: #10B981;
-          --dc-warn: #F59E0B;
-          --dc-bg: #f5f7fa;
-          --dc-white: #ffffff;
-          --dc-text: #023B5B;
-          --dc-text-light: #3a6a87;
-          --dc-border: #d0dce5;
-        }
-
-        /* === LOGIN SCREEN === */
-        .dc-login-wrapper {
-          min-height: 60vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 60px 20px;
-        }
-        .dc-login-box {
-          background: var(--dc-white);
-          border-radius: 20px;
-          padding: 48px 40px;
-          box-shadow: 0 4px 24px rgba(2,59,91,0.08);
-          max-width: 440px;
-          width: 100%;
-          text-align: center;
-        }
-        .dc-login-icon {
-          font-size: 48px;
-          margin-bottom: 16px;
-        }
-        .dc-login-box h2 {
-          font-size: 24px;
-          font-weight: 700;
-          color: var(--dc-text);
-          margin-bottom: 8px;
-          font-family: var(--font-rajdhani), sans-serif;
-        }
-        .dc-login-box p {
-          font-size: 14px;
-          color: var(--dc-text-light);
-          margin-bottom: 28px;
-        }
-        .dc-login-field {
-          display: flex;
-          gap: 8px;
-          margin-bottom: 12px;
-        }
-        .dc-login-input {
-          flex: 1;
-          padding: 14px 18px;
-          border-radius: 12px;
-          border: 2px solid var(--dc-border);
-          font-size: 15px;
-          font-family: inherit;
-          outline: none;
-          color: var(--dc-text);
-          background: var(--dc-white);
-          transition: border-color 0.2s;
-        }
-        .dc-login-input:focus {
-          border-color: var(--dc-brand);
-        }
-        .dc-login-input.error {
-          border-color: #ef4444;
-        }
-        .dc-login-submit {
-          padding: 14px 28px;
-          border-radius: 12px;
-          border: none;
-          background: var(--dc-brand);
-          color: #fff;
-          font-size: 15px;
-          font-weight: 700;
-          cursor: pointer;
-          font-family: inherit;
-          transition: background 0.2s;
-          white-space: nowrap;
-        }
-        .dc-login-submit:hover {
-          background: #01294a;
-        }
-        .dc-login-error {
-          font-size: 13px;
-          color: #ef4444;
-          margin-top: 4px;
-        }
-
-        /* === CARD === */
-        .dc-card {
-          background: var(--dc-white);
-          border-radius: 16px;
-          padding: 32px;
-          box-shadow: 0 2px 16px rgba(2,59,91,0.06);
-          margin-bottom: 20px;
-        }
-
-        /* === SIDEBAR === */
-        .dc-sidebar {
-          background: var(--dc-white);
-          border-radius: 16px;
-          padding: 12px;
-          box-shadow: 0 2px 16px rgba(2,59,91,0.06);
-          position: sticky;
-          top: 100px;
-        }
-        .dc-sidebar-title {
-          font-size: 14px;
-          font-weight: 700;
-          color: var(--dc-text);
-          padding: 8px 10px 12px;
-          border-bottom: 1px solid #eef2f5;
-          margin-bottom: 6px;
-        }
-        .dc-sidebar-btn {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          width: 100%;
-          padding: 10px 12px;
-          border-radius: 10px;
-          border: none;
-          background: transparent;
-          cursor: pointer;
-          text-align: left;
-          margin-bottom: 2px;
-          font-family: inherit;
-          transition: background 0.15s;
-        }
-        .dc-sidebar-btn:hover { background: #f5f8fb; }
-        .dc-sidebar-btn.active { background: var(--dc-brand-light); }
-        .dc-sidebar-btn.skipped { opacity: 0.4; }
-        .dc-sidebar-icon { font-size: 16px; }
-        .dc-sidebar-info { flex: 1; }
-        .dc-sidebar-label {
-          display: block;
-          font-size: 13px;
-          font-weight: 500;
-          color: var(--dc-text);
-        }
-        .dc-sidebar-btn.active .dc-sidebar-label {
-          font-weight: 700;
-          color: var(--dc-brand);
-        }
-        .dc-sidebar-prog {
-          font-size: 11px;
-          color: #8fa8ba;
-        }
-        .dc-sidebar-prog.done { color: var(--dc-green); font-weight: 600; }
-        .dc-sidebar-check { color: var(--dc-green); font-size: 14px; font-weight: 700; }
-        .dc-copy-btn {
-          width: 100%;
-          padding: 13px 16px;
-          border-radius: 10px;
-          border: none;
-          background: var(--dc-brand);
-          color: #fff;
-          font-size: 13px;
-          font-weight: 700;
-          cursor: pointer;
-          margin-top: 10px;
-          font-family: inherit;
-          transition: background 0.2s;
-        }
-        .dc-copy-btn:hover { background: #01294a; }
-        .dc-copy-btn.copied { background: var(--dc-green); }
-
-        /* === SECTION HEADER === */
-        .dc-section-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 24px;
-          padding-bottom: 16px;
-          border-bottom: 1px solid #eef2f5;
-        }
-        .dc-section-top {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-        .dc-section-icon { font-size: 26px; }
-        .dc-section-title {
-          font-size: 20px;
-          font-weight: 700;
-          color: var(--dc-text);
-          margin: 0;
-          font-family: var(--font-rajdhani), sans-serif;
-        }
-        .dc-hint {
-          font-size: 12px;
-          color: var(--dc-warn);
-          font-weight: 500;
-          margin: 4px 0 0 36px;
-        }
-        .dc-skip-btn {
-          padding: 6px 16px;
-          border-radius: 8px;
-          font-size: 12px;
-          border: 1.5px solid var(--dc-border);
-          background: var(--dc-white);
-          color: var(--dc-text-light);
-          cursor: pointer;
-          font-family: inherit;
-          font-weight: 500;
-        }
-        .dc-skipped {
-          text-align: center;
-          padding: 40px 0;
-          color: var(--dc-text-light);
-        }
-        .dc-skipped p { margin-bottom: 12px; }
-
-        /* === FIELDS === */
-        .dc-fields {
-          display: flex;
-          flex-direction: column;
-          gap: 18px;
-        }
-        .dc-field { }
-        .dc-label {
-          display: block;
-          font-size: 13px;
-          font-weight: 700;
-          color: var(--dc-text);
-          margin-bottom: 7px;
-        }
-        .dc-input, .dc-textarea {
-          width: 100%;
-          padding: 12px 16px;
-          border-radius: 10px;
-          border: 1.5px solid var(--dc-border);
-          font-size: 14px;
-          font-family: inherit;
-          outline: none;
-          box-sizing: border-box;
-          transition: border-color 0.2s;
-          background: var(--dc-white);
-          color: var(--dc-text);
-        }
-        .dc-input::placeholder, .dc-textarea::placeholder {
-          color: #9cb3c4;
-        }
-        .dc-input:focus, .dc-textarea:focus {
-          border-color: var(--dc-brand);
-        }
-        .dc-input.filled, .dc-textarea.filled {
-          border-color: var(--dc-brand);
-          background: #f8fbff;
-        }
-        .dc-textarea { resize: vertical; }
-
-        /* === CHIPS === */
-        .dc-chips {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-        }
-        .dc-chip {
-          padding: 9px 18px;
-          border-radius: 22px;
-          border: 1.5px solid var(--dc-border);
-          background: var(--dc-white);
-          color: var(--dc-text);
-          font-size: 13px;
-          font-weight: 500;
-          cursor: pointer;
-          transition: all 0.15s;
-          font-family: inherit;
-        }
-        .dc-chip:hover {
-          border-color: var(--dc-brand);
-          background: #f8fbff;
-        }
-        .dc-chip.selected {
-          border: 2px solid var(--dc-brand);
-          background: var(--dc-brand-light);
-          color: var(--dc-brand);
-          font-weight: 700;
-        }
-
-        /* === NAVIGATION === */
-        .dc-nav {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 28px;
-          padding-top: 20px;
-          border-top: 1px solid #eef2f5;
-        }
-        .dc-btn-outline {
-          padding: 11px 24px;
-          border-radius: 10px;
-          border: 1.5px solid var(--dc-brand);
-          background: var(--dc-white);
-          color: var(--dc-brand);
-          font-size: 14px;
-          font-weight: 600;
-          cursor: pointer;
-          font-family: inherit;
-        }
-        .dc-btn-outline:disabled {
-          opacity: 0.3;
-          cursor: not-allowed;
-        }
-        .dc-btn-primary {
-          padding: 11px 28px;
-          border-radius: 10px;
-          border: none;
-          background: var(--dc-brand);
-          color: #fff;
-          font-size: 14px;
-          font-weight: 700;
-          cursor: pointer;
-          font-family: inherit;
-          transition: background 0.2s;
-        }
-        .dc-btn-primary:hover { background: #01294a; }
-        .dc-btn-primary.copied { background: var(--dc-green); }
-
-        /* === PREVIEW === */
-        .dc-preview { margin-top: 12px; }
-        .dc-preview summary {
-          font-size: 13px;
-          color: var(--dc-text-light);
-          cursor: pointer;
-          padding: 8px 0;
-        }
-        .dc-preview pre {
-          background: #0f172a;
-          color: #e2e8f0;
-          padding: 20px;
-          border-radius: 12px;
-          font-size: 12px;
-          line-height: 1.7;
-          white-space: pre-wrap;
-          max-height: 400px;
-          overflow: auto;
-          margin-top: 8px;
-        }
-
-        /* === RESPONSIVE === */
-        @media (max-width: 991px) {
-          .dc-sidebar { position: static; margin-bottom: 16px; }
-          .dc-card { padding: 24px 20px; }
-          .dc-section-header { flex-direction: column; gap: 10px; }
-          .dc-login-box { padding: 32px 24px; }
-        }
-      `}</style>
-
-      {/* LOGIN SCREEN */}
-      {!auth && (
-        <section>
-          <div className="dc-login-wrapper">
-            <div className="dc-login-box">
-              <div className="dc-login-icon">🔒</div>
-              <h2>Onboarding Call Tool</h2>
-              <p>Internes Tool für das TalentSuite Team.<br />Bitte Passwort eingeben um fortzufahren.</p>
-              <div className="dc-login-field">
-                <input
-                  type="password"
-                  className={`dc-login-input ${error ? "error" : ""}`}
-                  value={pw}
-                  onChange={(e) => { setPw(e.target.value); setError(false); }}
-                  onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-                  placeholder="Passwort eingeben..."
-                  autoFocus
-                />
-                <button onClick={handleLogin} className="dc-login-submit">
-                  Anmelden →
-                </button>
-              </div>
-              {error && <div className="dc-login-error">Falsches Passwort. Bitte erneut versuchen.</div>}
+      {!auth ? (
+        <div style={S.loginWrap}>
+          <div style={S.loginBox}>
+            <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
+            <h2 style={S.loginH2}>Onboarding Call Tool</h2>
+            <p style={S.loginP}>Internes Tool für das TalentSuite Team.<br />Bitte Passwort eingeben um fortzufahren.</p>
+            <div style={S.loginRow}>
+              <input
+                type="password"
+                style={error ? S.loginInpErr : S.loginInp}
+                value={pw}
+                onChange={(e) => { setPw(e.target.value); setError(false); }}
+                onKeyDown={(e) => e.key === "Enter" && login()}
+                placeholder="Passwort eingeben..."
+                autoFocus
+              />
+              <button onClick={login} style={S.loginBtn}>Anmelden →</button>
             </div>
+            {error && <div style={S.loginErr}>Falsches Passwort. Bitte erneut versuchen.</div>}
           </div>
-        </section>
-      )}
-
-      {/* SOP TOOL */}
-      {auth && (
-        <section style={{ padding: "32px 0 60px", background: "var(--dc-bg)" }}>
-          <div className="container">
-            <SopTool />
-          </div>
-        </section>
+        </div>
+      ) : (
+        <SopTool />
       )}
     </>
   );
