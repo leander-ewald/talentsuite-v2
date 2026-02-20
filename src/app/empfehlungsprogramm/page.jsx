@@ -28,12 +28,6 @@ const programs = [
     steps: ["Partnervereinbarung abschließen", "Klienten mit Recruiting-Bedarf empfehlen", "500€ Einmalprämie oder 10% Provision"],
     details: ["Eigener Partner-Dashboard & Tracking", "Monatliches Reporting", "Verkaufsunterlagen werden bereitgestellt"],
   },
-  {
-    id: "team", label: "Für Team", emoji: "💪", prize: "250–500€",
-    desc: "TalentSuite-Mitarbeiter: Empfiehl Top-Talente für offene Stellen.",
-    steps: ["Kandidat + LinkedIn/Kontakt einreichen", "HR prüft und kontaktiert", "Bei Einstellung: Prämie wird ausgezahlt"],
-    details: ["500€ für interne Stellen (nach Probezeit)", "250€ für Kundenstellen", "Keine Obergrenze"],
-  },
 ];
 
 const faqs = [
@@ -74,7 +68,7 @@ export default function EmpfehlungPage() {
           </div>
 
           <h1 style={{
-            fontSize: mob ? "clamp(24px, 6vw, 32px)" : "clamp(28px, 3.5vw, 42px)",
+            fontSize: mob ? "clamp(20px, 5vw, 26px)" : "clamp(24px, 3vw, 32px)",
             fontWeight: 800, lineHeight: 1.15, maxWidth: 580, margin: "0 auto 14px",
           }} data-ep="white">
             Empfehlen Sie uns weiter. <span data-ep="green">Verdienen Sie mit.</span>
