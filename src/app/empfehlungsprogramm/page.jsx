@@ -17,29 +17,29 @@ function useIsMobile() {
 
 const programs = [
   {
-    id: "kunden", label: "F\u00fcr Kunden", emoji: "\u2B50", prize: "500\u20ac",
+    id: "kunden", label: "Für Kunden", emoji: "⭐", prize: "500€",
     desc: "Empfehlen Sie TalentSuite an ein Unternehmen in Ihrem Netzwerk.",
-    steps: ["Kontaktdaten des Unternehmens teilen", "TalentSuite kontaktiert den Lead", "Bei Vertragsabschluss: 500\u20ac f\u00fcr Sie"],
-    details: ["Keine Obergrenze \u2014 5 Empfehlungen = 2.500\u20ac", "Auszahlung innerhalb von 14 Tagen", "G\u00fcltig f\u00fcr aktive und ehemalige Kunden"],
+    steps: ["Kontaktdaten des Unternehmens teilen", "TalentSuite kontaktiert den Lead", "Bei Vertragsabschluss: 500€ für Sie"],
+    details: ["Keine Obergrenze — 5 Empfehlungen = 2.500€", "Auszahlung innerhalb von 14 Tagen", "Gültig für aktive und ehemalige Kunden"],
   },
   {
-    id: "partner", label: "F\u00fcr Partner", emoji: "\uD83E\uDD1D", prize: "500\u20ac / 10%",
-    desc: "Steuerberater, Berater, Verb\u00e4nde & Agenturen: Empfehlen Sie Ihren Klienten TalentSuite.",
-    steps: ["Partnervereinbarung abschlie\u00dfen", "Klienten mit Recruiting-Bedarf empfehlen", "500\u20ac Einmalpr\u00e4mie oder 10% Provision"],
+    id: "partner", label: "Für Partner", emoji: "🤝", prize: "500€ / 10%",
+    desc: "Steuerberater, Berater, Verbände & Agenturen: Empfehlen Sie Ihren Klienten TalentSuite.",
+    steps: ["Partnervereinbarung abschließen", "Klienten mit Recruiting-Bedarf empfehlen", "500€ Einmalprämie oder 10% Provision"],
     details: ["Eigener Partner-Dashboard & Tracking", "Monatliches Reporting", "Verkaufsunterlagen werden bereitgestellt"],
   },
   {
-    id: "team", label: "F\u00fcr Team", emoji: "\uD83D\uDCAA", prize: "250\u2013500\u20ac",
-    desc: "TalentSuite-Mitarbeiter: Empfiehl Top-Talente f\u00fcr offene Stellen.",
-    steps: ["Kandidat + LinkedIn/Kontakt einreichen", "HR pr\u00fcft und kontaktiert", "Bei Einstellung: Pr\u00e4mie wird ausgezahlt"],
-    details: ["500\u20ac f\u00fcr interne Stellen (nach Probezeit)", "250\u20ac f\u00fcr Kundenstellen", "Keine Obergrenze"],
+    id: "team", label: "Für Team", emoji: "💪", prize: "250–500€",
+    desc: "TalentSuite-Mitarbeiter: Empfiehl Top-Talente für offene Stellen.",
+    steps: ["Kandidat + LinkedIn/Kontakt einreichen", "HR prüft und kontaktiert", "Bei Einstellung: Prämie wird ausgezahlt"],
+    details: ["500€ für interne Stellen (nach Probezeit)", "250€ für Kundenstellen", "Keine Obergrenze"],
   },
 ];
 
 const faqs = [
-  { q: "Gibt es eine Obergrenze?", a: "Nein. 10 Empfehlungen = 5.000\u20ac. Keine Limits." },
-  { q: "Wann erhalte ich die Pr\u00e4mie?", a: "Innerhalb von 14 Tagen nach Zahlungseingang des Neukunden." },
-  { q: "Was z\u00e4hlt als erfolgreiche Empfehlung?", a: "Der empfohlene Kontakt schlie\u00dft einen Vertrag mit TalentSuite ab." },
+  { q: "Gibt es eine Obergrenze?", a: "Nein. 10 Empfehlungen = 5.000€. Keine Limits." },
+  { q: "Wann erhalte ich die Prämie?", a: "Innerhalb von 14 Tagen nach Zahlungseingang des Neukunden." },
+  { q: "Was zählt als erfolgreiche Empfehlung?", a: "Der empfohlene Kontakt schließt einen Vertrag mit TalentSuite ab." },
   { q: "Kann ich auch ehemalige Kontakte empfehlen?", a: "Ja, solange der Kontakt nicht bereits in unserem CRM ist." },
   { q: "Wie erfahre ich den Status meiner Empfehlung?", a: "Sie erhalten Updates per E-Mail bei jedem Statuswechsel." },
 ];
@@ -55,12 +55,12 @@ export default function EmpfehlungPage() {
     <>
       <Head>
         <title>Empfehlungsprogramm | TalentSuite</title>
-        <meta name="description" content="Bis zu 500\u20ac f\u00fcr jede erfolgreiche Empfehlung \u2014 empfehlen Sie TalentSuite weiter und verdienen Sie mit." />
+        <meta name="description" content="Bis zu 500€ für jede erfolgreiche Empfehlung — empfehlen Sie TalentSuite weiter und verdienen Sie mit." />
       </Head>
 
       <div id="ep" style={{ background: L, minHeight: "60vh" }}>
 
-        {/* ── Hero ── */}
+        {/* Hero */}
         <div style={{
           background: "linear-gradient(135deg, #011E2F, #023B5B)",
           padding: mob ? "40px 20px 60px" : "52px 20px 72px",
@@ -80,12 +80,12 @@ export default function EmpfehlungPage() {
             Empfehlen Sie uns weiter. <span data-ep="green">Verdienen Sie mit.</span>
           </h1>
           <p data-ep="muted" style={{ fontSize: mob ? 14 : 15, maxWidth: 460, margin: "0 auto", lineHeight: 1.5 }}>
-            Bis zu 500\u20ac f\u00fcr jede erfolgreiche Empfehlung \u2014 ohne Obergrenze.
+            Bis zu 500€ für jede erfolgreiche Empfehlung — ohne Obergrenze.
           </p>
 
           {/* Stats */}
           <div style={{ display: "flex", justifyContent: "center", gap: mob ? 24 : 40, marginTop: 28, flexWrap: "wrap" }}>
-            {[{ n: "500\u20ac", l: "Pro Empfehlung" }, { n: "\u221E", l: "Keine Obergrenze" }, { n: "14 Tage", l: "Auszahlung" }].map((s, i) => (
+            {[{ n: "500€", l: "Pro Empfehlung" }, { n: "∞", l: "Keine Obergrenze" }, { n: "14 Tage", l: "Auszahlung" }].map((s, i) => (
               <div key={i}>
                 <div data-ep="white" style={{ fontSize: mob ? 24 : 30, fontWeight: 800 }}>{s.n}</div>
                 <div data-ep="muted" style={{ fontSize: 11, marginTop: 2 }}>{s.l}</div>
@@ -94,7 +94,7 @@ export default function EmpfehlungPage() {
           </div>
         </div>
 
-        {/* ── Content ── */}
+        {/* Content */}
         <div style={{ maxWidth: 660, margin: mob ? "-32px auto 0" : "-40px auto 0", padding: "0 16px 48px" }}>
 
           {/* Program Tabs */}
@@ -144,7 +144,7 @@ export default function EmpfehlungPage() {
               <div style={{ background: L, borderRadius: 10, padding: mob ? "14px 14px" : "16px 20px", marginTop: 18 }}>
                 {p.details.map((d, i) => (
                   <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: i < p.details.length - 1 ? 7 : 0 }}>
-                    <span data-ep="green" style={{ fontSize: 14 }}>\u2713</span>
+                    <span data-ep="green" style={{ fontSize: 14 }}>✓</span>
                     <span style={{ fontSize: 13 }}>{d}</span>
                   </div>
                 ))}
@@ -152,12 +152,12 @@ export default function EmpfehlungPage() {
             </div>
           </div>
 
-          {/* ── Referral Form ── */}
+          {/* Referral Form */}
           {!sent ? (
             <div style={{ background: W, borderRadius: 16, boxShadow: "0 4px 28px rgba(0,0,0,0.07)", padding: mob ? "22px 18px" : "28px 28px" }}>
               <h3 style={{ fontSize: 19, fontWeight: 700, margin: "0 0 4px" }}>Jetzt empfehlen</h3>
               <p data-ep="gray" style={{ fontSize: 13, margin: "0 0 20px" }}>
-                F\u00fcllen Sie das Formular aus \u2014 wir k\u00fcmmern uns um den Rest.
+                Füllen Sie das Formular aus — wir kümmern uns um den Rest.
               </p>
 
               <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: 12 }}>
@@ -200,23 +200,23 @@ export default function EmpfehlungPage() {
                   borderRadius: 12, fontSize: 15, fontWeight: 700, cursor: "pointer",
                   marginTop: 16, fontFamily: "inherit",
                 }}>
-                Empfehlung einreichen \u2192
+                {"Empfehlung einreichen →"}
               </button>
               <p data-ep="muted" style={{ fontSize: 10, margin: "8px 0 0", textAlign: "center" }}>
-                DSGVO-konform \u2022 Daten werden nur f\u00fcr die Kontaktaufnahme verwendet
+                {"DSGVO-konform • Daten werden nur für die Kontaktaufnahme verwendet"}
               </p>
             </div>
           ) : (
             <div style={{ background: "#ECFDF5", borderRadius: 16, padding: mob ? "28px 20px" : "36px 32px", textAlign: "center", boxShadow: "0 4px 28px rgba(0,0,0,0.07)" }}>
-              <div style={{ fontSize: 44 }}>\uD83C\uDF89</div>
+              <div style={{ fontSize: 44 }}>🎉</div>
               <h3 data-ep="success" style={{ fontSize: 20, fontWeight: 700, margin: "12px 0 6px" }}>
                 Empfehlung eingereicht!
               </h3>
               <p data-ep="success-body" style={{ fontSize: 14, margin: "0 0 4px" }}>
-                Vielen Dank, {form.name}! Wir kontaktieren {form.company} in K\u00fcrze.
+                Vielen Dank, {form.name}! Wir kontaktieren {form.company} in Kürze.
               </p>
               <p data-ep="success-body" style={{ fontSize: 13 }}>
-                Sie erhalten eine Best\u00e4tigung an {form.email}.
+                Sie erhalten eine Bestätigung an {form.email}.
               </p>
               <button data-ep="pribtn" onClick={() => { setSent(false); setForm({ name: "", email: "", company: "", referral: "", message: "" }); }}
                 style={{
@@ -228,9 +228,9 @@ export default function EmpfehlungPage() {
             </div>
           )}
 
-          {/* ── FAQ ── */}
+          {/* FAQ */}
           <div style={{ background: W, borderRadius: 16, boxShadow: "0 4px 28px rgba(0,0,0,0.07)", padding: mob ? "22px 18px" : "28px 28px", marginTop: 20 }}>
-            <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 18px" }}>H\u00e4ufige Fragen</h3>
+            <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 18px" }}>Häufige Fragen</h3>
             {faqs.map((faq, i) => (
               <div key={i} style={{ borderBottom: i < faqs.length - 1 ? "1px solid #e8edf1" : "none", paddingBottom: 12, marginBottom: 12 }}>
                 <div style={{ fontSize: 13, fontWeight: 700 }}>{faq.q}</div>
@@ -239,9 +239,8 @@ export default function EmpfehlungPage() {
             ))}
           </div>
 
-          {/* Footer note */}
           <p data-ep="gray" style={{ textAlign: "center", fontSize: 11, padding: "24px 0 0" }}>
-            TalentSuite \u2014 Performance Recruiting f\u00fcr den Mittelstand
+            TalentSuite — Performance Recruiting für den Mittelstand
           </p>
         </div>
       </div>
