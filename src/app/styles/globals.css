@@ -60,6 +60,21 @@ p {
 #dc-login [data-dc="loginp"] { color: #4a7a94 !important; }
 #dc-login [data-dc="loginerr"] { color: #ef4444 !important; }
 #dc-login input::placeholder { color: #9cb3c4 !important; }
+/* Override: Review Funnel page */
+#rf h1, #rf h2, #rf h3, #rf h4, #rf h5, #rf h6,
+#rf span, #rf li, #rf p, #rf div, #rf label, #rf button,
+#rf input, #rf textarea, #rf summary, #rf a {
+  color: #023B5B !important;
+}
+#rf [data-rf="white"] { color: #ffffff !important; }
+#rf [data-rf="muted"] { color: #94A3B8 !important; }
+#rf [data-rf="accent"] { color: #1B98E0 !important; }
+#rf [data-rf="gray"] { color: #64748B !important; }
+#rf [data-rf="body"] { color: #475569 !important; }
+#rf [data-rf="pribtn"] { color: #ffffff !important; }
+#rf [data-rf="success"] { color: #065F46 !important; }
+#rf [data-rf="success-body"] { color: #047857 !important; }
+#rf textarea::placeholder { color: #9cb3c4 !important; }
 h1 {
   color: var(--text-color) !important;
   font-size: 64px !important;
