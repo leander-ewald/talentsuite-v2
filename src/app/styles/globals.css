@@ -75,6 +75,23 @@ p {
 #rf [data-rf="success"] { color: #065F46 !important; }
 #rf [data-rf="success-body"] { color: #047857 !important; }
 #rf textarea::placeholder { color: #9cb3c4 !important; }
+/* Override: Empfehlungsprogramm page */
+#ep h1, #ep h2, #ep h3, #ep h4, #ep h5, #ep h6,
+#ep span, #ep li, #ep p, #ep div, #ep label, #ep button,
+#ep input, #ep textarea, #ep summary, #ep a {
+  color: #023B5B !important;
+}
+#ep [data-ep="white"] { color: #ffffff !important; }
+#ep [data-ep="muted"] { color: #94A3B8 !important; }
+#ep [data-ep="accent"] { color: #1B98E0 !important; }
+#ep [data-ep="green"] { color: #10B981 !important; }
+#ep [data-ep="gray"] { color: #64748B !important; }
+#ep [data-ep="body"] { color: #475569 !important; }
+#ep [data-ep="light"] { color: #CBD5E1 !important; }
+#ep [data-ep="pribtn"] { color: #ffffff !important; }
+#ep [data-ep="success"] { color: #065F46 !important; }
+#ep [data-ep="success-body"] { color: #047857 !important; }
+#ep input::placeholder, #ep textarea::placeholder { color: #9cb3c4 !important; }
 h1 {
   color: var(--text-color) !important;
   font-size: 64px !important;
