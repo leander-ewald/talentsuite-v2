@@ -105,7 +105,7 @@ export async function POST(request) {
         markdown_description: description,
         priority: 3,
         tags: ["leadmagnet", source || "website"],
-        status: "to do",
+        status: "neuer lead",
       }),
     });
 
