@@ -1746,125 +1746,88 @@ footer .footer_menu a:hover {
 /* ============================================
    Override: Termin Bestätigt page (#tb)
    ============================================ */
-
-/* Push content below sticky header */
 #tb {
   padding-top: 80px !important;
 }
-
-/* Base: dark text for white card areas */
 #tb h1, #tb h2, #tb h3, #tb h4, #tb h5, #tb h6,
 #tb span, #tb li, #tb p, #tb div, #tb label, #tb button,
 #tb input, #tb textarea, #tb summary, #tb a {
   color: #023B5B !important;
 }
-
-/* Font sizes */
-#tb h1 {
-  font-size: clamp(28px, 5vw, 40px) !important;
-  line-height: 1.2 !important;
-  font-weight: 800 !important;
-}
-#tb h2 {
-  font-size: clamp(22px, 3.5vw, 28px) !important;
-  line-height: 1.3 !important;
-  font-weight: 700 !important;
-}
-#tb h3 {
-  font-size: 16px !important;
-  line-height: 1.4 !important;
-  font-weight: 700 !important;
-}
-#tb p {
-  font-size: 15px !important;
-  line-height: 1.6 !important;
-  opacity: 1 !important;
-}
-#tb span {
-  font-size: inherit !important;
-}
-
-/* Utility: containers */
-#tb .tb-container {
-  max-width: 720px !important;
-  margin: 0 auto !important;
-  padding: 0 24px !important;
-}
-#tb .tb-container-wide {
-  max-width: 960px !important;
-  margin: 0 auto !important;
-  padding: 0 24px !important;
-}
-
-/* Utility: white card */
-#tb .tb-card {
-  background: #ffffff !important;
-  border-radius: 20px !important;
-  padding: 48px 40px !important;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.08) !important;
-}
-
-/* Utility: 3-column grid */
-#tb .tb-grid-3 {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 32px !important;
-}
-
-/* Stat values */
-#tb .tb-stat-val {
-  font-size: clamp(22px, 4vw, 30px) !important;
-}
-
-/* ── Light text on dark background ── */
+#tb h1 { font-size: clamp(28px, 5vw, 40px) !important; line-height: 1.2 !important; font-weight: 800 !important; }
+#tb h2 { font-size: clamp(22px, 3.5vw, 28px) !important; line-height: 1.3 !important; font-weight: 700 !important; }
+#tb h3 { font-size: 16px !important; line-height: 1.4 !important; font-weight: 700 !important; }
+#tb p { font-size: 15px !important; line-height: 1.6 !important; opacity: 1 !important; }
+#tb span { font-size: inherit !important; }
+#tb .tb-container { max-width: 720px !important; margin: 0 auto !important; padding: 0 24px !important; }
+#tb .tb-container-wide { max-width: 960px !important; margin: 0 auto !important; padding: 0 24px !important; }
+#tb .tb-card { background: #ffffff !important; border-radius: 20px !important; padding: 48px 40px !important; box-shadow: 0 4px 30px rgba(0,0,0,0.08) !important; }
+#tb .tb-grid-3 { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 32px !important; }
+#tb .tb-stat-val { font-size: clamp(22px, 4vw, 30px) !important; }
 #tb [data-tb="white"] { color: #ffffff !important; }
 #tb [data-tb="muted"] { color: #cccccc !important; }
-
-/* ── Dark text on white cards ── */
 #tb [data-tb="body"] { color: #475569 !important; }
 #tb [data-tb="gray"] { color: #64748B !important; }
 #tb [data-tb="accent"] { color: #2D8CFF !important; }
-
-/* ── Interactive ── */
 #tb [data-tb="link"] { color: #2D8CFF !important; text-decoration: underline !important; }
 #tb [data-tb="pribtn"] { color: #ffffff !important; font-size: 16px !important; }
-
-/* ── Mobile Responsive ── */
 @media (max-width: 768px) {
-  #tb {
-    padding-top: 60px !important;
-  }
-  #tb h1 {
-    font-size: 26px !important;
-  }
-  #tb h2 {
-    font-size: 20px !important;
-  }
-  #tb .tb-grid-3 {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  #tb .tb-card {
-    padding: 28px 20px !important;
-    border-radius: 16px !important;
-  }
-  #tb .tb-container,
-  #tb .tb-container-wide {
-    padding: 0 16px !important;
-  }
-  #tb .tb-stat-val {
-    font-size: 24px !important;
-  }
+  #tb { padding-top: 60px !important; }
+  #tb h1 { font-size: 26px !important; }
+  #tb h2 { font-size: 20px !important; }
+  #tb .tb-grid-3 { grid-template-columns: 1fr !important; gap: 24px !important; }
+  #tb .tb-card { padding: 28px 20px !important; border-radius: 16px !important; }
+  #tb .tb-container, #tb .tb-container-wide { padding: 0 16px !important; }
+  #tb .tb-stat-val { font-size: 24px !important; }
+}
+@media (max-width: 480px) {
+  #tb h1 { font-size: 24px !important; }
+  #tb h2 { font-size: 18px !important; }
+  #tb .tb-card { padding: 24px 16px !important; }
 }
 
+/* ============================================
+   Override: Recruiting-Analyse page (#ra)
+   ============================================ */
+#ra {
+  padding-top: 80px !important;
+}
+#ra h1, #ra h2, #ra h3, #ra h4, #ra h5, #ra h6,
+#ra span, #ra li, #ra p, #ra div, #ra label, #ra button,
+#ra input, #ra textarea, #ra summary, #ra a {
+  color: #023B5B !important;
+}
+#ra h1 { font-size: clamp(28px, 5vw, 40px) !important; line-height: 1.2 !important; font-weight: 800 !important; }
+#ra h2 { font-size: clamp(22px, 3.5vw, 28px) !important; line-height: 1.3 !important; font-weight: 700 !important; }
+#ra h3 { font-size: 17px !important; line-height: 1.4 !important; font-weight: 700 !important; }
+#ra p { font-size: 15px !important; line-height: 1.7 !important; opacity: 1 !important; }
+#ra span { font-size: inherit !important; }
+#ra .ra-container { max-width: 720px !important; margin: 0 auto !important; padding: 0 24px !important; }
+#ra .ra-container-wide { max-width: 1000px !important; margin: 0 auto !important; padding: 0 24px !important; }
+#ra .ra-card { background: #ffffff !important; border-radius: 20px !important; padding: 44px 36px !important; box-shadow: 0 4px 30px rgba(0,0,0,0.08) !important; }
+#ra .ra-grid-3 { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 28px !important; }
+#ra .ra-grid-4 { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 20px !important; }
+#ra .ra-stat-val { font-size: clamp(22px, 4vw, 30px) !important; }
+#ra [data-ra="white"] { color: #ffffff !important; }
+#ra [data-ra="muted"] { color: #cccccc !important; }
+#ra [data-ra="body"] { color: #475569 !important; }
+#ra [data-ra="gray"] { color: #64748B !important; }
+#ra [data-ra="accent"] { color: #2D8CFF !important; }
+#ra [data-ra="link"] { color: #2D8CFF !important; text-decoration: underline !important; }
+#ra [data-ra="pribtn"] { color: #ffffff !important; font-size: 16px !important; }
+@media (max-width: 768px) {
+  #ra { padding-top: 60px !important; }
+  #ra h1 { font-size: 26px !important; }
+  #ra h2 { font-size: 20px !important; }
+  #ra .ra-grid-3 { grid-template-columns: 1fr !important; gap: 20px !important; }
+  #ra .ra-grid-4 { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+  #ra .ra-card { padding: 28px 20px !important; border-radius: 16px !important; }
+  #ra .ra-container, #ra .ra-container-wide { padding: 0 16px !important; }
+  #ra .ra-stat-val { font-size: 24px !important; }
+}
 @media (max-width: 480px) {
-  #tb h1 {
-    font-size: 24px !important;
-  }
-  #tb h2 {
-    font-size: 18px !important;
-  }
-  #tb .tb-card {
-    padding: 24px 16px !important;
-  }
+  #ra h1 { font-size: 24px !important; }
+  #ra h2 { font-size: 18px !important; }
+  #ra .ra-grid-4 { grid-template-columns: 1fr !important; }
+  #ra .ra-card { padding: 24px 16px !important; }
 }
