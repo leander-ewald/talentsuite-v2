@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { trackMetaLead } from "../components/MetaPixel";
 
 const B = "#023B5B", D = "#011E2F", A = "#1B98E0", G = "#10B981", W = "#ffffff", L = "#f0f4f7", R = "#EF4444";
 
@@ -48,7 +49,7 @@ export default function RecruitingAnalyse() {
           <p style={{ color: `${W}80`, fontSize: mob ? 16 : 20, maxWidth: 620, margin: "0 auto 28px", lineHeight: 1.6 }}>
             In 20 Minuten erfahren Sie, wie Sie qualifizierte Fachkräfte über Social Media finden — konkret, ehrlich und auf Ihre Branche zugeschnitten.
           </p>
-          <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer"
+          <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer" onClick={() => trackMetaLead({ formName: "recruiting-analyse", category: "leadmagnet", value: 500 })}
             style={{ display: "inline-block", padding: "18px 48px", background: W, borderRadius: 12, color: B, fontSize: 18, fontWeight: 800, textDecoration: "none", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(0,0,0,0.15)" }}>
             Jetzt Termin wählen →
           </a>
@@ -124,7 +125,7 @@ export default function RecruitingAnalyse() {
             <p style={{ color: `${W}70`, fontSize: mob ? 15 : 17, margin: "0 0 24px", lineHeight: 1.6, maxWidth: 500, marginLeft: "auto", marginRight: "auto" }}>
               20 Minuten, die den Unterschied machen können. Kostenlos und unverbindlich.
             </p>
-            <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer"
+            <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer" onClick={() => trackMetaLead({ formName: "recruiting-analyse", category: "leadmagnet", value: 500 })}
               style={{ display: "inline-block", padding: "18px 48px", background: W, borderRadius: 12, color: B, fontSize: 18, fontWeight: 800, textDecoration: "none", fontFamily: "inherit" }}>
               Jetzt Termin wählen →
             </a>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { trackMetaLead } from "../components/MetaPixel";
 
 const B = "#023B5B", D = "#011E2F", A = "#1B98E0", G = "#10B981", W = "#ffffff", L = "#f0f4f7", R = "#EF4444";
 
@@ -125,6 +126,7 @@ export default function StellenanzeigenGenerator() {
         }),
       });
     } catch (e) { console.error(e); }
+    trackMetaLead({ formName: "stellenanzeigen-generator", category: "leadmagnet", value: 100 });
   };
 
   return (
