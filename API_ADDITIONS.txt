@@ -1,0 +1,18 @@
+// Add these to sourceLabels in api/leadmagnet-capture/route.js:
+      "mitarbeiter-finden-shk": "🔧 SHK-Handwerk",
+      "mitarbeiter-finden-elektro": "⚡ Elektrohandwerk",
+      "mitarbeiter-finden-pflege": "🏥 Pflege & Gesundheit",
+      "mitarbeiter-finden-gastronomie": "🍽️ Gastronomie & Hotellerie",
+      "mitarbeiter-finden-logistik": "🚛 Logistik & Transport",
+      "mitarbeiter-finden-bau": "🏗️ Bau & Ausbau",
+      "mitarbeiter-finden-maler": "🎨 Maler- & Lackiererhandwerk",
+      "mitarbeiter-finden-dachdecker": "🏠 Dachdeckerhandwerk",
+      "mitarbeiter-finden-kfz": "🚗 KFZ-Handwerk",
+      "mitarbeiter-finden-produktion": "⚙️ Industrie & Produktion",
+
+// Add this handler block for branch landing pages:
+    if (extra?.pageType === "branchen-landing" && extra?.branche) {
+      description += `\n---\n\n## Branchen-Landing\n`;
+      description += `🏭 **Branche:** ${extra.branche}\n`;
+      description += `📄 **Seite:** ${source}\n`;
+    }

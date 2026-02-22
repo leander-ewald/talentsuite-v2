@@ -1,0 +1,11 @@
+// Add these to sitemap.js inside the return array:
+    { url: `${baseUrl}/mitarbeiter-finden-shk`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/mitarbeiter-finden-elektro`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/mitarbeiter-finden-pflege`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/mitarbeiter-finden-gastronomie`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/mitarbeiter-finden-logistik`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/mitarbeiter-finden-bau`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/mitarbeiter-finden-maler`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/mitarbeiter-finden-dachdecker`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/mitarbeiter-finden-kfz`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/mitarbeiter-finden-produktion`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
