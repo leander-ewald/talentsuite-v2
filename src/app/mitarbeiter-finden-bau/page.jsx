@@ -40,33 +40,59 @@ export default function Page() {
     <div className="branchen-page">
       <style>{`
         .branchen-page, .branchen-page * { box-sizing: border-box; }
-        .branchen-page h1, .branchen-page h2, .branchen-page h3, .branchen-page h4,
-        .branchen-page p, .branchen-page span, .branchen-page label, .branchen-page div,
-        .branchen-page a, .branchen-page button, .branchen-page input {
-          color: inherit !important;
-          font-family: inherit;
-        }
+        .branchen-page { background: #f0f4f7 !important; }
+        .branchen-page h1, .branchen-page h2, .branchen-page h3, .branchen-page h4 { color: #023B5B !important; }
+        .branchen-page p { color: #4A5568 !important; }
+        .branchen-page span { color: #64748B !important; }
+        .branchen-page label { color: rgba(255,255,255,0.7) !important; }
+        .branchen-page div { color: #334155 !important; }
+        .branchen-page a { text-decoration: none !important; }
+        .branchen-page button { font-family: inherit; }
+        .branchen-page input { font-family: inherit; }
         .branchen-page input::placeholder { color: rgba(255,255,255,0.4) !important; }
+        .branchen-page .bp-hero h1, .branchen-page .bp-hero p, .branchen-page .bp-hero span { color: #ffffff !important; }
+        .branchen-page .bp-hero .bp-hero-sub { color: rgba(255,255,255,0.8) !important; }
+        .branchen-page .bp-hero .bp-hero-hint { color: rgba(255,255,255,0.5) !important; }
+        .branchen-page .bp-hero a { color: #023B5B !important; }
+        .branchen-page .bp-cta h2, .branchen-page .bp-cta h3 { color: #ffffff !important; }
+        .branchen-page .bp-cta p { color: rgba(255,255,255,0.7) !important; }
+        .branchen-page .bp-cta .bp-cta-hint { color: rgba(255,255,255,0.5) !important; }
+        .branchen-page .bp-cta .bp-cta-fine { color: rgba(255,255,255,0.35) !important; }
+        .branchen-page .bp-cta a { color: #023B5B !important; }
+        .branchen-page .bp-cta button { color: #ffffff !important; }
+        .branchen-page .bp-cta label { color: rgba(255,255,255,0.5) !important; }
+        .branchen-page .bp-cta input { color: #ffffff !important; }
+        .branchen-page .bp-stat-val { font-weight: 800 !important; }
+        .branchen-page .bp-pain-red p { color: #334155 !important; }
+        .branchen-page .bp-card h4 { color: #023B5B !important; }
+        .branchen-page .bp-card p { color: #64748B !important; }
+        .branchen-page .bp-case h3 { color: #023B5B !important; }
+        .branchen-page .bp-case p { color: #334155 !important; }
+        .branchen-page .bp-tag { color: #023B5B !important; }
+        .branchen-page .bp-seo p { color: #4A5568 !important; }
+        .branchen-page .bp-seo h2 { color: #023B5B !important; }
+        .branchen-page .bp-fail h2 { color: #023B5B !important; }
+        .branchen-page .bp-fail p { color: #4A5568 !important; }
         .branchen-page a { text-decoration: none; }
         .bp-hero { background: linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%); padding: ${mob ? "48px 16px 56px" : "80px 24px 88px"}; position: relative; overflow: hidden; }
         .bp-body { background: #f0f4f7 !important; padding: ${mob ? "32px 16px 48px" : "56px 24px 72px"}; }
       `}</style>
 
       {/* HERO */}
-      <div style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", padding: mob ? "48px 16px 56px" : "80px 24px 88px", position: "relative", overflow: "hidden" }}>
+      <div className="bp-hero" style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", padding: mob ? "48px 16px 56px" : "80px 24px 88px", position: "relative", overflow: "hidden" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative" }}>
           <span style={{ fontSize: 56, display: "block", marginBottom: 12 }}>🏗️</span>
           <h1 style={{ color: "#ffffff", fontSize: mob ? 26 : 42, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.2 }}>
             Mitarbeiter Bau finden — Maurer, Zimmerer & Bauleiter in 30 Tagen
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.8)", fontSize: mob ? 15 : 19, maxWidth: 620, margin: "0 auto 24px", lineHeight: 1.6 }}>
+          <p className="bp-hero-sub" style={{ color: "rgba(255,255,255,0.8)", fontSize: mob ? 15 : 19, maxWidth: 620, margin: "0 auto 24px", lineHeight: 1.6 }}>
             55.000+ offene Stellen · Ø 155 Tage Vakanzzeit · 72% der Fachkräfte nicht auf Jobbörsen
           </p>
           <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer"
             style={{ display: "inline-block", padding: "18px 44px", background: "#ffffff", borderRadius: 12, color: "#023B5B", fontSize: 17, fontWeight: 800, textDecoration: "none", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(0,0,0,0.15)" }}>
             Kostenlose Recruiting-Analyse →
           </a>
-          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, marginTop: 10 }}>20 Min. · Unverbindlich · Konkrete Strategie für Baugewerbe</p>
+          <p className="bp-hero-hint" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, marginTop: 10 }}>20 Min. · Unverbindlich · Konkrete Strategie für Baugewerbe</p>
         </div>
       </div>
 
@@ -108,7 +134,7 @@ export default function Page() {
           </div>
 
           {/* Why Jobboards Fail */}
-          <div style={{ background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.15)", borderRadius: 16, padding: mob ? "24px 18px" : "32px 28px", marginBottom: 24 }}>
+          <div className="bp-fail" style={{ background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.15)", borderRadius: 16, padding: mob ? "24px 18px" : "32px 28px", marginBottom: 24 }}>
             <h2 style={{ color: "#023B5B", fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 12px" }}>
               ❌ Warum Jobbörsen im Bereich Baugewerbe nicht mehr funktionieren
             </h2>
@@ -131,7 +157,7 @@ export default function Page() {
                 { icon: "📱", t: "60-Sekunden-Bewerbung", d: "Kein Anschreiben, kein Lebenslauf-Upload. Bewerben direkt vom Smartphone in unter einer Minute." },
                 { icon: "📊", t: "Messbare Ergebnisse", d: "16-24 € pro Bewerbung bei 10-14% Conversion. Transparent und nachvollziehbar." },
               ].map((s, idx) => (
-                <div key={idx} style={{ background: "#f0f4f7", borderRadius: 12, padding: 16, textAlign: "center" }}>
+                <div key={idx} className="bp-card" style={{ background: "#f0f4f7", borderRadius: 12, padding: 16, textAlign: "center" }}>
                   <span style={{ fontSize: 28, display: "block", marginBottom: 8 }}>{s.icon}</span>
                   <h4 style={{ color: "#023B5B", fontSize: 15, fontWeight: 700, margin: "0 0 6px" }}>{s.t}</h4>
                   <p style={{ color: "#64748B", fontSize: 13, margin: 0, lineHeight: 1.5 }}>{s.d}</p>
@@ -141,7 +167,7 @@ export default function Page() {
           </div>
 
           {/* Case Study */}
-          <div style={{ background: "rgba(16,185,129,0.08)", border: "1px solid rgba(16,185,129,0.2)", borderRadius: 16, padding: mob ? "24px 18px" : "32px 28px", marginBottom: 24 }}>
+          <div className="bp-case" style={{ background: "rgba(16,185,129,0.08)", border: "1px solid rgba(16,185,129,0.2)", borderRadius: 16, padding: mob ? "24px 18px" : "32px 28px", marginBottom: 24 }}>
             <h3 style={{ color: "#023B5B", fontSize: 18, fontWeight: 700, margin: "0 0 10px" }}>📈 Praxisbeispiel</h3>
             <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.7, margin: 0 }}>
               Ein Bauunternehmen in Sachsen-Anhalt suchte 5 Monate einen Polier. Social Recruiting: 19 Bewerbungen in 3 Wochen, 1 Einstellung.
@@ -155,13 +181,13 @@ export default function Page() {
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               {["Maurer (m/w/d)","Zimmerer","Bauleiter","Betonbauer","Polier"].map((p, idx) => (
-                <span key={idx} style={{ padding: "8px 16px", background: "rgba(27,152,224,0.1)", border: "1px solid rgba(27,152,224,0.2)", borderRadius: 8, fontSize: 14, color: "#023B5B", fontWeight: 500 }}>{p}</span>
+                <span key={idx} className="bp-tag" style={{ padding: "8px 16px", background: "rgba(27,152,224,0.1)", border: "1px solid rgba(27,152,224,0.2)", borderRadius: 8, fontSize: 14, color: "#023B5B", fontWeight: 500 }}>{p}</span>
               ))}
             </div>
           </div>
 
           {/* SEO Content */}
-          <div style={{ background: "#ffffff", borderRadius: 16, padding: mob ? "20px 18px" : "28px 28px", marginBottom: 24, boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
+          <div className="bp-seo" style={{ background: "#ffffff", borderRadius: 16, padding: mob ? "20px 18px" : "28px 28px", marginBottom: 24, boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
             <h2 style={{ color: "#023B5B", fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 12px" }}>So gewinnen erfolgreiche Baubetriebe heute Fachkräfte</h2>
             <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 12px" }}>Der Fachkräftemangel im Baugewerbe ist strukturell und wird sich weiter verschärfen.</p>
             <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 12px" }}>Erfolgreiche Betriebe gehen aktiv auf potenzielle Kandidaten zu.</p>
@@ -169,7 +195,7 @@ export default function Page() {
           </div>
 
           {/* CTA */}
-          <div style={{ background: "linear-gradient(135deg, #011E2F, #023B5B)", borderRadius: 16, padding: mob ? "32px 18px" : "44px 32px", textAlign: "center" }}>
+          <div className="bp-cta" style={{ background: "linear-gradient(135deg, #011E2F, #023B5B)", borderRadius: 16, padding: mob ? "32px 18px" : "44px 32px", textAlign: "center" }}>
             <h2 style={{ color: "#ffffff", fontSize: mob ? 22 : 30, fontWeight: 800, margin: "0 0 10px" }}>Maurer oder Zimmerer gesucht?</h2>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: mob ? 15 : 17, margin: "0 0 24px", lineHeight: 1.6 }}>
               In 20 Minuten zeigen wir Ihnen, wie viele passende Fachkräfte in Ihrer Region über Social Media erreichbar sind — und was eine Kampagne kosten würde.
@@ -180,7 +206,7 @@ export default function Page() {
                   style={{ display: "inline-block", padding: "18px 44px", background: "#ffffff", borderRadius: 12, color: "#023B5B", fontSize: 17, fontWeight: 800, textDecoration: "none", fontFamily: "inherit", marginBottom: 12 }}>
                   Jetzt Termin wählen →
                 </a>
-                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, margin: "8px 0 16px" }}>Oder lassen Sie sich zurückrufen:</p>
+                <p className="bp-cta-hint" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, margin: "8px 0 16px" }}>Oder lassen Sie sich zurückrufen:</p>
                 <button onClick={() => setShowForm(true)} style={{ padding: "14px 32px", background: "none", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 10, color: "#ffffff", fontSize: 15, cursor: "pointer", fontFamily: "inherit" }}>
                   Rückruf anfordern
                 </button>
@@ -221,7 +247,7 @@ export default function Page() {
                 </button>
               </div>
             )}
-            <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, marginTop: 16 }}>Robert Engel · Geschäftsführer TalentSuite · 100% kostenlos &amp; unverbindlich</p>
+            <p className="bp-cta-fine" style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, marginTop: 16 }}>Robert Engel · Geschäftsführer TalentSuite · 100% kostenlos &amp; unverbindlich</p>
           </div>
         </div>
       </div>
