@@ -1747,6 +1747,11 @@ footer .footer_menu a:hover {
    Override: Termin Bestätigt page (#tb)
    ============================================ */
 
+/* Push content below sticky header */
+#tb {
+  padding-top: 80px !important;
+}
+
 /* Base: dark text for white card areas */
 #tb h1, #tb h2, #tb h3, #tb h4, #tb h5, #tb h6,
 #tb span, #tb li, #tb p, #tb div, #tb label, #tb button,
@@ -1779,9 +1784,8 @@ footer .footer_menu a:hover {
   font-size: inherit !important;
 }
 
-/* Kill global section { padding: 80px 0; display: flex; } */
+/* Kill global section styles inside #tb */
 #tb .tb-section,
-#tb div.tb-section,
 div#tb .tb-section,
 div#tb div.tb-section {
   display: block !important;
@@ -1791,8 +1795,6 @@ div#tb div.tb-section {
   justify-content: initial !important;
   align-items: initial !important;
 }
-
-/* Also override if browser renders .tb-section as section somehow */
 #tb section,
 div#tb section {
   display: block !important;
