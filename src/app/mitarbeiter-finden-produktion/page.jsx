@@ -37,45 +37,85 @@ export default function Page() {
   };
 
   return (
-    <div className="branchen-page">
+    <div id="bp-root" className="branchen-page">
       <style>{`
-        .branchen-page, .branchen-page * { box-sizing: border-box; }
-        .branchen-page { background: #f0f4f7 !important; }
-        .branchen-page h1, .branchen-page h2, .branchen-page h3, .branchen-page h4 { color: #023B5B !important; }
-        .branchen-page p { color: #4A5568 !important; }
-        .branchen-page span { color: #64748B !important; }
-        .branchen-page label { color: rgba(255,255,255,0.7) !important; }
-        .branchen-page div { color: #334155 !important; }
-        .branchen-page a { text-decoration: none !important; }
-        .branchen-page button { font-family: inherit; }
-        .branchen-page input { font-family: inherit; }
-        .branchen-page input::placeholder { color: rgba(255,255,255,0.4) !important; }
-        .branchen-page .bp-hero h1, .branchen-page .bp-hero p, .branchen-page .bp-hero span { color: #ffffff !important; }
-        .branchen-page .bp-hero .bp-hero-sub { color: rgba(255,255,255,0.8) !important; }
-        .branchen-page .bp-hero .bp-hero-hint { color: rgba(255,255,255,0.5) !important; }
-        .branchen-page .bp-hero a { color: #023B5B !important; }
-        .branchen-page .bp-cta h2, .branchen-page .bp-cta h3 { color: #ffffff !important; }
-        .branchen-page .bp-cta p { color: rgba(255,255,255,0.7) !important; }
-        .branchen-page .bp-cta .bp-cta-hint { color: rgba(255,255,255,0.5) !important; }
-        .branchen-page .bp-cta .bp-cta-fine { color: rgba(255,255,255,0.35) !important; }
-        .branchen-page .bp-cta a { color: #023B5B !important; }
-        .branchen-page .bp-cta button { color: #ffffff !important; }
-        .branchen-page .bp-cta label { color: rgba(255,255,255,0.5) !important; }
-        .branchen-page .bp-cta input { color: #ffffff !important; }
-        .branchen-page .bp-stat-val { font-weight: 800 !important; }
-        .branchen-page .bp-pain-red p { color: #334155 !important; }
-        .branchen-page .bp-card h4 { color: #023B5B !important; }
-        .branchen-page .bp-card p { color: #64748B !important; }
-        .branchen-page .bp-case h3 { color: #023B5B !important; }
-        .branchen-page .bp-case p { color: #334155 !important; }
-        .branchen-page .bp-tag { color: #023B5B !important; }
-        .branchen-page .bp-seo p { color: #4A5568 !important; }
-        .branchen-page .bp-seo h2 { color: #023B5B !important; }
-        .branchen-page .bp-fail h2 { color: #023B5B !important; }
-        .branchen-page .bp-fail p { color: #4A5568 !important; }
-        .branchen-page a { text-decoration: none; }
-        .bp-hero { background: linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%); padding: ${mob ? "48px 16px 56px" : "80px 24px 88px"}; position: relative; overflow: hidden; }
-        .bp-body { background: #f0f4f7 !important; padding: ${mob ? "32px 16px 48px" : "56px 24px 72px"}; }
+        /* === BRANCHEN PAGE COMPLETE RESET === */
+        #bp-root, #bp-root * { box-sizing: border-box !important; }
+        #bp-root { background: #f0f4f7 !important; }
+
+        /* === DEFAULT TEXT (light bg sections) === */
+        #bp-root h1 { color: #023B5B !important; font-size: 26px !important; font-weight: 800 !important; line-height: 1.2 !important; }
+        #bp-root h2 { color: #023B5B !important; font-size: 22px !important; font-weight: 700 !important; line-height: 1.3 !important; }
+        #bp-root h3 { color: #023B5B !important; font-size: 18px !important; font-weight: 700 !important; }
+        #bp-root h4 { color: #023B5B !important; font-size: 15px !important; font-weight: 700 !important; }
+        #bp-root p { color: #4A5568 !important; font-size: 15px !important; line-height: 1.7 !important; }
+        #bp-root span { font-size: inherit !important; }
+        #bp-root strong { color: inherit !important; }
+        #bp-root a { text-decoration: none !important; }
+        #bp-root input { font-family: inherit !important; }
+        #bp-root button { font-family: inherit !important; }
+
+        @media (min-width: 768px) {
+          #bp-root h1 { font-size: 42px !important; }
+          #bp-root h2 { font-size: 26px !important; }
+        }
+
+        /* === HERO (dark bg) === */
+        #bp-root .bp-hero { background: linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%) !important; }
+        #bp-root .bp-hero h1 { color: #ffffff !important; }
+        #bp-root .bp-hero p { color: rgba(255,255,255,0.8) !important; }
+        #bp-root .bp-hero span { color: #ffffff !important; }
+        #bp-root .bp-hero .bp-hero-hint { color: rgba(255,255,255,0.5) !important; font-size: 13px !important; }
+        #bp-root .bp-hero a { color: #023B5B !important; background: #ffffff !important; font-size: 17px !important; font-weight: 800 !important; }
+
+        /* === STATS === */
+        #bp-root .bp-stat-n { font-weight: 800 !important; font-size: 28px !important; }
+        @media (max-width: 767px) { #bp-root .bp-stat-n { font-size: 22px !important; } }
+        #bp-root .bp-stat-l { color: #64748B !important; font-size: 12px !important; }
+
+        /* === PAIN SECTION === */
+        #bp-root .bp-pain-intro { color: #4A5568 !important; }
+        #bp-root .bp-pain-box p { color: #334155 !important; }
+
+        /* === FAIL SECTION (red bg) === */
+        #bp-root .bp-fail h2 { color: #023B5B !important; }
+        #bp-root .bp-fail p { color: #4A5568 !important; }
+
+        /* === SOLUTION CARDS === */
+        #bp-root .bp-card h4 { color: #023B5B !important; font-size: 15px !important; }
+        #bp-root .bp-card p { color: #64748B !important; font-size: 13px !important; }
+
+        /* === CASE STUDY (green bg) === */
+        #bp-root .bp-case h3 { color: #023B5B !important; font-size: 18px !important; }
+        #bp-root .bp-case p { color: #334155 !important; }
+
+        /* === POSITION TAGS === */
+        #bp-root .bp-tag { color: #023B5B !important; font-size: 14px !important; font-weight: 500 !important; }
+
+        /* === SEO TEXT === */
+        #bp-root .bp-seo h2 { color: #023B5B !important; }
+        #bp-root .bp-seo p { color: #4A5568 !important; }
+
+        /* === CTA (dark bg) === */
+        #bp-root .bp-cta { background: linear-gradient(135deg, #011E2F, #023B5B) !important; }
+        #bp-root .bp-cta h2 { color: #ffffff !important; font-size: 22px !important; }
+        #bp-root .bp-cta p { color: rgba(255,255,255,0.7) !important; }
+        #bp-root .bp-cta .bp-cta-hint { color: rgba(255,255,255,0.5) !important; font-size: 13px !important; }
+        #bp-root .bp-cta .bp-cta-fine { color: rgba(255,255,255,0.35) !important; font-size: 12px !important; }
+        #bp-root .bp-cta a { color: #023B5B !important; background: #ffffff !important; font-size: 17px !important; font-weight: 800 !important; }
+        #bp-root .bp-cta button { color: #ffffff !important; font-size: 15px !important; border: 1px solid rgba(255,255,255,0.3) !important; }
+        #bp-root .bp-cta label { color: rgba(255,255,255,0.5) !important; font-size: 12px !important; }
+        #bp-root .bp-cta label a { color: #1B98E0 !important; background: none !important; font-size: 12px !important; font-weight: 400 !important; }
+        #bp-root .bp-cta input { color: #ffffff !important; font-size: 15px !important; background: rgba(255,255,255,0.08) !important; border: 1px solid rgba(255,255,255,0.15) !important; }
+        #bp-root .bp-cta input::placeholder { color: rgba(255,255,255,0.4) !important; }
+        #bp-root .bp-cta .bp-form-label { color: rgba(255,255,255,0.7) !important; font-size: 13px !important; }
+        #bp-root .bp-cta .bp-submit { font-size: 16px !important; font-weight: 700 !important; }
+        #bp-root .bp-cta h3 { color: #ffffff !important; font-size: 22px !important; }
+        #bp-root .bp-cta .bp-success-msg { color: rgba(255,255,255,0.7) !important; font-size: 16px !important; }
+
+        @media (min-width: 768px) {
+          #bp-root .bp-cta h2 { font-size: 30px !important; }
+        }
       `}</style>
 
       {/* HERO */}
@@ -108,8 +148,8 @@ export default function Page() {
               { n: "Ø 32 Tage", label: "Bis zur Einstellung", c: "#1B98E0" },
             ].map((s, idx) => (
               <div key={idx} style={{ background: "#ffffff", borderRadius: 14, padding: mob ? "16px 12px" : "20px 16px", textAlign: "center", boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}>
-                <div style={{ fontSize: mob ? 22 : 28, fontWeight: 800, color: s.c }}>{s.n}</div>
-                <div style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>{s.label}</div>
+                <div className="bp-stat-n" style={{ color: s.c }}>{s.n}</div>
+                <div className="bp-stat-l" style={{ marginTop: 4 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -119,16 +159,16 @@ export default function Page() {
             <h2 style={{ color: "#023B5B", fontSize: mob ? 20 : 26, fontWeight: 700, margin: "0 0 14px" }}>
               ⚙️ Die Situation in der Produktion und Industrie
             </h2>
-            <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
+            <p className="bp-pain-intro" style={{ margin: "0 0 16px" }}>
               Die deutsche Industrie steht vor einer Qualifikationslücke durch Industrie 4.0, Automatisierung und Digitalisierung.
             </p>
-            <div style={{ padding: "14px 16px", background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.15)", borderRadius: 10, marginBottom: 10 }}>
+            <div className="bp-pain-box" style={{ padding: "14px 16px", background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.15)", borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🔴</strong> Industrie 4.0: CNC-, SPS- und IoT-Kompetenzen werden immer wichtiger, aber die Ausbildung hinkt hinterher.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: "#f0f4f7", border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 10 }}>
+            <div className="bp-pain-box" style={{ padding: "14px 16px", background: "#f0f4f7", border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟡</strong> Schichtarbeit: Wechselschicht und Nachtarbeit schrecken viele potenzielle Bewerber ab.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: "#f0f4f7", border: "1px solid #E2E8F0", borderRadius: 10 }}>
+            <div className="bp-pain-box" style={{ padding: "14px 16px", background: "#f0f4f7", border: "1px solid #E2E8F0", borderRadius: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟠</strong> Konzern-Konkurrenz: Große Industrieunternehmen bieten höhere Gehälter und bessere Benefits als der Mittelstand.</p>
             </div>
           </div>
@@ -148,7 +188,7 @@ export default function Page() {
             <h2 style={{ color: "#023B5B", fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 14px" }}>
               ✅ Social Recruiting für Produktion & Industrie: So funktioniert es
             </h2>
-            <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
+            <p className="bp-pain-intro" style={{ margin: "0 0 16px" }}>
               Statt auf die 20% zu warten, die aktiv suchen, sprechen wir die 80% an, die passiv offen sind.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr 1fr", gap: 12 }}>
@@ -215,7 +255,7 @@ export default function Page() {
               <div>
                 <span style={{ fontSize: 56 }}>✅</span>
                 <h3 style={{ color: "#ffffff", fontSize: 22, fontWeight: 700, marginTop: 12 }}>Anfrage erhalten!</h3>
-                <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 16, marginTop: 8 }}>Wir melden uns innerhalb von 24 Stunden bei Ihnen, {form.name.split(" ")[0]}.</p>
+                <p className="bp-success-msg" style={{ marginTop: 8 }}>Wir melden uns innerhalb von 24 Stunden bei Ihnen, {form.name.split(" ")[0]}.</p>
               </div>
             ) : (
               <div style={{ maxWidth: 440, margin: "0 auto", textAlign: "left" }}>
@@ -226,7 +266,7 @@ export default function Page() {
                   { label: "Firma", k: "company", ph: "Firmenname", type: "text" },
                 ].map((f, idx) => (
                   <div key={idx} style={{ marginBottom: 14 }}>
-                    <label style={{ display: "block", color: "rgba(255,255,255,0.7)", fontSize: 13, marginBottom: 4 }}>{f.label}</label>
+                    <label className="bp-form-label" style={{ display: "block", marginBottom: 4 }}>{f.label}</label>
                     <input type={f.type} value={form[f.k]} onChange={e => setForm({ ...form, [f.k]: e.target.value })} placeholder={f.ph}
                       style={{ width: "100%", padding: "12px 14px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, color: "#ffffff", fontSize: 15, fontFamily: "inherit", boxSizing: "border-box", outline: "none" }} />
                     {f.k === "email" && form.email && !emailValid && <span style={{ color: "#EF4444", fontSize: 12 }}>Bitte gültige E-Mail eingeben</span>}
@@ -239,7 +279,7 @@ export default function Page() {
                     Ich stimme der <a href="/datenschutz" target="_blank" style={{ color: "#1B98E0" }}>Datenschutzerklärung</a> zu und bin damit einverstanden, kontaktiert zu werden.
                   </span>
                 </label>
-                <button onClick={submit} disabled={!canSubmit} style={{
+                <button onClick={submit} disabled={!canSubmit} className="bp-submit" style={{
                   width: "100%", padding: "16px", background: canSubmit ? "#ffffff" : "rgba(255,255,255,0.2)", border: "none", borderRadius: 10,
                   color: canSubmit ? "#023B5B" : "rgba(255,255,255,0.5)", fontSize: 16, fontWeight: 700, cursor: canSubmit ? "pointer" : "default", fontFamily: "inherit",
                 }}>
