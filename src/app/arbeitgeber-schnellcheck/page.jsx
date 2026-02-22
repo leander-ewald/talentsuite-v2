@@ -26,9 +26,52 @@ const questions = [
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const phoneRe = /^(\+?[0-9]{7,15})$/;
 
+/* ─── Stable sub-components (defined OUTSIDE to prevent remounting) ─── */
+
+function Card({ children, style }) {
+  return (
+    <div style={{ background: `${W}08`, border: `1px solid ${W}12`, borderRadius: 16, padding: "32px 28px", ...style }}>
+      {children}
+    </div>
+  );
+}
+
+function CardMobile({ children, style }) {
+  return (
+    <div style={{ background: `${W}08`, border: `1px solid ${W}12`, borderRadius: 16, padding: "24px 18px", ...style }}>
+      {children}
+    </div>
+  );
+}
+
+function Btn({ children, onClick, primary, disabled, style: s, big }) {
+  return (
+    <button onClick={onClick} disabled={disabled} style={{
+      padding: big ? "16px 32px" : "14px 24px", border: primary ? "none" : `1px solid ${W}20`,
+      borderRadius: 10, color: W, fontSize: big ? 17 : 15, cursor: disabled ? "default" : "pointer",
+      fontWeight: primary ? 700 : 500, fontFamily: "inherit", transition: "all 0.2s",
+      background: disabled ? `${W}15` : primary ? `linear-gradient(135deg, ${A}, #0F7BC0)` : `${W}10`,
+      opacity: disabled ? 0.5 : 1, width: big ? "100%" : undefined, ...s,
+    }}>{children}</button>
+  );
+}
+
+function Input({ label, value, onChange, type, placeholder, error }) {
+  return (
+    <div style={{ marginBottom: 16 }}>
+      <label style={{ display: "block", color: `${W}70`, fontSize: 13, marginBottom: 6, fontWeight: 500 }}>{label}</label>
+      <input type={type || "text"} value={value} onChange={onChange} placeholder={placeholder}
+        style={{ width: "100%", padding: "12px 16px", background: `${W}08`, border: `1px solid ${error ? R : `${W}15`}`, borderRadius: 8, color: W, fontSize: 15, fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+      {error && <span style={{ color: R, fontSize: 12, marginTop: 4, display: "block" }}>{error}</span>}
+    </div>
+  );
+}
+
+/* ─── Main component ─── */
+
 export default function ArbeitgeberSchnellcheck() {
   const mob = useIsMobile();
-  const [step, setStep] = useState(0); // 0 = intro, 1-10 = questions, 11 = form, 12 = result
+  const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState(Array(10).fill(null));
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", branche: "" });
   const [dsgvo, setDsgvo] = useState(false);
@@ -74,29 +117,7 @@ export default function ArbeitgeberSchnellcheck() {
   };
 
   const progress = step === 0 ? 0 : step <= 10 ? (step / 12) * 100 : step === 11 ? 90 : 100;
-
-  const Card = ({ children, style }) => (
-    <div style={{ background: `${W}08`, border: `1px solid ${W}12`, borderRadius: 16, padding: mob ? "24px 18px" : "32px 28px", ...style }}>{children}</div>
-  );
-
-  const Btn = ({ children, onClick, primary, disabled, style: s, big }) => (
-    <button onClick={onClick} disabled={disabled} style={{
-      padding: big ? "16px 32px" : "14px 24px", border: primary ? "none" : `1px solid ${W}20`,
-      borderRadius: 10, color: W, fontSize: big ? 17 : 15, cursor: disabled ? "default" : "pointer",
-      fontWeight: primary ? 700 : 500, fontFamily: "inherit", transition: "all 0.2s",
-      background: disabled ? `${W}15` : primary ? `linear-gradient(135deg, ${A}, #0F7BC0)` : `${W}10`,
-      opacity: disabled ? 0.5 : 1, width: big ? "100%" : undefined, ...s,
-    }}>{children}</button>
-  );
-
-  const Input = ({ label, value, onChange, type, placeholder, error }) => (
-    <div style={{ marginBottom: 16 }}>
-      <label style={{ display: "block", color: `${W}70`, fontSize: 13, marginBottom: 6, fontWeight: 500 }}>{label}</label>
-      <input type={type || "text"} value={value} onChange={onChange} placeholder={placeholder}
-        style={{ width: "100%", padding: "12px 16px", background: `${W}08`, border: `1px solid ${error ? R : `${W}15`}`, borderRadius: 8, color: W, fontSize: 15, fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
-      {error && <span style={{ color: R, fontSize: 12, marginTop: 4, display: "block" }}>{error}</span>}
-    </div>
-  );
+  const CurCard = mob ? CardMobile : Card;
 
   return (
     <div style={{ background: `linear-gradient(135deg, ${D} 0%, ${B} 50%, #0A4D72 100%)`, minHeight: "80vh", position: "relative", overflow: "hidden" }}>
@@ -121,10 +142,10 @@ export default function ArbeitgeberSchnellcheck() {
 
           {/* ─── INTRO ─── */}
           {step === 0 && (
-            <Card>
+            <CurCard>
               <div style={{ textAlign: "center" }}>
-                <span style={{ fontSize: 48, display: "block", marginBottom: 16 }}>🎯</span>
-                <h1 style={{ color: W, fontSize: mob ? 24 : 32, fontWeight: 700, margin: "0 0 12px", lineHeight: 1.3 }}>
+                <span style={{ fontSize: 48 }}>🏢</span>
+                <h1 style={{ color: W, fontSize: mob ? 22 : 28, fontWeight: 800, margin: "16px 0 12px", lineHeight: 1.25 }}>
                   Arbeitgeber-Schnellcheck
                 </h1>
                 <p style={{ color: `${W}80`, fontSize: mob ? 15 : 17, lineHeight: 1.6, margin: "0 0 8px" }}>
@@ -136,12 +157,12 @@ export default function ArbeitgeberSchnellcheck() {
                 <Btn primary big onClick={() => fadeGo(1)}>Schnellcheck starten →</Btn>
                 <p style={{ color: `${W}40`, fontSize: 12, marginTop: 16 }}>100% kostenlos · Keine versteckten Kosten</p>
               </div>
-            </Card>
+            </CurCard>
           )}
 
           {/* ─── QUESTIONS 1-10 ─── */}
           {step >= 1 && step <= 10 && (
-            <Card>
+            <CurCard>
               <p style={{ color: A, fontSize: 13, fontWeight: 600, margin: "0 0 12px" }}>Frage {step} / 10</p>
               <h2 style={{ color: W, fontSize: mob ? 20 : 24, fontWeight: 700, margin: "0 0 16px", lineHeight: 1.35 }}>
                 {questions[step - 1].q}
@@ -164,26 +185,26 @@ export default function ArbeitgeberSchnellcheck() {
               {step > 1 && (
                 <button onClick={() => fadeGo(step - 1)} style={{ marginTop: 16, background: "none", border: "none", color: `${W}50`, cursor: "pointer", fontSize: 14, fontFamily: "inherit" }}>← Zurück</button>
               )}
-            </Card>
+            </CurCard>
           )}
 
           {/* ─── CONTACT FORM ─── */}
           {step === 11 && !sent && (
-            <Card>
+            <CurCard>
               <h2 style={{ color: W, fontSize: mob ? 20 : 24, fontWeight: 700, margin: "0 0 8px" }}>
                 Fast geschafft! 🎉
               </h2>
               <p style={{ color: `${W}70`, fontSize: 15, margin: "0 0 24px" }}>
                 Tragen Sie Ihre Daten ein, um Ihren persönlichen Score und Maßnahmenplan zu sehen.
               </p>
-              <Input label="Name *" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Max Mustermann" />
-              <Input label="E-Mail *" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="max@firma.de"
+              <Input label="Name *" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="Max Mustermann" />
+              <Input label="E-Mail *" type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} placeholder="max@firma.de"
                 error={form.email && !emailValid ? "Bitte geben Sie eine gültige E-Mail-Adresse ein" : null} />
-              <Input label="Telefon" type="tel" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} placeholder="+49 170 1234567"
+              <Input label="Telefon" type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} placeholder="+49 170 1234567"
                 error={form.phone && !phoneValid ? "Bitte geben Sie eine gültige Telefonnummer ein" : null} />
               <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: 12 }}>
-                <Input label="Firma" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} placeholder="Firmenname" />
-                <Input label="Branche" value={form.branche} onChange={e => setForm({ ...form, branche: e.target.value })} placeholder="z.B. Handwerk, Pflege" />
+                <Input label="Firma" value={form.company} onChange={e => setForm(f => ({ ...f, company: e.target.value }))} placeholder="Firmenname" />
+                <Input label="Branche" value={form.branche} onChange={e => setForm(f => ({ ...f, branche: e.target.value }))} placeholder="z.B. Handwerk, Pflege" />
               </div>
               <label style={{ display: "flex", alignItems: "flex-start", gap: 10, marginTop: 8, cursor: "pointer" }}>
                 <input type="checkbox" checked={dsgvo} onChange={e => setDsgvo(e.target.checked)} style={{ marginTop: 4, accentColor: A }} />
@@ -192,13 +213,13 @@ export default function ArbeitgeberSchnellcheck() {
                 </span>
               </label>
               <Btn primary big onClick={submit} disabled={!canSubmit} style={{ marginTop: 20 }}>Ergebnis anzeigen →</Btn>
-            </Card>
+            </CurCard>
           )}
 
           {/* ─── RESULT ─── */}
           {step === 12 && (
             <div>
-              <Card style={{ textAlign: "center", marginBottom: 20 }}>
+              <CurCard style={{ textAlign: "center", marginBottom: 20 }}>
                 <div style={{ width: 120, height: 120, borderRadius: "50%", border: `4px solid ${levelColor}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", background: `${levelColor}10` }}>
                   <span style={{ fontSize: 36, fontWeight: 800, color: levelColor }}>{pct}%</span>
                 </div>
@@ -208,11 +229,10 @@ export default function ArbeitgeberSchnellcheck() {
                 <p style={{ color: `${W}60`, fontSize: 15, margin: 0 }}>
                   {yesCount} von 10 Kriterien erfüllt · Score: {pct} von 100
                 </p>
-              </Card>
+              </CurCard>
 
-              {/* Weaknesses */}
               {weaknesses.length > 0 && (
-                <Card style={{ marginBottom: 20 }}>
+                <CurCard style={{ marginBottom: 20 }}>
                   <h3 style={{ color: W, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>🔴 Ihre 3 größten Hebel</h3>
                   {weaknesses.map((w, i) => (
                     <div key={i} style={{ padding: "14px 16px", background: `${R}08`, border: `1px solid ${R}20`, borderRadius: 10, marginBottom: i < weaknesses.length - 1 ? 10 : 0 }}>
@@ -220,11 +240,10 @@ export default function ArbeitgeberSchnellcheck() {
                       <p style={{ color: `${W}60`, fontSize: 13, margin: 0 }}>{w.tip}</p>
                     </div>
                   ))}
-                </Card>
+                </CurCard>
               )}
 
-              {/* CTA */}
-              <Card style={{ background: `linear-gradient(135deg, ${A}15, ${G}10)`, border: `1px solid ${A}30`, textAlign: "center" }}>
+              <CurCard style={{ background: `linear-gradient(135deg, ${A}15, ${G}10)`, border: `1px solid ${A}30`, textAlign: "center" }}>
                 <h3 style={{ color: W, fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 12px" }}>
                   Wollen Sie diese Lücken schließen?
                 </h3>
@@ -236,7 +255,7 @@ export default function ArbeitgeberSchnellcheck() {
                   Kostenlose Recruiting-Analyse buchen →
                 </a>
                 <p style={{ color: `${W}40`, fontSize: 12, marginTop: 12 }}>Robert Engel, Geschäftsführer TalentSuite · 20 Min. · Unverbindlich</p>
-              </Card>
+              </CurCard>
 
               <button onClick={() => { setStep(0); setAnswers(Array(10).fill(null)); setForm({ name: "", email: "", phone: "", company: "", branche: "" }); setDsgvo(false); setSent(false); }}
                 style={{ display: "block", margin: "20px auto 0", background: "none", border: `1px solid ${W}20`, borderRadius: 8, color: `${W}50`, padding: "10px 20px", cursor: "pointer", fontSize: 13, fontFamily: "inherit" }}>
