@@ -37,10 +37,23 @@ export default function Page() {
   };
 
   return (
-    <>
+    <div className="branchen-page">
+      <style>{`
+        .branchen-page, .branchen-page * { box-sizing: border-box; }
+        .branchen-page h1, .branchen-page h2, .branchen-page h3, .branchen-page h4,
+        .branchen-page p, .branchen-page span, .branchen-page label, .branchen-page div,
+        .branchen-page a, .branchen-page button, .branchen-page input {
+          color: inherit !important;
+          font-family: inherit;
+        }
+        .branchen-page input::placeholder { color: rgba(255,255,255,0.4) !important; }
+        .branchen-page a { text-decoration: none; }
+        .bp-hero { background: linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%); padding: ${mob ? "48px 16px 56px" : "80px 24px 88px"}; position: relative; overflow: hidden; }
+        .bp-body { background: #f0f4f7 !important; padding: ${mob ? "32px 16px 48px" : "56px 24px 72px"}; }
+      `}</style>
+
       {/* HERO */}
       <div style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", padding: mob ? "48px 16px 56px" : "80px 24px 88px", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: -100, right: -100, width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(27,152,224,0.07), transparent 70%)", pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative" }}>
           <span style={{ fontSize: 56, display: "block", marginBottom: 12 }}>⚙️</span>
           <h1 style={{ color: "#ffffff", fontSize: mob ? 26 : 42, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.2 }}>
@@ -63,13 +76,13 @@ export default function Page() {
           {/* Stats */}
           <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: 12, marginBottom: 32 }}>
             {[
-              { n: "45.000+", label: "Offene Stellen", color: "#1B98E0" },
-              { n: "175 Tage", label: "Ø Vakanzzeit", color: "#EF4444" },
-              { n: "18-26 €", label: "Kosten/Bewerbung", color: "#10B981" },
-              { n: "Ø 32 Tage", label: "Bis zur Einstellung", color: "#1B98E0" },
+              { n: "45.000+", label: "Offene Stellen", c: "#1B98E0" },
+              { n: "175 Tage", label: "Ø Vakanzzeit", c: "#EF4444" },
+              { n: "18-26 €", label: "Kosten/Bewerbung", c: "#10B981" },
+              { n: "Ø 32 Tage", label: "Bis zur Einstellung", c: "#1B98E0" },
             ].map((s, idx) => (
               <div key={idx} style={{ background: "#ffffff", borderRadius: 14, padding: mob ? "16px 12px" : "20px 16px", textAlign: "center", boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}>
-                <div style={{ fontSize: mob ? 22 : 28, fontWeight: 800, color: s.color }}>{s.n}</div>
+                <div style={{ fontSize: mob ? 22 : 28, fontWeight: 800, color: s.c }}>{s.n}</div>
                 <div style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>{s.label}</div>
               </div>
             ))}
@@ -81,16 +94,16 @@ export default function Page() {
               ⚙️ Die Situation in der Produktion und Industrie
             </h2>
             <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
-              Die deutsche Industrie steht vor einer Qualifikationslücke. Industrie 4.0, Automatisierung und Digitalisierung erfordern neue Kompetenzen, die auf dem Arbeitsmarkt kaum verfügbar sind.
+              Die deutsche Industrie steht vor einer Qualifikationslücke durch Industrie 4.0, Automatisierung und Digitalisierung.
             </p>
             <div style={{ padding: "14px 16px", background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.15)", borderRadius: 10, marginBottom: 10 }}>
-              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🔴</strong> Industrie 4.0: CNC-, SPS- und IoT-Kompetenzen werden immer wichtiger, aber die Ausbildung hinkt der Entwicklung hinterher.</p>
+              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🔴</strong> Industrie 4.0: CNC-, SPS- und IoT-Kompetenzen werden immer wichtiger, aber die Ausbildung hinkt hinterher.</p>
             </div>
             <div style={{ padding: "14px 16px", background: "#f0f4f7", border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 10 }}>
-              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟡</strong> Schichtarbeit: Wechselschicht und Nachtarbeit schrecken viele potenzielle Bewerber ab — besonders jüngere Generationen.</p>
+              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟡</strong> Schichtarbeit: Wechselschicht und Nachtarbeit schrecken viele potenzielle Bewerber ab.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: "#f0f4f7", border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 0 }}>
-              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟠</strong> Konzern-Konkurrenz: Große Industrieunternehmen können höhere Gehälter und bessere Benefits bieten als mittelständische Produktionsbetriebe.</p>
+            <div style={{ padding: "14px 16px", background: "#f0f4f7", border: "1px solid #E2E8F0", borderRadius: 10 }}>
+              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟠</strong> Konzern-Konkurrenz: Große Industrieunternehmen bieten höhere Gehälter und bessere Benefits als der Mittelstand.</p>
             </div>
           </div>
 
@@ -100,7 +113,7 @@ export default function Page() {
               ❌ Warum Jobbörsen im Bereich Produktion & Industrie nicht mehr funktionieren
             </h2>
             <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: 0 }}>
-              Produktionsmitarbeiter suchen nicht aktiv auf Karriereportalen — sie nutzen Social Media nach der Schicht und sind dort erreichbar.
+              Produktionsmitarbeiter suchen nicht aktiv auf Karriereportalen — sie nutzen Social Media nach der Schicht.
             </p>
           </div>
 
@@ -110,11 +123,11 @@ export default function Page() {
               ✅ Social Recruiting für Produktion & Industrie: So funktioniert es
             </h2>
             <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
-              Statt auf die 20% zu warten, die aktiv suchen, sprechen wir die 80% an, die passiv offen sind — direkt auf Facebook, Instagram und Co.
+              Statt auf die 20% zu warten, die aktiv suchen, sprechen wir die 80% an, die passiv offen sind.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr 1fr", gap: 12 }}>
               {[
-                { icon: "🎯", t: "Gezielte Ansprache", d: "Wir erreichen Industriemechaniker und CNC-Fachkräfte im Umkreis von 30km — nach Beruf, Alter und Interessen." },
+                { icon: "🎯", t: "Gezielte Ansprache", d: "Wir erreichen Industriemechaniker und CNC-Fachkräfte im Umkreis von 30km." },
                 { icon: "📱", t: "60-Sekunden-Bewerbung", d: "Kein Anschreiben, kein Lebenslauf-Upload. Bewerben direkt vom Smartphone in unter einer Minute." },
                 { icon: "📊", t: "Messbare Ergebnisse", d: "18-26 € pro Bewerbung bei 12-16% Conversion. Transparent und nachvollziehbar." },
               ].map((s, idx) => (
@@ -149,23 +162,18 @@ export default function Page() {
 
           {/* SEO Content */}
           <div style={{ background: "#ffffff", borderRadius: 16, padding: mob ? "20px 18px" : "28px 28px", marginBottom: 24, boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
-            <h2 style={{ color: "#023B5B", fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 12px" }}>
-              So gewinnen erfolgreiche Produktionsbetriebe heute Fachkräfte
-            </h2>
-            <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 12px" }}>Der Fachkräftemangel in der Produktion ist keine vorübergehende Erscheinung — er ist strukturell und wird durch Industrie 4.0 weiter verschärft.</p>
-            <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 12px" }}>Erfolgreiche Betriebe setzen deshalb auf einen Paradigmenwechsel: Statt darauf zu warten, dass Bewerber zu ihnen kommen, gehen sie aktiv auf potenzielle Kandidaten zu.</p>
-            <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: 0 }}>Die Ergebnisse sprechen für sich: 18-26 € pro qualifizierte Bewerbung, 12-16% Conversion-Rate und durchschnittlich 32 Tage bis zur Einstellung.</p>
+            <h2 style={{ color: "#023B5B", fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 12px" }}>So gewinnen erfolgreiche Produktionsbetriebe heute Fachkräfte</h2>
+            <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 12px" }}>Der Fachkräftemangel in der Produktion ist strukturell und wird durch Industrie 4.0 verschärft.</p>
+            <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 12px" }}>Erfolgreiche Betriebe gehen aktiv auf potenzielle Kandidaten zu.</p>
+            <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: 0 }}>Die Ergebnisse: 18-26 € pro qualifizierte Bewerbung, 12-16% Conversion-Rate, Ø 32 Tage bis Einstellung.</p>
           </div>
 
-          {/* CTA Section */}
+          {/* CTA */}
           <div style={{ background: "linear-gradient(135deg, #011E2F, #023B5B)", borderRadius: 16, padding: mob ? "32px 18px" : "44px 32px", textAlign: "center" }}>
-            <h2 style={{ color: "#ffffff", fontSize: mob ? 22 : 30, fontWeight: 800, margin: "0 0 10px" }}>
-              CNC-Fachkraft oder Maschinenführer gesucht?
-            </h2>
+            <h2 style={{ color: "#ffffff", fontSize: mob ? 22 : 30, fontWeight: 800, margin: "0 0 10px" }}>CNC-Fachkraft oder Maschinenführer gesucht?</h2>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: mob ? 15 : 17, margin: "0 0 24px", lineHeight: 1.6 }}>
               In 20 Minuten zeigen wir Ihnen, wie viele passende Fachkräfte in Ihrer Region über Social Media erreichbar sind — und was eine Kampagne kosten würde.
             </p>
-
             {!showForm && !sent ? (
               <>
                 <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer"
@@ -185,28 +193,20 @@ export default function Page() {
               </div>
             ) : (
               <div style={{ maxWidth: 440, margin: "0 auto", textAlign: "left" }}>
-                <div style={{ marginBottom: 14 }}>
-                  <label style={{ display: "block", color: "rgba(255,255,255,0.7)", fontSize: 13, marginBottom: 4 }}>Name *</label>
-                  <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Max Mustermann"
-                    style={{ width: "100%", padding: "12px 14px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, color: "#ffffff", fontSize: 15, fontFamily: "inherit", boxSizing: "border-box", outline: "none" }} />
-                </div>
-                <div style={{ marginBottom: 14 }}>
-                  <label style={{ display: "block", color: "rgba(255,255,255,0.7)", fontSize: 13, marginBottom: 4 }}>E-Mail *</label>
-                  <input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="max@firma.de"
-                    style={{ width: "100%", padding: "12px 14px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, color: "#ffffff", fontSize: 15, fontFamily: "inherit", boxSizing: "border-box", outline: "none" }} />
-                  {form.email && !emailValid && <span style={{ color: "#EF4444", fontSize: 12 }}>Bitte gültige E-Mail eingeben</span>}
-                </div>
-                <div style={{ marginBottom: 14 }}>
-                  <label style={{ display: "block", color: "rgba(255,255,255,0.7)", fontSize: 13, marginBottom: 4 }}>Telefon</label>
-                  <input type="tel" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} placeholder="+49 170 1234567"
-                    style={{ width: "100%", padding: "12px 14px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, color: "#ffffff", fontSize: 15, fontFamily: "inherit", boxSizing: "border-box", outline: "none" }} />
-                  {form.phone && !phoneValid && <span style={{ color: "#EF4444", fontSize: 12 }}>Bitte gültige Telefonnummer</span>}
-                </div>
-                <div style={{ marginBottom: 14 }}>
-                  <label style={{ display: "block", color: "rgba(255,255,255,0.7)", fontSize: 13, marginBottom: 4 }}>Firma</label>
-                  <input type="text" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} placeholder="Firmenname"
-                    style={{ width: "100%", padding: "12px 14px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, color: "#ffffff", fontSize: 15, fontFamily: "inherit", boxSizing: "border-box", outline: "none" }} />
-                </div>
+                {[
+                  { label: "Name *", k: "name", ph: "Max Mustermann", type: "text" },
+                  { label: "E-Mail *", k: "email", ph: "max@firma.de", type: "email" },
+                  { label: "Telefon", k: "phone", ph: "+49 170 1234567", type: "tel" },
+                  { label: "Firma", k: "company", ph: "Firmenname", type: "text" },
+                ].map((f, idx) => (
+                  <div key={idx} style={{ marginBottom: 14 }}>
+                    <label style={{ display: "block", color: "rgba(255,255,255,0.7)", fontSize: 13, marginBottom: 4 }}>{f.label}</label>
+                    <input type={f.type} value={form[f.k]} onChange={e => setForm({ ...form, [f.k]: e.target.value })} placeholder={f.ph}
+                      style={{ width: "100%", padding: "12px 14px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, color: "#ffffff", fontSize: 15, fontFamily: "inherit", boxSizing: "border-box", outline: "none" }} />
+                    {f.k === "email" && form.email && !emailValid && <span style={{ color: "#EF4444", fontSize: 12 }}>Bitte gültige E-Mail eingeben</span>}
+                    {f.k === "phone" && form.phone && !phoneValid && <span style={{ color: "#EF4444", fontSize: 12 }}>Bitte gültige Telefonnummer</span>}
+                  </div>
+                ))}
                 <label style={{ display: "flex", alignItems: "flex-start", gap: 8, margin: "12px 0 16px", cursor: "pointer" }}>
                   <input type="checkbox" checked={dsgvo} onChange={e => setDsgvo(e.target.checked)} style={{ marginTop: 3, accentColor: "#1B98E0" }} />
                   <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, lineHeight: 1.5 }}>
@@ -221,11 +221,10 @@ export default function Page() {
                 </button>
               </div>
             )}
-
             <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, marginTop: 16 }}>Robert Engel · Geschäftsführer TalentSuite · 100% kostenlos &amp; unverbindlich</p>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
