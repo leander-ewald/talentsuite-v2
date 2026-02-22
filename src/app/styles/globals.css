@@ -1759,7 +1759,7 @@ footer .footer_menu a:hover {
   color: #023B5B !important;
 }
 
-/* Font sizes – override global h1:64px, h2:50px, h3:34px, p:20px */
+/* Font sizes */
 #tb h1 {
   font-size: clamp(28px, 5vw, 40px) !important;
   line-height: 1.2 !important;
@@ -1784,21 +1784,31 @@ footer .footer_menu a:hover {
   font-size: inherit !important;
 }
 
-/* Kill global section styles inside #tb */
-#tb .tb-section,
-div#tb .tb-section,
-div#tb div.tb-section {
-  display: block !important;
-  padding: 0 !important;
-  width: 100% !important;
-  position: relative !important;
-  justify-content: initial !important;
-  align-items: initial !important;
+/* Utility: containers */
+#tb .tb-container {
+  max-width: 720px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
 }
-#tb section,
-div#tb section {
-  display: block !important;
-  padding: 0 !important;
+#tb .tb-container-wide {
+  max-width: 960px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+}
+
+/* Utility: white card */
+#tb .tb-card {
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  padding: 48px 40px !important;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.08) !important;
+}
+
+/* Utility: 3-column grid */
+#tb .tb-grid-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 32px !important;
 }
 
 /* Stat values */
@@ -1819,11 +1829,42 @@ div#tb section {
 #tb [data-tb="link"] { color: #2D8CFF !important; text-decoration: underline !important; }
 #tb [data-tb="pribtn"] { color: #ffffff !important; font-size: 16px !important; }
 
-/* ── Mobile ── */
+/* ── Mobile Responsive ── */
 @media (max-width: 768px) {
-  #tb h1 { font-size: 28px !important; }
-  #tb h2 { font-size: 22px !important; }
-  #tb div[style*="grid-template-columns: repeat(3"] {
+  #tb {
+    padding-top: 60px !important;
+  }
+  #tb h1 {
+    font-size: 26px !important;
+  }
+  #tb h2 {
+    font-size: 20px !important;
+  }
+  #tb .tb-grid-3 {
     grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  #tb .tb-card {
+    padding: 28px 20px !important;
+    border-radius: 16px !important;
+  }
+  #tb .tb-container,
+  #tb .tb-container-wide {
+    padding: 0 16px !important;
+  }
+  #tb .tb-stat-val {
+    font-size: 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #tb h1 {
+    font-size: 24px !important;
+  }
+  #tb h2 {
+    font-size: 18px !important;
+  }
+  #tb .tb-card {
+    padding: 24px 16px !important;
   }
 }

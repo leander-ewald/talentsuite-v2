@@ -17,8 +17,8 @@ export default function TerminBestaetigt() {
       <div id="tb">
 
         {/* ══════════ HERO ══════════ */}
-        <div className="tb-section" style={{ textAlign: "center", paddingTop: 100, paddingBottom: 60 }}>
-          <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px" }}>
+        <div style={{ textAlign: "center", marginBottom: 60 }}>
+          <div className="tb-container">
             <div style={{
               width: 80, height: 80, borderRadius: "50%",
               background: "rgba(45,140,255,0.15)",
@@ -35,19 +35,15 @@ export default function TerminBestaetigt() {
         </div>
 
         {/* ══════════ STEPS HEADING ══════════ */}
-        <div className="tb-section" style={{ textAlign: "center", paddingBottom: 40 }}>
+        <div style={{ textAlign: "center", marginBottom: 32 }}>
           <h2 data-tb="white">So geht es weiter</h2>
         </div>
 
         {/* ══════════ STEPS CARD ══════════ */}
-        <div className="tb-section" style={{ paddingBottom: 80 }}>
-          <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 24px" }}>
-            <div style={{
-              background: "#ffffff", borderRadius: 20,
-              padding: "48px 40px",
-              boxShadow: "0 4px 30px rgba(0,0,0,0.08)",
-            }}>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 40 }}>
+        <div style={{ marginBottom: 60 }}>
+          <div className="tb-container-wide">
+            <div className="tb-card">
+              <div className="tb-grid-3">
                 {[
                   { icon: "📧", title: "1. Bestätigungs-E-Mail prüfen", desc: "Sie erhalten in Kürze eine Kalender-Einladung per E-Mail mit allen Details." },
                   { icon: "📋", title: "2. Kurz vorbereiten", desc: "Überlegen Sie, welche Stellen Sie besetzen möchten und was Sie bisher versucht haben." },
@@ -71,13 +67,9 @@ export default function TerminBestaetigt() {
         </div>
 
         {/* ══════════ WAS SIE ERWARTET ══════════ */}
-        <div className="tb-section" style={{ paddingBottom: 80 }}>
-          <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px" }}>
-            <div style={{
-              background: "#ffffff", borderRadius: 20,
-              padding: "48px 40px",
-              boxShadow: "0 4px 30px rgba(0,0,0,0.08)",
-            }}>
+        <div style={{ marginBottom: 60 }}>
+          <div className="tb-container">
+            <div className="tb-card">
               <h2 style={{ textAlign: "center", marginBottom: 32 }}>Was Sie in der Analyse erwartet</h2>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {[
@@ -101,19 +93,16 @@ export default function TerminBestaetigt() {
         </div>
 
         {/* ══════════ STATS ══════════ */}
-        <div className="tb-section" style={{ paddingBottom: 80 }}>
-          <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, textAlign: "center" }}>
+        <div style={{ marginBottom: 60 }}>
+          <div className="tb-container">
+            <div className="tb-grid-3">
               {[
                 { value: "50+", label: "Betriebe betreut" },
                 { value: "15-25€", label: "Ø Kosten pro Bewerbung" },
                 { value: "30 Tage", label: "Ø bis zur Einstellung" },
               ].map((stat, i) => (
-                <div key={i} style={{
-                  background: "#ffffff", borderRadius: 16, padding: "28px 16px",
-                  boxShadow: "0 2px 16px rgba(0,0,0,0.06)",
-                }}>
-                  <div data-tb="accent" style={{ fontWeight: 800, marginBottom: 8 }} className="tb-stat-val">
+                <div key={i} className="tb-card" style={{ textAlign: "center", padding: "28px 16px" }}>
+                  <div data-tb="accent" className="tb-stat-val" style={{ fontWeight: 800, marginBottom: 8 }}>
                     {stat.value}
                   </div>
                   <p data-tb="gray" style={{ margin: 0 }}>{stat.label}</p>
@@ -124,8 +113,8 @@ export default function TerminBestaetigt() {
         </div>
 
         {/* ══════════ ROBERT ENGEL ══════════ */}
-        <div className="tb-section" style={{ textAlign: "center", paddingBottom: 80 }}>
-          <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px" }}>
+        <div style={{ textAlign: "center", marginBottom: 60 }}>
+          <div className="tb-container">
             <p data-tb="white" style={{ fontWeight: 600 }}>
               Robert Engel · Geschäftsführer TalentSuite
             </p>
@@ -137,8 +126,8 @@ export default function TerminBestaetigt() {
         </div>
 
         {/* ══════════ CTA ══════════ */}
-        <div className="tb-section" style={{ textAlign: "center", padding: "80px 24px 100px" }}>
-          <div style={{ maxWidth: 600, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", paddingBottom: 100 }}>
+          <div className="tb-container" style={{ maxWidth: 600 }}>
             <h2 data-tb="white">Bereit für messbares Wachstum?</h2>
             <p data-tb="muted" style={{ marginTop: 18, marginBottom: 32 }}>
               In einem kostenlosen Erstgespräch analysieren wir Ihre Situation und zeigen Ihnen, welche Hebel für Ihr Unternehmen den größten Impact haben.
