@@ -1745,17 +1745,16 @@ footer .footer_menu a:hover {
 }
 /* ============================================
    Override: Termin Bestätigt page (#tb)
-   Same pattern as #dc, #rf, #ep, #kp, #br
    ============================================ */
 
-/* Base: all text inside #tb defaults to dark (for white cards) */
+/* Base: dark text for white card areas */
 #tb h1, #tb h2, #tb h3, #tb h4, #tb h5, #tb h6,
 #tb span, #tb li, #tb p, #tb div, #tb label, #tb button,
 #tb input, #tb textarea, #tb summary, #tb a {
   color: #023B5B !important;
 }
 
-/* Reset global font-size overrides inside #tb */
+/* Font sizes – override global h1:64px, h2:50px, h3:34px, p:20px */
 #tb h1 {
   font-size: clamp(28px, 5vw, 40px) !important;
   line-height: 1.2 !important;
@@ -1780,14 +1779,22 @@ footer .footer_menu a:hover {
   font-size: inherit !important;
 }
 
-/* Kill global section styles inside #tb */
-#tb .tb-section {
+/* Kill global section { padding: 80px 0; display: flex; } */
+#tb .tb-section,
+#tb div.tb-section,
+div#tb .tb-section,
+div#tb div.tb-section {
   display: block !important;
   padding: 0 !important;
   width: 100% !important;
   position: relative !important;
+  justify-content: initial !important;
+  align-items: initial !important;
 }
-#tb section {
+
+/* Also override if browser renders .tb-section as section somehow */
+#tb section,
+div#tb section {
   display: block !important;
   padding: 0 !important;
 }
@@ -1806,18 +1813,14 @@ footer .footer_menu a:hover {
 #tb [data-tb="gray"] { color: #64748B !important; }
 #tb [data-tb="accent"] { color: #2D8CFF !important; }
 
-/* ── Interactive elements ── */
+/* ── Interactive ── */
 #tb [data-tb="link"] { color: #2D8CFF !important; text-decoration: underline !important; }
 #tb [data-tb="pribtn"] { color: #ffffff !important; font-size: 16px !important; }
 
-/* ── Mobile responsive ── */
+/* ── Mobile ── */
 @media (max-width: 768px) {
-  #tb h1 {
-    font-size: 28px !important;
-  }
-  #tb h2 {
-    font-size: 22px !important;
-  }
+  #tb h1 { font-size: 28px !important; }
+  #tb h2 { font-size: 22px !important; }
   #tb div[style*="grid-template-columns: repeat(3"] {
     grid-template-columns: 1fr !important;
   }
