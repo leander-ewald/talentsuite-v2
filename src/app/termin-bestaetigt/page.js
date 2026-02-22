@@ -1,11 +1,63 @@
 "use client";
 
 import Head from "next/head";
+import { useEffect } from "react";
 
 const ACCENT = "#2D8CFF";
 const BRAND = "#023B5B";
 
 export default function TerminBestaetigt() {
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.setAttribute("data-tb-styles", "true");
+    style.textContent = `
+      #tb { padding-top: 80px !important; }
+
+      #tb h1, #tb h2, #tb h3, #tb h4, #tb h5, #tb h6,
+      #tb span, #tb li, #tb p, #tb div, #tb label, #tb button,
+      #tb input, #tb textarea, #tb summary, #tb a {
+        color: #023B5B !important;
+      }
+
+      #tb h1 { font-size: clamp(28px, 5vw, 40px) !important; line-height: 1.2 !important; font-weight: 800 !important; }
+      #tb h2 { font-size: clamp(22px, 3.5vw, 28px) !important; line-height: 1.3 !important; font-weight: 700 !important; }
+      #tb h3 { font-size: 16px !important; line-height: 1.4 !important; font-weight: 700 !important; }
+      #tb p  { font-size: 15px !important; line-height: 1.6 !important; opacity: 1 !important; }
+      #tb span { font-size: inherit !important; }
+
+      #tb .tb-container      { max-width: 720px !important; margin: 0 auto !important; padding: 0 24px !important; }
+      #tb .tb-container-wide { max-width: 960px !important; margin: 0 auto !important; padding: 0 24px !important; }
+      #tb .tb-card            { background: #ffffff !important; border-radius: 20px !important; padding: 48px 40px !important; box-shadow: 0 4px 30px rgba(0,0,0,0.08) !important; }
+      #tb .tb-grid-3          { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 32px !important; }
+      #tb .tb-stat-val        { font-size: clamp(22px, 4vw, 30px) !important; }
+
+      #tb [data-tb="white"]   { color: #ffffff !important; }
+      #tb [data-tb="muted"]   { color: #cccccc !important; }
+      #tb [data-tb="body"]    { color: #475569 !important; }
+      #tb [data-tb="gray"]    { color: #64748B !important; }
+      #tb [data-tb="accent"]  { color: #2D8CFF !important; }
+      #tb [data-tb="link"]    { color: #2D8CFF !important; text-decoration: underline !important; }
+      #tb [data-tb="pribtn"]  { color: #ffffff !important; font-size: 16px !important; }
+
+      @media (max-width: 768px) {
+        #tb { padding-top: 60px !important; }
+        #tb h1 { font-size: 26px !important; }
+        #tb h2 { font-size: 20px !important; }
+        #tb .tb-grid-3 { grid-template-columns: 1fr !important; gap: 24px !important; }
+        #tb .tb-card { padding: 28px 20px !important; border-radius: 16px !important; }
+        #tb .tb-container, #tb .tb-container-wide { padding: 0 16px !important; }
+        #tb .tb-stat-val { font-size: 24px !important; }
+      }
+      @media (max-width: 480px) {
+        #tb h1 { font-size: 24px !important; }
+        #tb h2 { font-size: 18px !important; }
+        #tb .tb-card { padding: 24px 16px !important; }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
+
   return (
     <>
       <Head>
@@ -115,9 +167,7 @@ export default function TerminBestaetigt() {
         {/* ══════════ ROBERT ENGEL ══════════ */}
         <div style={{ textAlign: "center", marginBottom: 60 }}>
           <div className="tb-container">
-            <p data-tb="white" style={{ fontWeight: 600 }}>
-              Robert Engel · Geschäftsführer TalentSuite
-            </p>
+            <p data-tb="white" style={{ fontWeight: 600 }}>Robert Engel · Geschäftsführer TalentSuite</p>
             <p data-tb="muted" style={{ marginTop: 10 }}>
               Fragen vorab? Schreiben Sie uns an{" "}
               <a data-tb="link" href="mailto:info@talentsuite.io">info@talentsuite.io</a>
@@ -134,8 +184,7 @@ export default function TerminBestaetigt() {
             </p>
             <a data-tb="pribtn" href="https://calendar.app.google/mU29snzEsgqsnMXy8" style={{
               display: "inline-block", padding: "16px 36px", borderRadius: 12,
-              fontWeight: 700, textDecoration: "none",
-              background: ACCENT,
+              fontWeight: 700, textDecoration: "none", background: ACCENT,
               boxShadow: "0 4px 20px rgba(45,140,255,0.3)",
             }}>
               Kostenlose Potenzialanalyse buchen
