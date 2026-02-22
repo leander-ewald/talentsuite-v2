@@ -1743,3 +1743,82 @@ footer .footer_menu a:hover {
 .testimonial_section .swiper-wrapper {
   overflow: visible !important;
 }
+/* ============================================
+   Override: Termin Bestätigt page (#tb)
+   Same pattern as #dc, #rf, #ep, #kp, #br
+   ============================================ */
+
+/* Base: all text inside #tb defaults to dark (for white cards) */
+#tb h1, #tb h2, #tb h3, #tb h4, #tb h5, #tb h6,
+#tb span, #tb li, #tb p, #tb div, #tb label, #tb button,
+#tb input, #tb textarea, #tb summary, #tb a {
+  color: #023B5B !important;
+}
+
+/* Reset global font-size overrides inside #tb */
+#tb h1 {
+  font-size: clamp(28px, 5vw, 40px) !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+}
+#tb h2 {
+  font-size: clamp(22px, 3.5vw, 28px) !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+}
+#tb h3 {
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  font-weight: 700 !important;
+}
+#tb p {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  opacity: 1 !important;
+}
+#tb span {
+  font-size: inherit !important;
+}
+
+/* Kill global section styles inside #tb */
+#tb .tb-section {
+  display: block !important;
+  padding: 0 !important;
+  width: 100% !important;
+  position: relative !important;
+}
+#tb section {
+  display: block !important;
+  padding: 0 !important;
+}
+
+/* Stat values */
+#tb .tb-stat-val {
+  font-size: clamp(22px, 4vw, 30px) !important;
+}
+
+/* ── Light text on dark background ── */
+#tb [data-tb="white"] { color: #ffffff !important; }
+#tb [data-tb="muted"] { color: #cccccc !important; }
+
+/* ── Dark text on white cards ── */
+#tb [data-tb="body"] { color: #475569 !important; }
+#tb [data-tb="gray"] { color: #64748B !important; }
+#tb [data-tb="accent"] { color: #2D8CFF !important; }
+
+/* ── Interactive elements ── */
+#tb [data-tb="link"] { color: #2D8CFF !important; text-decoration: underline !important; }
+#tb [data-tb="pribtn"] { color: #ffffff !important; font-size: 16px !important; }
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+  #tb h1 {
+    font-size: 28px !important;
+  }
+  #tb h2 {
+    font-size: 22px !important;
+  }
+  #tb div[style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+}
