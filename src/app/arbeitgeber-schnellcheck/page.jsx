@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { trackMetaLead } from "../components/MetaPixel";
 
 const B = "#023B5B", D = "#011E2F", A = "#1B98E0", G = "#10B981", W = "#FFFFFF", R = "#EF4444", Y = "#F59E0B";
 
@@ -68,6 +69,7 @@ export default function ArbeitgeberSchnellcheck() {
         }),
       });
     } catch (e) { console.error(e); }
+    trackMetaLead({ formName: "arbeitgeber-schnellcheck", category: "leadmagnet", value: 50 });
     fadeGo(12);
   };
 
