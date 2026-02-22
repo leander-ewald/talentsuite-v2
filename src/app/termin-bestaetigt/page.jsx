@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { trackMetaLead } from "../components/MetaPixel";
 
-const B = "#023B5B", D = "#011E2F", A = "#1B98E0", G = "#10B981", W = "#ffffff", L = "#f0f4f7";
-
 function useIsMobile() {
   const [m, setM] = useState(false);
   useEffect(() => { const c = () => setM(window.innerWidth < 768); c(); window.addEventListener("resize", c); return () => window.removeEventListener("resize", c); }, []);
@@ -17,7 +15,6 @@ export default function TerminBestaetigt() {
   useEffect(() => {
     if (!tracked) {
       trackMetaLead({ formName: "termin-bestaetigt", category: "booking", value: 500 });
-      // Also fire a Schedule event for higher-value tracking
       if (typeof window !== "undefined" && window.fbq) {
         window.fbq("track", "Schedule", {
           content_name: "beratungsgespraech",
@@ -37,59 +34,59 @@ export default function TerminBestaetigt() {
   ];
 
   return (
-    <>
+    <div style={{ background: "#f0f4f7", minHeight: "100vh" }}>
       {/* Hero */}
       <div style={{
-        background: `linear-gradient(135deg, ${D} 0%, ${B} 50%, #0A4D72 100%)`,
+        background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)",
         padding: mob ? "48px 16px 56px" : "80px 24px 88px",
         position: "relative", overflow: "hidden",
       }}>
-        <div style={{ position: "absolute", top: -100, right: -100, width: 400, height: 400, borderRadius: "50%", background: `radial-gradient(circle, ${G}15, transparent 70%)`, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: -100, right: -100, width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(16,185,129,0.08), transparent 70%)", pointerEvents: "none" }} />
         <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center", position: "relative" }}>
 
           {/* Success checkmark */}
           <div style={{
             width: 80, height: 80, borderRadius: "50%", margin: "0 auto 24px",
-            background: `${G}20`, display: "flex", alignItems: "center", justifyContent: "center",
+            background: "rgba(16,185,129,0.15)", display: "flex", alignItems: "center", justifyContent: "center",
             animation: "scaleIn 0.5s ease-out",
           }}>
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={G} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20 6L9 17l-5-5" />
             </svg>
           </div>
 
-          <h1 style={{ color: W, fontSize: mob ? 26 : 40, fontWeight: 800, margin: "0 0 12px", lineHeight: 1.15 }}>
+          <h1 style={{ color: "#ffffff", fontSize: mob ? 26 : 40, fontWeight: 800, margin: "0 0 12px", lineHeight: 1.15 }}>
             Ihr Termin ist bestätigt!
           </h1>
-          <p style={{ color: `${W}80`, fontSize: mob ? 16 : 20, maxWidth: 520, margin: "0 auto 0", lineHeight: 1.6 }}>
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: mob ? 16 : 20, maxWidth: 520, margin: "0 auto 0", lineHeight: 1.6 }}>
             Vielen Dank — wir freuen uns auf das Gespräch mit Ihnen.
           </p>
         </div>
       </div>
 
       {/* Content */}
-      <div style={{ background: L, padding: mob ? "32px 16px 48px" : "56px 24px 72px" }}>
+      <div style={{ padding: mob ? "32px 16px 48px" : "56px 24px 72px" }}>
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
 
           {/* Next Steps */}
           <div style={{
-            background: W, borderRadius: 16, padding: mob ? "24px 18px" : "32px 28px",
+            background: "#ffffff", borderRadius: 16, padding: mob ? "24px 18px" : "32px 28px",
             marginTop: mob ? -32 : -40, marginBottom: 24,
             boxShadow: "0 8px 40px rgba(0,0,0,0.08)", position: "relative",
           }}>
-            <h2 style={{ color: B, fontSize: mob ? 20 : 24, fontWeight: 700, margin: "0 0 20px", textAlign: "center" }}>
+            <h2 style={{ color: "#023B5B", fontSize: mob ? 20 : 24, fontWeight: 700, margin: "0 0 20px", textAlign: "center" }}>
               So geht es weiter
             </h2>
             {steps.map((s, i) => (
               <div key={i} style={{ display: "flex", gap: 16, marginBottom: i < steps.length - 1 ? 20 : 0, alignItems: "flex-start" }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: 12,
-                  background: `${A}10`, display: "flex", alignItems: "center", justifyContent: "center",
+                  background: "rgba(27,152,224,0.08)", display: "flex", alignItems: "center", justifyContent: "center",
                   fontSize: 24, flexShrink: 0,
                 }}>{s.icon}</div>
                 <div>
-                  <h3 style={{ color: B, fontSize: 17, fontWeight: 700, margin: "0 0 4px" }}>
-                    <span style={{ color: A, marginRight: 8 }}>{i + 1}.</span>{s.title}
+                  <h3 style={{ color: "#023B5B", fontSize: 17, fontWeight: 700, margin: "0 0 4px" }}>
+                    <span style={{ color: "#1B98E0", marginRight: 8 }}>{i + 1}.</span>{s.title}
                   </h3>
                   <p style={{ color: "#64748B", fontSize: 15, margin: 0, lineHeight: 1.6 }}>{s.desc}</p>
                 </div>
@@ -99,10 +96,10 @@ export default function TerminBestaetigt() {
 
           {/* What to expect */}
           <div style={{
-            background: W, borderRadius: 16, padding: mob ? "24px 18px" : "32px 28px",
+            background: "#ffffff", borderRadius: 16, padding: mob ? "24px 18px" : "32px 28px",
             marginBottom: 24, boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
           }}>
-            <h2 style={{ color: B, fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 16px" }}>
+            <h2 style={{ color: "#023B5B", fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 16px" }}>
               Was Sie in der Analyse erwartet
             </h2>
             {[
@@ -112,7 +109,7 @@ export default function TerminBestaetigt() {
               "Quick Wins, die Sie sofort umsetzen können",
             ].map((t, i) => (
               <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 10 }}>
-                <span style={{ color: G, fontSize: 16, flexShrink: 0, marginTop: 1 }}>✓</span>
+                <span style={{ color: "#10B981", fontSize: 16, flexShrink: 0, marginTop: 1 }}>✓</span>
                 <span style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.6 }}>{t}</span>
               </div>
             ))}
@@ -120,7 +117,7 @@ export default function TerminBestaetigt() {
 
           {/* Social Proof */}
           <div style={{
-            background: `linear-gradient(135deg, ${D}, ${B})`, borderRadius: 16,
+            background: "linear-gradient(135deg, #011E2F, #023B5B)", borderRadius: 16,
             padding: mob ? "28px 18px" : "36px 28px", textAlign: "center",
           }}>
             <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr 1fr" : "1fr 1fr 1fr", gap: 16, marginBottom: 20 }}>
@@ -130,22 +127,22 @@ export default function TerminBestaetigt() {
                 { n: "30 Tage", l: "Ø bis zur Einstellung" },
               ].map((r, i) => (
                 <div key={i} style={{
-                  background: `${W}08`, borderRadius: 12, padding: "16px 12px",
+                  background: "rgba(255,255,255,0.06)", borderRadius: 12, padding: "16px 12px",
                   gridColumn: mob && i === 2 ? "1 / -1" : undefined,
                 }}>
-                  <div style={{ fontSize: 24, fontWeight: 800, color: A }}>{r.n}</div>
-                  <div style={{ fontSize: 12, color: `${W}60`, marginTop: 4 }}>{r.l}</div>
+                  <div style={{ fontSize: 24, fontWeight: 800, color: "#1B98E0" }}>{r.n}</div>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", marginTop: 4 }}>{r.l}</div>
                 </div>
               ))}
             </div>
-            <p style={{ color: `${W}50`, fontSize: 13, margin: 0 }}>
+            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, margin: 0 }}>
               Robert Engel · Geschäftsführer TalentSuite
             </p>
           </div>
 
           <p style={{ textAlign: "center", color: "#94A3B8", fontSize: 13, marginTop: 24 }}>
             Fragen vorab? Schreiben Sie uns an{" "}
-            <a href="mailto:info@talentsuite.io" style={{ color: A, textDecoration: "none" }}>info@talentsuite.io</a>
+            <a href="mailto:info@talentsuite.io" style={{ color: "#1B98E0", textDecoration: "none" }}>info@talentsuite.io</a>
           </p>
         </div>
       </div>
@@ -157,6 +154,6 @@ export default function TerminBestaetigt() {
           100% { transform: scale(1); opacity: 1; }
         }
       `}</style>
-    </>
+    </div>
   );
 }
