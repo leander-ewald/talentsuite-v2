@@ -176,7 +176,7 @@ export default function MitarbeiterBindung() {
                 <span style={{ fontSize: 48 }}>✅</span>
                 <h3 style={{ color: W, fontSize: 22, fontWeight: 700, margin: "12px 0 8px" }}>Toolkit wird zugestellt!</h3>
                 <p style={{ color: `${W}70`, fontSize: 15, margin: "0 0 20px" }}>Wir senden Ihnen die 3 Dokumente an {form.email}.</p>
-                <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer"
+                <a href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer"
                   style={{ display: "inline-block", padding: "14px 32px", background: `linear-gradient(135deg, ${A}, #0F7BC0)`, borderRadius: 10, color: W, fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
                   Kostenlose Recruiting-Analyse buchen →
                 </a>

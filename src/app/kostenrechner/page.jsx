@@ -316,7 +316,7 @@ export default function KostenrechnerPage() {
                   <p style={{ color: `${W}90`, fontSize: 14, marginBottom: 20 }}>
                     Kostenloser Discovery Call — 20 Min., unverbindlich, konkrete Strategie.
                   </p>
-                  <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer"
+                  <a href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer"
                     style={{
                       display: "inline-block", padding: "16px 40px", background: W, border: "none",
                       borderRadius: 10, color: B, fontSize: 16, fontWeight: 700, cursor: "pointer",

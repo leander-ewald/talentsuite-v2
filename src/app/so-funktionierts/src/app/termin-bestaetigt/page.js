@@ -149,7 +149,7 @@ export default function TerminBestaetigt() {
             <p data-tb="muted" style={{ fontSize: 15, lineHeight: 1.6, margin: "0 0 28px", opacity: 1 }}>
               In einem kostenlosen Erstgespräch analysieren wir Ihre Situation und zeigen Ihnen, welche Hebel für Ihr Unternehmen den größten Impact haben.
             </p>
-            <a data-tb="pribtn" href="https://calendar.app.google/mU29snzEsgqsnMXy8" style={{
+            <a data-tb="pribtn" href="https://calendar.app.google/QFoADWcRwwuYUoky8" style={{
               display: "inline-block", padding: "14px 32px", borderRadius: 10,
               fontSize: 16, fontWeight: 700, textDecoration: "none",
               background: ACCENT,

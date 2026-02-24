@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Appointment = ({ heading, buttonText, buttonLink = "https://calendar.app.google/CQpLAnRw8tzQUEQz5" }) => {
+const Appointment = ({ heading, buttonText, buttonLink = "https://calendar.app.google/QFoADWcRwwuYUoky8" }) => {
   return (
     <section className="appointment_section" aria-label="Termin vereinbaren">
       <div className="container">

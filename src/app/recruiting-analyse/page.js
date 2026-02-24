@@ -107,7 +107,7 @@ export default function RecruitingAnalyse() {
               In 20 Minuten erfahren Sie, wie Sie qualifizierte Fachkräfte über Social Media finden — konkret, ehrlich und auf Ihre Branche zugeschnitten.
             </p>
             <div style={{ marginTop: 32 }}>
-              <a data-ra="pribtn" href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" style={{
+              <a data-ra="pribtn" href="https://calendar.app.google/QFoADWcRwwuYUoky8" style={{
                 display: "inline-block", padding: "16px 36px", borderRadius: 12,
                 fontWeight: 700, textDecoration: "none", background: ACCENT,
                 boxShadow: "0 4px 20px rgba(45,140,255,0.3)",
@@ -208,7 +208,7 @@ export default function RecruitingAnalyse() {
             <p data-ra="muted" style={{ marginTop: 14, marginBottom: 32 }}>
               20 Minuten, die den Unterschied machen können. Kostenlos und unverbindlich.
             </p>
-            <a data-ra="pribtn" href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" style={{
+            <a data-ra="pribtn" href="https://calendar.app.google/QFoADWcRwwuYUoky8" style={{
               display: "inline-block", padding: "16px 36px", borderRadius: 12,
               fontWeight: 700, textDecoration: "none", background: ACCENT,
               boxShadow: "0 4px 20px rgba(45,140,255,0.3)",

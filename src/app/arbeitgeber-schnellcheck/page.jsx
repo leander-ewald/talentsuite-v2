@@ -250,7 +250,7 @@ export default function ArbeitgeberSchnellcheck() {
                 <p style={{ color: `${W}70`, fontSize: 15, margin: "0 0 20px", lineHeight: 1.6 }}>
                   In einem kostenlosen 20-Minuten-Gespräch zeigen wir Ihnen, welche Quick Wins den größten Unterschied machen — speziell für Ihren Betrieb.
                 </p>
-                <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer"
+                <a href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer"
                   style={{ display: "inline-block", padding: "16px 40px", background: W, borderRadius: 10, color: B, fontSize: 16, fontWeight: 700, textDecoration: "none", fontFamily: "inherit" }}>
                   Kostenlose Recruiting-Analyse buchen →
                 </a>

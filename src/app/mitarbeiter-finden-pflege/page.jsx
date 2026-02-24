@@ -128,7 +128,7 @@ export default function Page() {
           <p className="bp-hero-sub" style={{ color: "rgba(255,255,255,0.8)", fontSize: mob ? 15 : 19, maxWidth: 620, margin: "0 auto 24px", lineHeight: 1.6 }}>
             46.000+ offene Stellen · Ø 200+ Tage Vakanzzeit · 72% der Fachkräfte nicht auf Jobbörsen
           </p>
-          <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer"
+          <a href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer"
             style={{ display: "inline-block", padding: "18px 44px", background: "#ffffff", borderRadius: 12, color: "#023B5B", fontSize: 17, fontWeight: 800, textDecoration: "none", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(0,0,0,0.15)" }}>
             Kostenlose Recruiting-Analyse →
           </a>
@@ -242,7 +242,7 @@ export default function Page() {
             </p>
             {!showForm && !sent ? (
               <>
-                <a href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer"
+                <a href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer"
                   style={{ display: "inline-block", padding: "18px 44px", background: "#ffffff", borderRadius: 12, color: "#023B5B", fontSize: 17, fontWeight: 800, textDecoration: "none", fontFamily: "inherit", marginBottom: 12 }}>
                   Jetzt Termin wählen →
                 </a>
