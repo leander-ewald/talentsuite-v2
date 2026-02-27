@@ -108,7 +108,7 @@ export default function ArbeitgeberSchnellcheck() {
     <div style={{ background: `linear-gradient(135deg, ${D} 0%, ${B} 50%, #0A4D72 100%)`, minHeight: "80vh", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: -120, right: -120, width: 400, height: 400, borderRadius: "50%", background: `radial-gradient(circle, ${A}15, transparent 70%)`, pointerEvents: "none" }} />
 
-      <div className="max-w-[700px] mx-auto px-4 md:px-6 py-7 md:py-12 pb-[60px] md:pb-20">
+      <div className="max-w-[700px] mx-auto px-4 md:px-6 pt-28 md:pt-32 pb-[60px] md:pb-20">
 
         {/* Progress bar */}
         {step > 0 && step < 12 && (

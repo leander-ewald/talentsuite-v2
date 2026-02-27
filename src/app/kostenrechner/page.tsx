@@ -109,7 +109,7 @@ export default function KostenrechnerPage() {
       {/* Decorative circle */}
       <div style={{ position: "absolute", top: -120, right: -120, width: 400, height: 400, borderRadius: "50%", background: `radial-gradient(circle, ${A}15, transparent 70%)`, pointerEvents: "none" }} />
 
-      <div className="max-w-[700px] mx-auto px-4 md:px-6 py-7 md:py-10 pb-[60px] md:pb-20">
+      <div className="max-w-[700px] mx-auto px-4 md:px-6 pt-28 md:pt-32 pb-[60px] md:pb-20">
 
         {/* Progress */}
         <div style={{ marginBottom: 36 }}>

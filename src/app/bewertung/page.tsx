@@ -23,7 +23,7 @@ export default function BewertungPage() {
 
   return (
     <div style={{ background: "#f0f4f7", minHeight: "60vh" }}>
-      <div style={{ background: `linear-gradient(135deg, #011E2F, ${B})`, padding: "56px 20px 72px", textAlign: "center" }}>
+      <div style={{ background: `linear-gradient(135deg, #011E2F, ${B})`, padding: "112px 20px 72px", textAlign: "center" }}>
         <div style={{ letterSpacing: 4, fontSize: 11, fontWeight: 700, marginBottom: 10, color: "#1B98E0" }}>TALENTSUITE</div>
         <h1 className="text-[22px] md:text-[36px]" style={{ fontWeight: 800, lineHeight: 1.2, maxWidth: 520, margin: "0 auto 10px", color: W }}>{title}</h1>
         <p className="text-[13px] md:text-[15px]" style={{ maxWidth: 440, margin: "0 auto", color: "rgba(255,255,255,0.6)" }}>{subtitle}</p>

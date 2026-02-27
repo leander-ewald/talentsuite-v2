@@ -8,16 +8,16 @@ export const metadata: Metadata = {
 export default function Impressum() {
   return (
     <>
-      <section className="section">
+      <section className="pt-32 pb-10">
         <div className="container">
-          <div className="text-center py-4">
-            <h1>Impressum</h1>
+          <div className="text-center">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">Impressum</h1>
           </div>
         </div>
       </section>
 
-      <section className="pt-3">
-        <div className="container py-32">
+      <section className="pb-20">
+        <div className="container">
           <div className="prose prose-invert max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">Angaben gemäß § 5 TMG</h2>
 

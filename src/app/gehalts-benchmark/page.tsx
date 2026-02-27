@@ -12,7 +12,7 @@ export default function GehaltsBenchmark() {
 
   return (
     <div style={{ background: "#f0f4f7", minHeight: "100vh" }}>
-      <div className="px-4 md:px-6 py-12 md:py-[72px] pb-[60px] md:pb-[88px]" style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", textAlign: "center" }}>
+      <div className="px-4 md:px-6 pt-28 md:pt-[96px] pb-[60px] md:pb-[88px]" style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", textAlign: "center" }}>
         <div style={{ display: "inline-block", padding: "5px 18px", borderRadius: 20, marginBottom: 16, background: "rgba(27,152,224,0.15)" }}>
           <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 3, color: "#1B98E0" }}>KOSTENLOS</span>
         </div>

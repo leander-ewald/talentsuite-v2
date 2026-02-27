@@ -58,8 +58,19 @@ export default function Campaigns() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {serviceData.map((service, i) => (
+          {serviceData.slice(0, 3).map((service, i) => (
             <div key={i} className="glass-card p-6">
+              <div className="w-10 h-10 rounded-xl bg-[rgba(27,152,224,0.08)] flex items-center justify-center text-[var(--color-accent)] mb-4">
+                <i className={`bi ${service.icon}`} />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+              <p className="text-sm text-[rgba(255,255,255,0.55)] leading-relaxed">{service.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 max-w-[calc(66.666%-8px)] mx-auto lg:max-w-none lg:grid-cols-2 lg:px-[16.666%]">
+          {serviceData.slice(3).map((service, i) => (
+            <div key={i + 3} className="glass-card p-6">
               <div className="w-10 h-10 rounded-xl bg-[rgba(27,152,224,0.08)] flex items-center justify-center text-[var(--color-accent)] mb-4">
                 <i className={`bi ${service.icon}`} />
               </div>

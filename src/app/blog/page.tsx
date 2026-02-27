@@ -65,29 +65,27 @@ export default function BlogPage() {
 
   return (
     <div style={{ minHeight: "60vh" }}>
-      <section style={{ padding: "3rem 1.5rem 2rem" }}>
+      <section className="pt-32 pb-20 px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
-          <h1 style={{ fontSize: "2rem", fontWeight: 800, marginBottom: "0.5rem" }}>Blog: Recruiting, Marketing &amp; Digitales Wachstum</h1>
-          <p style={{ fontSize: "1.05rem", opacity: 0.7, marginBottom: "1.5rem" }}>Praxiswissen aus über 100 Projekten: Performance Recruiting, Neukundengewinnung, Social Media Marketing und Employer Branding für KMU im DACH-Raum.</p>
+          <h1 className="text-2xl md:text-4xl font-bold mb-2">Blog: Recruiting, Marketing &amp; Digitales Wachstum</h1>
+          <p className="text-base md:text-lg text-[rgba(255,255,255,0.6)] mb-6">Praxiswissen aus über 100 Projekten: Performance Recruiting, Neukundengewinnung, Social Media Marketing und Employer Branding für KMU im DACH-Raum.</p>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2rem" }}>
-            <button onClick={() => setFilter("Alle")} style={{ padding: "6px 16px", borderRadius: "20px", border: filter === "Alle" ? "2px solid #023B5B" : "1px solid rgba(0,0,0,0.15)", background: filter === "Alle" ? "#023B5B" : "white", color: filter === "Alle" ? "white" : "#333", fontWeight: "600", fontSize: "0.85rem", cursor: "pointer" }}>Alle ({blogArticles.length})</button>
+            <button onClick={() => setFilter("Alle")} style={{ padding: "6px 16px", borderRadius: "20px", border: filter === "Alle" ? "2px solid var(--color-accent)" : "1px solid rgba(255,255,255,0.15)", background: filter === "Alle" ? "var(--color-accent)" : "rgba(255,255,255,0.05)", color: filter === "Alle" ? "white" : "rgba(255,255,255,0.7)", fontWeight: "600", fontSize: "0.85rem", cursor: "pointer" }}>Alle ({blogArticles.length})</button>
             {categories.map(cat => (
-              <button key={cat} onClick={() => setFilter(cat)} style={{ padding: "6px 16px", borderRadius: "20px", border: filter === cat ? "2px solid #023B5B" : "1px solid rgba(0,0,0,0.15)", background: filter === cat ? "#023B5B" : "white", color: filter === cat ? "white" : "#333", fontWeight: "500", fontSize: "0.85rem", cursor: "pointer" }}>{cat}</button>
+              <button key={cat} onClick={() => setFilter(cat)} style={{ padding: "6px 16px", borderRadius: "20px", border: filter === cat ? "2px solid var(--color-accent)" : "1px solid rgba(255,255,255,0.15)", background: filter === cat ? "var(--color-accent)" : "rgba(255,255,255,0.05)", color: filter === cat ? "white" : "rgba(255,255,255,0.7)", fontWeight: "500", fontSize: "0.85rem", cursor: "pointer" }}>{cat}</button>
             ))}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map((article) => (
-              <Link key={article.id} href={article.link} style={{ display: "block", textDecoration: "none", color: "inherit" }}>
-                <div style={{ background: "white", borderRadius: 14, padding: "1.25rem", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", border: "1px solid rgba(0,0,0,0.06)", height: "100%", display: "flex", flexDirection: "column" }}>
-                  <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "0.75rem" }}>
-                    <span style={{ background: "rgba(2,59,91,0.1)", color: "#023B5B", padding: "2px 10px", borderRadius: "12px", fontSize: "0.75rem", fontWeight: "600" }}>{article.category}</span>
-                    <span style={{ fontSize: "0.8rem", opacity: 0.5 }}>{article.reading}</span>
-                  </div>
-                  <h3 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "0.5rem", lineHeight: 1.3 }}>{article.title}</h3>
-                  <p style={{ fontSize: "0.88rem", opacity: 0.65, lineHeight: 1.5, flex: 1 }}>{article.desc}</p>
+              <Link key={article.id} href={article.link} className="glass-card p-5 block group" style={{ textDecoration: "none", color: "inherit" }}>
+                <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "0.75rem" }}>
+                  <span className="badge">{article.category}</span>
+                  <span style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.4)" }}>{article.reading}</span>
                 </div>
+                <h3 className="text-base font-semibold mb-2 leading-snug group-hover:text-[var(--color-accent)] transition-colors">{article.title}</h3>
+                <p className="text-sm text-[rgba(255,255,255,0.5)] leading-relaxed">{article.desc}</p>
               </Link>
             ))}
           </div>

@@ -175,7 +175,7 @@ export default function Footer() {
                   >
                     {r.label}
                   </Link>
-                  {i === 1 && <span className="text-[rgba(255,255,255,0.12)]">|</span>}
+                  {i < regionLinks.length - 1 && <span className="text-[rgba(255,255,255,0.12)]">|</span>}
                 </span>
               ))}
             </nav>

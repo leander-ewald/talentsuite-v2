@@ -53,7 +53,7 @@ export default function MitarbeiterBindung() {
   return (
     <>
       {/* Hero */}
-      <div className="px-4 md:px-6 py-10 md:py-16 pb-12 md:pb-[72px]" style={{ background: `linear-gradient(135deg, ${D} 0%, ${B} 50%, #0A4D72 100%)` }}>
+      <div className="px-4 md:px-6 pt-28 md:pt-32 pb-12 md:pb-[72px]" style={{ background: `linear-gradient(135deg, ${D} 0%, ${B} 50%, #0A4D72 100%)` }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
           <span style={{ display: "inline-block", background: `${G}20`, color: G, padding: "6px 16px", borderRadius: 20, fontSize: 13, fontWeight: 600, marginBottom: 14 }}>3 Dokumente · Sofort einsetzbar · Kostenlos</span>
           <h1 className="text-[26px] md:text-[40px]" style={{ color: W, fontWeight: 800, margin: "0 0 14px", lineHeight: 1.2 }}>

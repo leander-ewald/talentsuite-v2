@@ -8,10 +8,6 @@ const logos = [
   { src: "/logos/Jonuschies.svg", alt: "Jonuschies" },
   { src: "/logos/lds.svg", alt: "LDS" },
   { src: "/logos/lebenswert.svg", alt: "Lebenswert" },
-  { src: "/logos/Rohrer-Group.svg", alt: "Rohrer Group" },
-  { src: "/logos/Schlaf-Platz.svg", alt: "Schlaf-Platz" },
-  { src: "/logos/SP.svg", alt: "SP" },
-  { src: "/logos/Specht-Immobilien.svg", alt: "Specht Immobilien" },
   { src: "/logos/Culture_Station_Logo.svg", alt: "Culture Station" },
   { src: "/logos/frangipani-logo-300x158.svg", alt: "Frangipani" },
   { src: "/logos/Handyklinik-Iserlohn.svg", alt: "Handyklinik Iserlohn" },
@@ -26,12 +22,6 @@ const logos2 = [
   { src: "/logos/Logo_UME_RLK.svg", alt: "UME RLK" },
   { src: "/logos/MAD_Logo.svg", alt: "MAD" },
   { src: "/logos/MD_Physio_Logo.svg", alt: "MD Physio" },
-  { src: "/logos/menges.svg", alt: "Menges" },
-  { src: "/logos/Pizza_logo.svg", alt: "Pizza Logo" },
-  { src: "/logos/softwash-logo.svg", alt: "Softwash" },
-  { src: "/logos/Volksbank_Logo.svg.svg", alt: "Volksbank" },
-  { src: "/logos/Volvo_Logo.svg", alt: "Volvo" },
-  { src: "/logos/walendzik.svg", alt: "Walendzik" },
 ];
 
 export default function TrustedBrands() {

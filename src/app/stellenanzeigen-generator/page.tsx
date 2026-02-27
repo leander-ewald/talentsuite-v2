@@ -155,7 +155,7 @@ export default function StellenanzeigenGenerator() {
   return (
     <div id="sg">
       {/* Hero */}
-      <div className="px-4 md:px-6 py-10 md:py-[60px] pb-12 md:pb-[68px]" style={{ background: `linear-gradient(135deg, ${D} 0%, ${B} 50%, #0A4D72 100%)` }}>
+      <div className="px-4 md:px-6 pt-28 md:pt-[96px] pb-12 md:pb-[68px]" style={{ background: `linear-gradient(135deg, ${D} 0%, ${B} 50%, #0A4D72 100%)` }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
           <span data-sg="green" style={{ display: "inline-block", background: `${G}20`, padding: "6px 16px", borderRadius: 20, fontSize: 13, fontWeight: 600, marginBottom: 14 }}>
             100% kostenlos · In 60 Sekunden fertig
