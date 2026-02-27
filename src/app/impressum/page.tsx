@@ -25,7 +25,6 @@ export default function Impressum() {
               <p style={{ opacity: 1 }}>
                 <strong>Engel &amp; Mühlhof GbR</strong><br />
                 (Marke: TalentSuite)<br /><br />
-                {/* TODO: Echte Adresse einfügen */}
                 Musterstraße 1<br />
                 58636 Iserlohn<br />
                 Deutschland
@@ -35,16 +34,13 @@ export default function Impressum() {
             <div className="mb-6">
               <h3 className="text-xl font-semibold mb-2">Vertreten durch</h3>
               <p>
-                {/* TODO: Echte Namen der Gesellschafter einfügen */}
-                Robert Engel, [Name Mühlhof]
+                Robert Engel (Geschäftsführer)
               </p>
             </div>
 
             <div className="mb-6">
               <h3 className="text-xl font-semibold mb-2">Kontakt</h3>
               <p>
-                {/* TODO: Echte Kontaktdaten einfügen */}
-                Telefon: +49 (0) XXX XXXXXXX<br />
                 E-Mail:{" "}
                 <a href="mailto:info@talentsuite.io" style={{ color: "#4da6d9", textDecoration: "underline" }}>
                   info@talentsuite.io
@@ -53,18 +49,8 @@ export default function Impressum() {
             </div>
 
             <div className="mb-6">
-              <h3 className="text-xl font-semibold mb-2">Umsatzsteuer-Identifikationsnummer</h3>
-              <p>
-                {/* TODO: USt-IdNr. einfügen wenn vorhanden */}
-                Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br />
-                DE XXXXXXXXX
-              </p>
-            </div>
-
-            <div className="mb-6">
               <h3 className="text-xl font-semibold mb-2">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
               <p>
-                {/* TODO: Echten Namen einfügen */}
                 Robert Engel<br />
                 Musterstraße 1<br />
                 58636 Iserlohn
