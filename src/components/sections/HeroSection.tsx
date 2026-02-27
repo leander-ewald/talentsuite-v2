@@ -92,7 +92,6 @@ export default function HeroSection() {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        poster="/assets/hero-poster.jpg"
         preload="metadata"
         aria-hidden="true"
       >

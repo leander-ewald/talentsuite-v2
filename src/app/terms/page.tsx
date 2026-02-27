@@ -17,8 +17,8 @@ export default function TermsAndConditions() {
         </div>
       </section>
 
-      <section className="pt-3">
-        <div className="container py-32">
+      <section className="pt-3" style={{ paddingBottom: "4rem" }}>
+        <div className="container">
           <div className="prose prose-invert max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">AGB für Talentsuite</h2>
 
@@ -76,7 +76,7 @@ export default function TermsAndConditions() {
             <div className="mb-6">
               <h3 className="text-xl font-semibold mb-2">7. Schlussbestimmungen</h3>
               <p className="text-sm">
-                Es gilt das Recht der Bundesrepublik Deutschland. Gerichtsstand ist – soweit gesetzlich zulässig – Berlin.
+                Es gilt das Recht der Bundesrepublik Deutschland. Gerichtsstand ist – soweit gesetzlich zulässig – Iserlohn.
               </p>
             </div>
 

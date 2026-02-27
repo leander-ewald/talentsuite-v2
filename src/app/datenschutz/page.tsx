@@ -154,13 +154,6 @@ export default function Datenschutz() {
               Besuch unserer Website.
             </p>
 
-            <p style={{ marginTop: "40px", opacity: 0.4 }}>
-              <em>
-                Hinweis: Diese Datenschutzerklärung ist ein Entwurf und muss vor Veröffentlichung
-                juristisch geprüft werden. Wir empfehlen die Nutzung eines DSGVO-Generators
-                (z.B. eRecht24 oder IT-Recht Kanzlei) und anschließende anwaltliche Prüfung.
-              </em>
-            </p>
           </div>
         </div>
       </section>

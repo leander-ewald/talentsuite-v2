@@ -111,12 +111,6 @@ export default function AGB() {
               Wirksamkeit der übrigen Bestimmungen unberührt.
             </p>
 
-            <p style={{ marginTop: "40px", opacity: 0.4 }}>
-              <em>
-                Stand: Februar 2026 – Diese AGB sind ein Entwurf und sollten vor
-                Veröffentlichung von einem Rechtsanwalt geprüft werden.
-              </em>
-            </p>
           </div>
         </div>
       </section>

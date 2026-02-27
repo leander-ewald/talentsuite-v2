@@ -126,7 +126,7 @@ export default function Testimonials() {
           {testimonialData.map((t, i) => (
             <article
               key={i}
-              className="glass-card flex-shrink-0 w-[340px] md:w-[400px] snap-start p-6 flex flex-col"
+              className="glass-card flex-shrink-0 w-[85vw] sm:w-[340px] md:w-[400px] snap-start p-6 flex flex-col"
               aria-label={`Bewertung von ${t.name}`}
             >
               <div className="flex items-center gap-4 mb-5">

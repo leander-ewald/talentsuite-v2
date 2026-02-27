@@ -59,14 +59,14 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[1001] transition-all duration-300 ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <div
         className={`mx-4 mt-4 rounded-2xl transition-all duration-300 ${
           scrolled
-            ? "bg-[rgba(9,22,34,0.85)] backdrop-blur-xl border border-[rgba(255,255,255,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+            ? "bg-[rgba(9,22,34,0.85)] backdrop-blur-xl [-webkit-backdrop-filter:blur(24px)] border border-[rgba(255,255,255,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
             : "bg-transparent"
         }`}
       >
@@ -108,7 +108,7 @@ export default function Header() {
                   dropdownOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
                 }`}
               >
-                <div className="bg-[rgba(9,22,34,0.97)] backdrop-blur-2xl border border-[rgba(255,255,255,0.1)] rounded-2xl p-3 min-w-[260px] shadow-[0_16px_48px_rgba(0,0,0,0.5)]">
+                <div className="bg-[rgba(9,22,34,0.97)] backdrop-blur-2xl [-webkit-backdrop-filter:blur(40px)] border border-[rgba(255,255,255,0.1)] rounded-2xl p-3 min-w-[240px] shadow-[0_16px_48px_rgba(0,0,0,0.5)]">
                   {services.map((s) => (
                     <Link
                       key={s.href}
@@ -145,9 +145,9 @@ export default function Header() {
 
           {/* Mobile Hamburger */}
           <button
-            className="lg:hidden flex flex-col gap-1.5 p-2"
+            className="lg:hidden flex flex-col gap-1.5 p-3 min-w-[44px] min-h-[44px] items-center justify-center"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Navigation öffnen"
+            aria-label={mobileOpen ? "Navigation schließen" : "Navigation öffnen"}
           >
             <span
               className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
@@ -170,11 +170,11 @@ export default function Header() {
 
       {/* Mobile Overlay */}
       <div
-        className={`fixed inset-0 bg-[rgba(9,22,34,0.98)] backdrop-blur-2xl z-[999] transition-all duration-300 lg:hidden ${
+        className={`fixed inset-0 bg-[rgba(9,22,34,0.98)] backdrop-blur-2xl [-webkit-backdrop-filter:blur(40px)] z-[1002] transition-all duration-300 lg:hidden ${
           mobileOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-6">
+        <div className="flex flex-col items-center justify-center h-full gap-6 px-6" style={{ paddingTop: "env(safe-area-inset-top)", paddingBottom: "env(safe-area-inset-bottom)" }}>
           <Link
             href="/"
             className="text-2xl font-semibold text-white"

@@ -29,6 +29,12 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover" as const,
+};
+
 export const metadata: Metadata = {
   title: "TalentSuite | Performance Recruiting, Neukundengewinnung & E-Commerce Agentur",
   description:
