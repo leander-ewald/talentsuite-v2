@@ -27,10 +27,10 @@ export default function Blogs() {
   return (
     <section className="section" aria-label="Blog">
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-10 sm:mb-14">
           <div>
             <span className="section-label">Blog</span>
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
               Online-Marketing & SEO, die dich messbar und nachhaltig nach vorn bringen.
             </h2>
           </div>
@@ -47,9 +47,9 @@ export default function Blogs() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
           {blogData.map((blog, i) => (
-            <Link key={i} href={blog.link} className="glass-card p-6 group block">
+            <Link key={i} href={blog.link} className="glass-card p-5 sm:p-6 group block">
               <div className="flex items-center justify-between mb-5">
                 <span className="text-xs text-[rgba(255,255,255,0.4)] font-medium">{blog.reading}</span>
                 <div className="w-8 h-8 rounded-full bg-[rgba(255,255,255,0.05)] flex items-center justify-center text-[rgba(255,255,255,0.4)] group-hover:text-white group-hover:bg-[rgba(27,152,224,0.2)] transition-all">

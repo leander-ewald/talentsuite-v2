@@ -122,29 +122,29 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="container relative z-10">
-        <div className="max-w-2xl mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6">
+        <div className="max-w-2xl mb-8 sm:mb-16">
+          <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] sm:leading-[1.1] mb-4 sm:mb-6">
             Keine Bewerber?<br />
             Keine Neukunden?<br />
             <span className="text-[var(--color-accent)]">Wir ändern das – mit System.</span>
           </h1>
-          <p className="text-lg text-[rgba(255,255,255,0.7)] mb-8 max-w-lg">
+          <p className="text-base sm:text-lg text-[rgba(255,255,255,0.7)] mb-6 sm:mb-8 max-w-lg">
             50+ Unternehmen im DACH-Raum vertrauen auf TalentSuite als ihre Fullservice-Agentur
             für Performance Recruiting, Neukundengewinnung und E-Commerce.
             Messbar, planbar und ab Woche 1 ergebnisorientiert.
           </p>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
             <Link
               href="https://calendar.app.google/QFoADWcRwwuYUoky8"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-base"
+              className="btn-primary"
             >
               Kostenlose Potenzialanalyse sichern
               <i className="bi bi-arrow-up-right" />
             </Link>
           </div>
-          <p className="text-sm text-[rgba(255,255,255,0.4)] mt-4">
+          <p className="text-xs sm:text-sm text-[rgba(255,255,255,0.4)] mt-4">
             ✓ Kostenlos & unverbindlich &nbsp; ✓ Erste Ergebnisse in 30 Tagen &nbsp; ✓ Kein Risiko
           </p>
           <div className="flex items-center gap-6 mt-6">
@@ -154,18 +154,18 @@ export default function HeroSection() {
         </div>
 
         {/* Stats */}
-        <div className="flex flex-col sm:flex-row items-stretch justify-end gap-0 ml-auto max-w-2xl">
+        <div className="flex items-stretch justify-center sm:justify-end max-w-2xl sm:ml-auto">
           <div className="flex items-center bg-[rgba(255,255,255,0.04)] backdrop-blur-lg border border-[rgba(255,255,255,0.08)] rounded-2xl overflow-hidden" aria-label="Unsere Ergebnisse in Zahlen">
             {stats.map((stat, i) => (
               <div key={i} className="flex items-center">
-                <div className="text-center px-6 md:px-10 py-5">
-                  <span className="block text-3xl md:text-4xl font-semibold text-[rgba(255,255,255,0.9)]" style={{ fontFamily: "var(--font-display)" }}>
+                <div className="text-center px-3 sm:px-6 md:px-10 py-4 sm:py-5">
+                  <span className="block text-xl sm:text-3xl md:text-4xl font-semibold text-[rgba(255,255,255,0.9)]" style={{ fontFamily: "var(--font-display)" }}>
                     {stat.value}
                   </span>
-                  <span className="text-xs text-[rgba(255,255,255,0.5)] mt-1 block">{stat.label}</span>
+                  <span className="text-[10px] sm:text-xs text-[rgba(255,255,255,0.5)] mt-1 block">{stat.label}</span>
                 </div>
                 {i < stats.length - 1 && (
-                  <div className="w-px h-12 bg-[rgba(255,255,255,0.1)]" />
+                  <div className="w-px h-8 sm:h-12 bg-[rgba(255,255,255,0.1)]" />
                 )}
               </div>
             ))}

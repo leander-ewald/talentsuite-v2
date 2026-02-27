@@ -29,11 +29,11 @@ export default function CookieConsent() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[2000] p-4 md:p-5" style={{ paddingBottom: "max(16px, env(safe-area-inset-bottom))" }}>
-      <div className="max-w-[680px] mx-auto bg-[rgba(9,22,34,0.97)] border border-[rgba(255,255,255,0.12)] rounded-3xl p-5 md:p-7 backdrop-blur-[40px] [-webkit-backdrop-filter:blur(40px)] shadow-[0_-8px_40px_rgba(0,0,0,0.4),inset_0_-18px_84px_rgba(226,232,255,0.06)]">
+      <div className="max-w-[680px] mx-auto bg-[rgba(9,22,34,0.97)] border border-[rgba(255,255,255,0.12)] rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-7 backdrop-blur-[40px] [-webkit-backdrop-filter:blur(40px)] shadow-[0_-8px_40px_rgba(0,0,0,0.4),inset_0_-18px_84px_rgba(226,232,255,0.06)]">
         <div className="flex items-start gap-3 mb-3">
-          <span className="text-2xl">🍪</span>
+          <span className="text-xl sm:text-2xl">🍪</span>
           <div>
-            <h4 className="text-lg font-semibold text-[rgba(255,255,255,0.95)] mb-2">
+            <h4 className="text-base sm:text-lg font-semibold text-[rgba(255,255,255,0.95)] mb-1 sm:mb-2">
               Wir respektieren deine Privatsphäre
             </h4>
             <p className="text-sm leading-relaxed text-[rgba(255,255,255,0.65)]">

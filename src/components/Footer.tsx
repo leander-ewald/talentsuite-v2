@@ -48,7 +48,7 @@ export default function Footer() {
       <section className="section relative overflow-hidden" aria-label="Jetzt starten">
         <div className="glow top-0 left-1/2 -translate-x-1/2" />
         <div className="container relative z-10 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 max-w-3xl mx-auto leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 max-w-3xl mx-auto leading-tight">
             Bereit für messbares Wachstum?
           </h2>
           <p className="text-[rgba(255,255,255,0.6)] text-lg max-w-xl mx-auto mb-8">
@@ -78,7 +78,7 @@ export default function Footer() {
             <Link href="/" aria-label="TalentSuite Startseite">
               <img src="/logo.png" alt="TalentSuite Logo" className="h-8 w-auto" />
             </Link>
-            <nav className="flex items-center gap-3" aria-label="Social Media">
+            <nav className="flex items-center gap-2 sm:gap-3" aria-label="Social Media">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
@@ -86,7 +86,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-11 h-11 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)] flex items-center justify-center text-[rgba(255,255,255,0.5)] hover:text-white hover:border-[rgba(255,255,255,0.2)] transition-all"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)] flex items-center justify-center text-[rgba(255,255,255,0.5)] hover:text-white hover:border-[rgba(255,255,255,0.2)] transition-all"
                 >
                   <i className={`bi ${s.icon}`} />
                 </a>
@@ -98,7 +98,7 @@ export default function Footer() {
           <div className="h-px bg-[rgba(255,255,255,0.06)] mb-12" />
 
           {/* Grid: 4 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 mb-12">
             {/* Col 1: About */}
             <div>
               <h4 className="text-sm font-semibold text-white mb-4">Über TalentSuite</h4>
@@ -166,12 +166,12 @@ export default function Footer() {
             <p className="text-xs font-semibold text-[rgba(255,255,255,0.35)] uppercase tracking-wider mb-3">
               Mitarbeitergewinnung in der Region
             </p>
-            <nav className="flex flex-wrap gap-x-4 gap-y-1.5" aria-label="Regionale Seiten">
+            <nav className="flex flex-wrap gap-x-2 sm:gap-x-4 gap-y-1.5" aria-label="Regionale Seiten">
               {regionLinks.map((r, i) => (
-                <span key={r.href} className="flex items-center gap-4">
+                <span key={r.href} className="flex items-center gap-2 sm:gap-4">
                   <Link
                     href={r.href}
-                    className="text-sm text-[rgba(255,255,255,0.45)] hover:text-white transition-colors"
+                    className="text-xs sm:text-sm text-[rgba(255,255,255,0.45)] hover:text-white transition-colors"
                   >
                     {r.label}
                   </Link>

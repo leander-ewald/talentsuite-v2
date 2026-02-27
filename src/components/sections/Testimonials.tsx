@@ -153,10 +153,10 @@ export default function Testimonials() {
       />
 
       <div className="container">
-        <div className="text-center mb-12 max-w-2xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12 max-w-2xl mx-auto">
           <span className="section-label mx-auto">Testimonials</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Das sagen unsere Kunden</h2>
-          <p className="text-[rgba(255,255,255,0.6)]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Das sagen unsere Kunden</h2>
+          <p className="text-sm sm:text-base text-[rgba(255,255,255,0.6)]">
             Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse,
             echte Stimmen aus Handwerk, E-Commerce und Dienstleistung.
           </p>
@@ -180,7 +180,7 @@ export default function Testimonials() {
           {testimonialData.map((t, i) => (
             <article
               key={i}
-              className="glass-card flex-shrink-0 w-[85vw] sm:w-[340px] md:w-[400px] snap-start p-6 flex flex-col"
+              className="glass-card flex-shrink-0 w-[88vw] sm:w-[340px] md:w-[400px] snap-start p-5 sm:p-6 flex flex-col"
               aria-label={`Bewertung von ${t.name}`}
             >
               <div className="flex items-center gap-4 mb-5">

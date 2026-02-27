@@ -177,7 +177,7 @@ export default function Header() {
         <div className="flex flex-col items-center justify-center h-full gap-6 px-6" style={{ paddingTop: "env(safe-area-inset-top)", paddingBottom: "env(safe-area-inset-bottom)" }}>
           <Link
             href="/"
-            className="text-2xl font-semibold text-white"
+            className="text-xl sm:text-2xl font-semibold text-white"
             onClick={() => setMobileOpen(false)}
           >
             Startseite
@@ -186,7 +186,7 @@ export default function Header() {
             <Link
               key={s.href}
               href={s.href}
-              className="text-lg text-[rgba(255,255,255,0.7)] hover:text-white transition-colors"
+              className="text-base sm:text-lg text-[rgba(255,255,255,0.7)] hover:text-white transition-colors"
               onClick={() => setMobileOpen(false)}
             >
               {s.label}

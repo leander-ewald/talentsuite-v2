@@ -17,10 +17,10 @@ export default function MainSection({ title, description, buttonText, buttonLink
     <section className="relative pt-24 md:pt-32 pb-16 md:pb-20 overflow-hidden" aria-label={typeof imageAlt === "string" ? imageAlt : "Service Hero"}>
       <div className="glow -top-32 -right-32" />
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">{title}</h1>
-            <p className="text-lg text-[rgba(255,255,255,0.65)] leading-relaxed mb-8">{description}</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug sm:leading-tight mb-4 sm:mb-6">{title}</h1>
+            <p className="text-base sm:text-lg text-[rgba(255,255,255,0.65)] leading-relaxed mb-6 sm:mb-8">{description}</p>
             <Link href={buttonLink} target="_blank" rel="noopener noreferrer" className="btn-primary">
               {buttonText}
               <i className="bi bi-arrow-up-right" />

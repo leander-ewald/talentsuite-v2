@@ -66,9 +66,9 @@ export default function Faqs() {
       />
 
       <div className="container relative z-10">
-        <div className="text-center mb-14">
+        <div className="text-center mb-10 sm:mb-14">
           <span className="section-label mx-auto">FAQ</span>
-          <h2 className="text-3xl md:text-4xl font-bold">Häufig gestellte Fragen</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Häufig gestellte Fragen</h2>
         </div>
 
         <div className="max-w-3xl mx-auto flex flex-col gap-3">

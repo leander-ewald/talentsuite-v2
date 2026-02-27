@@ -42,39 +42,39 @@ export default function Campaigns() {
       <div className="glow -bottom-32 left-1/2 -translate-x-1/2" />
       <div className="container relative z-10">
         {/* Social Icons Circle */}
-        <div className="flex justify-center gap-4 mb-10">
+        <div className="flex justify-center gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-10">
           {socials.map((s, i) => (
             <div
               key={i}
-              className="w-14 h-14 rounded-full bg-[rgba(27,152,224,0.06)] border border-[rgba(27,152,224,0.15)] flex items-center justify-center text-[var(--color-accent)] text-xl"
+              className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-[rgba(27,152,224,0.06)] border border-[rgba(27,152,224,0.15)] flex items-center justify-center text-[var(--color-accent)] text-base sm:text-lg md:text-xl"
             >
               <i className={`bi ${s.icon}`} />
             </div>
           ))}
         </div>
 
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold">Wir entwickeln Kampagnen die performen</h2>
+        <div className="text-center mb-10 sm:mb-14">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Wir entwickeln Kampagnen die performen</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {serviceData.slice(0, 3).map((service, i) => (
-            <div key={i} className="glass-card p-6">
-              <div className="w-10 h-10 rounded-xl bg-[rgba(27,152,224,0.08)] flex items-center justify-center text-[var(--color-accent)] mb-4">
+            <div key={i} className="glass-card p-5 sm:p-6">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[rgba(27,152,224,0.08)] flex items-center justify-center text-[var(--color-accent)] mb-4">
                 <i className={`bi ${service.icon}`} />
               </div>
-              <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+              <h3 className="text-base sm:text-lg font-semibold mb-2">{service.title}</h3>
               <p className="text-sm text-[rgba(255,255,255,0.55)] leading-relaxed">{service.desc}</p>
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 max-w-[calc(66.666%-4px)] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6 sm:max-w-[calc(66.666%-4px)] mx-auto">
           {serviceData.slice(3).map((service, i) => (
-            <div key={i + 3} className="glass-card p-6">
-              <div className="w-10 h-10 rounded-xl bg-[rgba(27,152,224,0.08)] flex items-center justify-center text-[var(--color-accent)] mb-4">
+            <div key={i + 3} className="glass-card p-5 sm:p-6">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[rgba(27,152,224,0.08)] flex items-center justify-center text-[var(--color-accent)] mb-4">
                 <i className={`bi ${service.icon}`} />
               </div>
-              <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+              <h3 className="text-base sm:text-lg font-semibold mb-2">{service.title}</h3>
               <p className="text-sm text-[rgba(255,255,255,0.55)] leading-relaxed">{service.desc}</p>
             </div>
           ))}

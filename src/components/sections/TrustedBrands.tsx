@@ -27,9 +27,9 @@ const logos2 = [
 export default function TrustedBrands() {
   return (
     <section className="section py-20 overflow-hidden" aria-label="Vertrauenswürdige Marken">
-      <div className="container text-center mb-12">
+      <div className="container text-center mb-8 sm:mb-12">
         <span className="section-label mx-auto">Vertrauen</span>
-        <h2 className="text-2xl md:text-3xl font-bold">Diese Brands setzen auf uns.</h2>
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Diese Brands setzen auf uns.</h2>
       </div>
 
       {/* Row 1: scroll left */}

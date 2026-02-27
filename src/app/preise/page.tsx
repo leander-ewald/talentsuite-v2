@@ -17,8 +17,8 @@ export default function PreisePage() {
   return (
     <>
       <div style={{ background: "#f0f4f7", minHeight: "100vh" }}>
-        <div style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", padding: "72px 24px 80px", textAlign: "center" }}>
-          <h1 className="text-[26px] md:text-[40px]" style={{ color: "#ffffff", fontWeight: 800, margin: "0 0 12px" }}>
+        <div className="px-4 sm:px-6 pt-20 sm:pt-24 pb-12 sm:pb-16" style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", textAlign: "center" }}>
+          <h1 className="text-[22px] sm:text-[26px] md:text-[40px]" style={{ color: "#ffffff", fontWeight: 800, margin: "0 0 12px" }}>
             Transparente <span style={{ color: "#1B98E0" }}>Preise</span>
           </h1>
           <p className="text-[15px] md:text-[18px]" style={{ color: "rgba(255,255,255,0.7)", maxWidth: 520, margin: "0 auto" }}>Keine versteckten Kosten. Keine Mindestlaufzeit. Messbare Ergebnisse.</p>
@@ -26,7 +26,7 @@ export default function PreisePage() {
         <div className="px-4 md:px-6 py-10 md:py-16" style={{ maxWidth: 960, margin: "0 auto" }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5" style={{ marginTop: -40 }}>
             {plans.map((p, i) => (
-              <div key={i} style={{ background: "#ffffff", borderRadius: 16, padding: "28px 24px", boxShadow: p.popular ? "0 8px 40px rgba(27,152,224,0.2)" : "0 4px 20px rgba(0,0,0,0.06)", border: p.popular ? "2px solid #1B98E0" : "1px solid #e8e8e8", position: "relative" }}>
+              <div key={i} className="p-5 sm:p-7" style={{ background: "#ffffff", borderRadius: 16, boxShadow: p.popular ? "0 8px 40px rgba(27,152,224,0.2)" : "0 4px 20px rgba(0,0,0,0.06)", border: p.popular ? "2px solid #1B98E0" : "1px solid #e8e8e8", position: "relative" }}>
                 {p.popular && <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", padding: "4px 16px", borderRadius: 12, background: "#1B98E0", color: "#ffffff", fontSize: 11, fontWeight: 700 }}>BELIEBT</div>}
                 <h3 style={{ color: "#023B5B", fontSize: 20, fontWeight: 700, margin: "0 0 4px" }}>{p.name}</h3>
                 <div style={{ marginBottom: 8 }}>

@@ -17,8 +17,8 @@ const steps = [
 export default function SoFunktionierts() {
   return (
     <div style={{ background: "#f0f4f7", minHeight: "100vh" }}>
-      <div style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", padding: "72px 24px 80px", textAlign: "center" }}>
-        <h1 className="text-[26px] md:text-[40px]" style={{ color: "#ffffff", fontWeight: 800, margin: "0 0 12px", lineHeight: 1.15 }}>
+      <div className="px-4 sm:px-6 pt-20 sm:pt-24 pb-12 sm:pb-16" style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", textAlign: "center" }}>
+        <h1 className="text-[22px] sm:text-[26px] md:text-[40px]" style={{ color: "#ffffff", fontWeight: 800, margin: "0 0 12px", lineHeight: 1.2 }}>
           So funktioniert <span style={{ color: "#1B98E0" }}>Performance Recruiting</span>
         </h1>
         <p className="text-[15px] md:text-[18px]" style={{ color: "rgba(255,255,255,0.7)", maxWidth: 520, margin: "0 auto" }}>
@@ -27,7 +27,7 @@ export default function SoFunktionierts() {
       </div>
       <div className="px-4 md:px-6 py-8 md:py-12" style={{ maxWidth: 740, margin: "0 auto" }}>
         {steps.map((s, i) => (
-          <div key={i} style={{ background: "#ffffff", borderRadius: 16, padding: "32px 28px", boxShadow: "0 4px 20px rgba(0,0,0,0.06)", marginBottom: 20, borderLeft: "4px solid #1B98E0" }}>
+          <div key={i} className="p-5 sm:p-7" style={{ background: "#ffffff", borderRadius: 16, boxShadow: "0 4px 20px rgba(0,0,0,0.06)", marginBottom: 20, borderLeft: "4px solid #1B98E0" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
               <span style={{ fontSize: 32 }}>{s.icon}</span>
               <div>
@@ -46,10 +46,10 @@ export default function SoFunktionierts() {
             </div>
           </div>
         ))}
-        <div style={{ background: "linear-gradient(135deg, #011E2F, #023B5B)", borderRadius: 16, padding: "40px 28px", textAlign: "center", marginTop: 12 }}>
+        <div className="p-6 sm:p-10" style={{ background: "linear-gradient(135deg, #011E2F, #023B5B)", borderRadius: 16, textAlign: "center", marginTop: 12 }}>
           <h2 className="text-[20px] md:text-[26px]" style={{ color: "#ffffff", fontWeight: 700, margin: "0 0 8px" }}>Bereit für Schritt 1?</h2>
           <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 15, margin: "0 0 20px" }}>Kostenlose Recruiting-Analyse — 20 Minuten, keine Verpflichtung</p>
-          <Link href="/recruiting-analyse" style={{ display: "inline-block", padding: "14px 32px", borderRadius: 10, background: "#1B98E0", color: "#ffffff", fontSize: 16, fontWeight: 700, textDecoration: "none" }}>Jetzt Analyse starten →</Link>
+          <Link href="/recruiting-analyse" className="text-sm sm:text-base" style={{ display: "inline-block", padding: "12px 24px", borderRadius: 10, background: "#1B98E0", color: "#ffffff", fontWeight: 700, textDecoration: "none" }}>Jetzt Analyse starten →</Link>
         </div>
       </div>
     </div>

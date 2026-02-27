@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 export default function TermsAndConditions() {
   return (
     <>
-      <section className="section">
+      <section className="pt-24 sm:pt-32 pb-8 sm:pb-10">
         <div className="container">
           <div className="text-center py-4">
-            <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Allgemeine Geschäftsbedingungen (AGB)</h1>
           </div>
         </div>
       </section>
