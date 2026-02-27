@@ -238,13 +238,18 @@ img {
 .scroll-item img {
   height: 40px;
   width: auto;
-  opacity: 0.5;
+  opacity: 0.6;
   filter: brightness(0) invert(1);
-  transition: opacity 0.3s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-row:hover .scroll-item img {
+  opacity: 0.4;
 }
 
 .scroll-item img:hover {
-  opacity: 0.9;
+  filter: none;
+  opacity: 1;
 }
 
 /* ── FAQ Accordion ── */
