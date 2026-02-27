@@ -100,8 +100,8 @@ export default function Testimonials() {
 
       <div className="container">
         <div className="text-center mb-12 max-w-2xl mx-auto">
-          <span className="section-label mx-auto">Kundenstimmen</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Kundenstimmen</h2>
+          <span className="section-label mx-auto">Testimonials</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Das sagen unsere Kunden</h2>
           <p className="text-[rgba(255,255,255,0.6)]">
             Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse,
             echte Stimmen aus Handwerk, E-Commerce und Dienstleistung.
@@ -156,7 +156,7 @@ export default function Testimonials() {
 
               {/* Location + Verified */}
               <div className="flex items-center justify-between mt-5 pt-4 border-t border-[rgba(255,255,255,0.06)]">
-                <div className="flex items-center gap-2 text-xs text-[rgba(255,255,255,0.4)]">
+                <div className="flex items-center gap-2 text-xs text-[rgba(255,255,255,0.55)]">
                   <i className="bi bi-geo-alt" />
                   {t.from}
                   <i className="bi bi-arrow-right-short" />

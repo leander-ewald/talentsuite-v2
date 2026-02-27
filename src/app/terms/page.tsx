@@ -67,7 +67,7 @@ export default function TermsAndConditions() {
               <h3 className="text-xl font-semibold mb-2">6. Datenschutz</h3>
               <p className="text-sm">
                 Die Verarbeitung personenbezogener Daten erfolgt gemäß unserer{" "}
-                <Link href="/datenschutz" style={{ color: "#4da6d9", textDecoration: "underline" }}>
+                <Link href="/datenschutz" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
                   Datenschutzerklärung
                 </Link>.
               </p>
@@ -82,7 +82,7 @@ export default function TermsAndConditions() {
 
             <p className="text-sm mt-6">
               Für Rückfragen zu unseren AGB erreichen Sie uns unter{" "}
-              <a href="mailto:info@talentsuite.io" style={{ color: "#4da6d9", textDecoration: "underline" }}>
+              <a href="mailto:info@talentsuite.io" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
                 info@talentsuite.io
               </a>
               .

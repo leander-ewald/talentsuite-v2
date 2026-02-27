@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const ACCENT = "#2D8CFF";
+const ACCENT = "#1B98E0";
 const BRAND = "#023B5B";
 
 function FAQ({ question, answer }: { question: string; answer: string }) {

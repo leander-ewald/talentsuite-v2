@@ -19,8 +19,8 @@ export default function Datenschutz() {
       <section className="pb-20">
         <div className="container">
           <div className="prose prose-invert max-w-4xl mx-auto">
-            <h2>1. Datenschutz auf einen Blick</h2>
-            <h3>Allgemeine Hinweise</h3>
+            <h2 className="text-3xl font-bold mb-6">1. Datenschutz auf einen Blick</h2>
+            <h3 className="text-xl font-semibold mb-2">Allgemeine Hinweise</h3>
             <p>
               Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
               personenbezogenen Daten passiert, wenn Sie diese Website besuchen.
@@ -29,21 +29,19 @@ export default function Datenschutz() {
               unserer nachfolgenden Datenschutzerklärung.
             </p>
 
-            <h2>2. Verantwortliche Stelle</h2>
+            <h2 className="text-3xl font-bold mb-6">2. Verantwortliche Stelle</h2>
             <p>
-              {/* TODO: Echte Daten einfügen – WICHTIG für DSGVO */}
               Engel &amp; Mühlhof GbR<br />
               (Marke: TalentSuite)<br />
               Musterstraße 1<br />
               58636 Iserlohn<br />
               Deutschland<br /><br />
-              Telefon: +49 (0) XXX XXXXXXX<br />
               E-Mail: info@talentsuite.io
             </p>
 
-            <h2>3. Datenerfassung auf dieser Website</h2>
+            <h2 className="text-3xl font-bold mb-6">3. Datenerfassung auf dieser Website</h2>
 
-            <h3>Cookies</h3>
+            <h3 className="text-xl font-semibold mb-2">Cookies</h3>
             <p>
               Unsere Website verwendet Cookies. Dabei handelt es sich um kleine Textdateien,
               die auf Ihrem Endgerät gespeichert werden. Einige Cookies sind technisch notwendig
@@ -57,7 +55,7 @@ export default function Datenschutz() {
               essenzielle Cookies.
             </p>
 
-            <h3>Google Tag Manager</h3>
+            <h3 className="text-xl font-semibold mb-2">Google Tag Manager</h3>
             <p>
               Diese Website nutzt den Google Tag Manager (GTM-N7J9WLXF). Der Google Tag Manager
               selbst setzt keine Cookies und erfasst keine personenbezogenen Daten. Er dient
@@ -69,7 +67,7 @@ export default function Datenschutz() {
               Datenübermittlung in die USA auf Basis der EU-Standardvertragsklauseln.
             </p>
 
-            <h3>Server-Log-Dateien</h3>
+            <h3 className="text-xl font-semibold mb-2">Server-Log-Dateien</h3>
             <p>
               Der Provider der Seiten erhebt und speichert automatisch Informationen in
               sogenannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dies sind:
@@ -81,11 +79,12 @@ export default function Datenschutz() {
               an der technisch fehlerfreien Darstellung und Sicherheit der Website).
             </p>
 
-            <h2>4. Hosting und Content Delivery Networks</h2>
+            <h2 className="text-3xl font-bold mb-6">4. Hosting und Content Delivery Networks</h2>
             <p>
-              {/* TODO: Hosting-Provider angeben (z.B. Vercel) */}
-              Diese Website wird bei [Hosting-Provider einfügen] gehostet. Beim Besuch der Website
-              erfasst der Server automatisch technische Zugriffsdaten (Server-Logfiles).
+              Diese Website wird bei Vercel Inc. (440 N Barranca Ave #4133, Covina, CA 91723, USA)
+              gehostet. Beim Besuch der Website erfasst der Server automatisch technische
+              Zugriffsdaten (Server-Logfiles). Datenübermittlung in die USA auf Basis der
+              EU-Standardvertragsklauseln.
             </p>
             <p>
               Videos werden über DigitalOcean Spaces (CDN) bereitgestellt. Dabei wird Ihre
@@ -94,9 +93,9 @@ export default function Datenschutz() {
               Datenübermittlung in die USA auf Basis der EU-Standardvertragsklauseln.
             </p>
 
-            <h2>5. Analyse-Tools und Werbung</h2>
+            <h2 className="text-3xl font-bold mb-6">5. Analyse-Tools und Werbung</h2>
 
-            <h3>Google Analytics</h3>
+            <h3 className="text-xl font-semibold mb-2">Google Analytics</h3>
             <p>
               Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics
               (sofern Sie dem über das Cookie-Banner zugestimmt haben). Anbieter: Google Ireland Limited.
@@ -110,7 +109,7 @@ export default function Datenschutz() {
               <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung über Cookie-Banner).
             </p>
 
-            <h3>Meta Pixel (Facebook Pixel)</h3>
+            <h3 className="text-xl font-semibold mb-2">Meta Pixel (Facebook Pixel)</h3>
             <p>
               Diese Website nutzt das Meta Pixel (sofern Sie zugestimmt haben) zur Conversion-Messung.
               Anbieter: Meta Platforms Ireland Limited, 4 Grand Canal Square, Dublin 2, Irland.
@@ -119,7 +118,7 @@ export default function Datenschutz() {
               <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung über Cookie-Banner).
             </p>
 
-            <h2>6. Newsletter</h2>
+            <h2 className="text-3xl font-bold mb-6">6. Newsletter</h2>
             <p>
               Wenn Sie den auf der Website angebotenen Newsletter beziehen möchten, benötigen wir
               Ihre E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten,
@@ -131,7 +130,7 @@ export default function Datenschutz() {
               in jedem Newsletter.
             </p>
 
-            <h2>7. Ihre Rechte (Art. 15-21 DSGVO)</h2>
+            <h2 className="text-3xl font-bold mb-6">7. Ihre Rechte (Art. 15-21 DSGVO)</h2>
             <p>
               Sie haben jederzeit das Recht auf:<br />
               – Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)<br />
@@ -147,7 +146,7 @@ export default function Datenschutz() {
               Informationsfreiheit Nordrhein-Westfalen, Kavalleriestr. 2-4, 40213 Düsseldorf.
             </p>
 
-            <h2>8. Änderungen dieser Datenschutzerklärung</h2>
+            <h2 className="text-3xl font-bold mb-6">8. Änderungen dieser Datenschutzerklärung</h2>
             <p>
               Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den
               aktuellen rechtlichen Anforderungen entspricht. Die aktuelle Version gilt ab dem

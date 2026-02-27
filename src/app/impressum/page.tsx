@@ -42,7 +42,7 @@ export default function Impressum() {
               <h3 className="text-xl font-semibold mb-2">Kontakt</h3>
               <p>
                 E-Mail:{" "}
-                <a href="mailto:info@talentsuite.io" style={{ color: "#4da6d9", textDecoration: "underline" }}>
+                <a href="mailto:info@talentsuite.io" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
                   info@talentsuite.io
                 </a>
               </p>
@@ -61,7 +61,7 @@ export default function Impressum() {
               <h3 className="text-xl font-semibold mb-2">EU-Streitschlichtung</h3>
               <p>
                 Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
-                <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={{ color: "#4da6d9", textDecoration: "underline" }}>
+                <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
                   https://ec.europa.eu/consumers/odr
                 </a>
                 <br />

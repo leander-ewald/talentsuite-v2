@@ -82,7 +82,6 @@ img {
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: var(--color-border-light);
-  transform: translateY(-4px);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
@@ -129,7 +128,6 @@ img {
 
 .btn-primary:hover {
   background: #1689c9;
-  transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(27, 152, 224, 0.3);
 }
 
@@ -154,7 +152,6 @@ img {
 .btn-outline:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
-  transform: translateY(-2px);
 }
 
 /* ── Badge ── */

@@ -101,7 +101,6 @@ export default function AGB() {
               UN-Kaufrechts.
             </p>
             <p>
-              {/* Fix: Korrekter Gerichtsstand (nicht Berlin!) */}
               Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem
               Vertrag ist – soweit gesetzlich zulässig – Iserlohn bzw. das zuständige
               Amtsgericht Iserlohn / Landgericht Hagen.
