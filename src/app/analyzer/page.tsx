@@ -3,8 +3,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import styles from "./analyzer.module.css";
 
-const PASSWORD = "talentsuite2026";
-
 const TABS = [
   { id: "seo", label: "SEO-Analyse", icon: "🔍", color: "#00B4D8" },
   { id: "google", label: "Google Ads", icon: "📊", color: "#F4A935" },
@@ -87,10 +85,31 @@ function generatePDF(tabsToExport: TabType[], allResults: Record<string, string>
   setTimeout(() => w.print(), 600);
 }
 
-function Login({ onLogin }: { onLogin: (pw: string) => void }) {
+function Login({ onLogin }: { onLogin: () => void }) {
   const [pw, setPw] = useState("");
   const [err, setErr] = useState(false);
-  const submit = (e: React.FormEvent) => { e.preventDefault(); if (pw === PASSWORD) onLogin(pw); else setErr(true); };
+  const [loading, setLoading] = useState(false);
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setErr(false);
+    try {
+      const res = await fetch("/api/auth/verify-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: pw }),
+      });
+      if (res.ok) {
+        onLogin();
+      } else {
+        setErr(true);
+      }
+    } catch {
+      setErr(true);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className={styles.loginWrap}>
       <div className={`${styles.loginCard} ${err ? styles.shake : ""}`}>
@@ -99,7 +118,7 @@ function Login({ onLogin }: { onLogin: (pw: string) => void }) {
         <form onSubmit={submit}>
           <input type="password" placeholder="Passwort eingeben" className={styles.loginInput} value={pw} onChange={(e) => { setPw(e.target.value); setErr(false); }} />
           {err && <p className={styles.loginErr}>Falsches Passwort.</p>}
-          <button type="submit" className={styles.loginBtn}>Zugang erhalten →</button>
+          <button type="submit" className={styles.loginBtn} disabled={loading}>{loading ? "Prüfe..." : "Zugang erhalten →"}</button>
         </form>
       </div>
     </div>
@@ -107,7 +126,8 @@ function Login({ onLogin }: { onLogin: (pw: string) => void }) {
 }
 
 export default function AnalyzerPage() {
-  const [sessionPw, setSessionPw] = useState<string | null>(null);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [checkingSession, setCheckingSession] = useState(true);
   const [url, setUrl] = useState("");
   const [activeTab, setActiveTab] = useState("seo");
   const [results, setResults] = useState<Record<string, string>>({});
@@ -132,11 +152,18 @@ export default function AnalyzerPage() {
     };
   }, []);
 
-  const analyzeModule = useCallback(async (mod: string, targetUrl: string, pw: string | null) => {
+  useEffect(() => {
+    fetch("/api/auth/verify-password")
+      .then((res) => { if (res.ok) setAuthenticated(true); })
+      .catch(() => {})
+      .finally(() => setCheckingSession(false));
+  }, []);
+
+  const analyzeModule = useCallback(async (mod: string, targetUrl: string) => {
     setLoading((p) => ({ ...p, [mod]: true }));
     setErrors((p) => ({ ...p, [mod]: null }));
     try {
-      const res = await fetch("/api/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ module: mod, url: targetUrl, password: pw }) });
+      const res = await fetch("/api/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ module: mod, url: targetUrl }) });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Unbekannter Fehler");
       setResults((p) => ({ ...p, [mod]: data.result }));
@@ -153,13 +180,14 @@ export default function AnalyzerPage() {
     const mods = ["seo", "google", "ux", "meta"];
     for (let i = 0; i < mods.length; i++) {
       setActiveTab(mods[i]); setProgress((i / mods.length) * 100);
-      await analyzeModule(mods[i], url, sessionPw);
+      await analyzeModule(mods[i], url);
       setProgress(((i + 1) / mods.length) * 100);
     }
     setActiveTab("seo"); setAnalyzing(false);
   };
 
-  if (!sessionPw) return <Login onLogin={(pw) => setSessionPw(pw)} />;
+  if (checkingSession) return null;
+  if (!authenticated) return <Login onLogin={() => setAuthenticated(true)} />;
 
   const cur = results[activeTab];
   const curLoad = loading[activeTab];
@@ -223,7 +251,7 @@ export default function AnalyzerPage() {
           ) : curErr ? (
             <div className={styles.errorState}>
               <strong>Fehler:</strong> {curErr}
-              <button onClick={() => analyzeModule(activeTab, url, sessionPw)} className={styles.retryBtn}>Erneut versuchen</button>
+              <button onClick={() => analyzeModule(activeTab, url)} className={styles.retryBtn}>Erneut versuchen</button>
             </div>
           ) : cur ? (
             <div className={styles.analysisContent} dangerouslySetInnerHTML={{ __html: md(cur) }} />
@@ -238,7 +266,7 @@ export default function AnalyzerPage() {
         {hasResults && !analyzing && (
           <div className={styles.regenRow}>
             {TABS.map((t) => (
-              <button key={t.id} onClick={() => { setActiveTab(t.id); analyzeModule(t.id, url, sessionPw); }} disabled={loading[t.id]} className={styles.regenBtn} style={{ "--regen-color": t.color } as React.CSSProperties}>
+              <button key={t.id} onClick={() => { setActiveTab(t.id); analyzeModule(t.id, url); }} disabled={loading[t.id]} className={styles.regenBtn} style={{ "--regen-color": t.color } as React.CSSProperties}>
                 {t.icon} {t.label} neu generieren
               </button>
             ))}

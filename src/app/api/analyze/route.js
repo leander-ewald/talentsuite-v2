@@ -1,6 +1,14 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { createHmac } from "crypto";
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+const AUTH_COOKIE = "ts-auth";
+
+function getAuthToken() {
+  const secret = process.env.INTERNAL_PASSWORD || "";
+  return createHmac("sha256", secret).update("ts-internal-auth").digest("hex");
+}
 
 const SYSTEM_PROMPT = `Du bist ein Senior Digital Marketing Consultant bei TalentSuite – Experte für Performance Recruiting im DACH-Markt. Du analysierst Webseiten von potenziellen Kunden (mittelständische Unternehmen in Bau/Handwerk, Gesundheitswesen, Gastronomie, Fertigung, Logistik).
 
@@ -173,12 +181,14 @@ export async function POST(request) {
       );
     }
 
-    const { module, url, password } = await request.json();
-
-    // Passwort-Check serverseitig
-    if (password !== process.env.ANALYZER_PASSWORD) {
-      return NextResponse.json({ error: "Ungültiges Passwort." }, { status: 401 });
+    // Session-Cookie prüfen
+    const cookieStore = await cookies();
+    const authCookie = cookieStore.get(AUTH_COOKIE);
+    if (!authCookie || authCookie.value !== getAuthToken()) {
+      return NextResponse.json({ error: "Nicht authentifiziert." }, { status: 401 });
     }
+
+    const { module, url } = await request.json();
 
     if (!module || !url) {
       return NextResponse.json({ error: "Modul und URL sind erforderlich." }, { status: 400 });

@@ -264,8 +264,38 @@ export default function DiscoveryCallPage() {
   const [pw, setPw] = useState("");
   const [auth, setAuth] = useState(false);
   const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [checkingSession, setCheckingSession] = useState(true);
 
-  const login = () => { if (pw === "talentsuite2026") { setAuth(true); setErr(false); } else setErr(true); };
+  useEffect(() => {
+    fetch("/api/auth/verify-password")
+      .then((res) => { if (res.ok) setAuth(true); })
+      .catch(() => {})
+      .finally(() => setCheckingSession(false));
+  }, []);
+
+  const login = async () => {
+    setLoading(true);
+    setErr(false);
+    try {
+      const res = await fetch("/api/auth/verify-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: pw }),
+      });
+      if (res.ok) {
+        setAuth(true);
+      } else {
+        setErr(true);
+      }
+    } catch {
+      setErr(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (checkingSession) return null;
 
   return (
     <>
@@ -277,7 +307,7 @@ export default function DiscoveryCallPage() {
             <p style={{ fontSize: mob ? 13 : 14, marginBottom: 24, color: "#64748B" }}>Internes Tool für das TalentSuite Team.<br />Passwort eingeben um fortzufahren.</p>
             <div style={{ display: "flex", flexDirection: mob ? "column" : "row", gap: 8 }}>
               <input type="password" style={{ flex: 1, padding: "14px 16px", borderRadius: 12, border: `2px solid ${err ? "#ef4444" : "#cdd8e0"}`, fontSize: 16, outline: "none", background: "#ffffff" }} value={pw} onChange={(e) => { setPw(e.target.value); setErr(false); }} onKeyDown={(e) => e.key === "Enter" && login()} placeholder="Passwort eingeben..." autoFocus />
-              <button onClick={login} style={{ padding: "14px 28px", borderRadius: 12, border: "none", background: "#023B5B", color: W, fontSize: 15, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" }}>Anmelden →</button>
+              <button onClick={login} disabled={loading} style={{ padding: "14px 28px", borderRadius: 12, border: "none", background: "#023B5B", color: W, fontSize: 15, fontWeight: 700, cursor: loading ? "not-allowed" : "pointer", whiteSpace: "nowrap" }}>{loading ? "Prüfe..." : "Anmelden →"}</button>
             </div>
             {err && <div style={{ fontSize: 13, marginTop: 8, color: "#ef4444" }}>Falsches Passwort.</div>}
           </div>
