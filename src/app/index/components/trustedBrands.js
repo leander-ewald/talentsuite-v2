@@ -1,7 +1,7 @@
 "use client";
 
 export default function TrustedBrands() {
-  const logos = [
+  const allLogos = [
     { src: "/logos/4D-Elements.svg", alt: "4D Elements" },
     { src: "/logos/cre8ify.svg", alt: "Cre8ify" },
     { src: "/logos/deutsche.svg", alt: "Deutsche" },
@@ -16,8 +16,6 @@ export default function TrustedBrands() {
     { src: "/logos/Culture_Station_Logo.svg", alt: "Culture Station" },
     { src: "/logos/frangipani-logo-300x158.svg", alt: "Frangipani" },
     { src: "/logos/Handyklinik-Iserlohn.svg", alt: "Handyklinik Iserlohn" },
-  ];
-  const logos2 = [
     { src: "/logos/happy-buns.svg", alt: "Happy Buns" },
     { src: "/logos/IEC_Roosters-Logo.svg", alt: "Iserlohn Roosters" },
     { src: "/logos/Just-Virtual-Food-Brands.svg", alt: "Just Virtual Food Brands" },
@@ -45,28 +43,12 @@ export default function TrustedBrands() {
             </div>
           </div>
           <div className="col-12">
-            <div className="brands_logos">
-              {/* Top Row (scrolls left) */}
-              <div className="overflow-hidden py-1 position-relative">
-                <div className="scroll-row scroll-left">
-                  {[...logos, ...logos].map((logo, index) => (
-                    <div key={`top-${index}`} className="scroll-item">
-                      <img src={logo.src} alt={logo.alt} loading="lazy" />
-                    </div>
-                  ))}
+            <div className="brands-grid">
+              {allLogos.map((logo, index) => (
+                <div key={index} className="brand-item">
+                  <img src={logo.src} alt={logo.alt} loading="lazy" />
                 </div>
-              </div>
-
-              {/* Bottom Row (scrolls right) */}
-              <div className="overflow-hidden py-1 position-relative mt-3">
-                <div className="scroll-row scroll-right">
-                  {[...logos2, ...logos2].map((logo, index) => (
-                    <div key={`bottom-${index}`} className="scroll-item">
-                      <img src={logo.src} alt={logo.alt} loading="lazy" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

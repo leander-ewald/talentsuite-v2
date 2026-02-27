@@ -69,15 +69,20 @@ header .btns i {
 }
 .social_icons a,
 .hero_buttons .web_btns {
-  border: 1px solid var(--secondary-color);
-  background-color: var(--secondary-color);
+  border: 1px solid var(--accent-color);
+  background-color: var(--accent-color);
   color: white;
   backdrop-filter: blur(50px);
+}
+.hero_buttons .web_btns:hover {
+  background-color: #1689c9;
+  border-color: #1689c9;
 }
 .hero_buttons .web_btns:first-child {
   padding: 10px 10px 10px 32px;
 }
 .social_icons a,
 .hero_buttons .web_btns:last-child {
-  background-color: #023b5b2e;
+  background-color: rgba(27, 152, 224, 0.15);
+  border-color: rgba(27, 152, 224, 0.3);
 }

@@ -163,17 +163,17 @@ const HeroSection = () => {
               <div className="stats_section" aria-label="Unsere Ergebnisse in Zahlen">
                 <div className="stats">
                   <div className="text-center">
-                    <span className="stat-number" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, letterSpacing: "1px", fontSize: "50px", display: "block", color: "rgba(255,255,255,0.9)" }}>50+</span>
+                    <span className="stat-number">50+</span>
                     <span>Unternehmen aus DACH</span>
                   </div>
                   <span className="bdr"></span>
                   <div className="text-center">
-                    <span className="stat-number" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, letterSpacing: "1px", fontSize: "50px", display: "block", color: "rgba(255,255,255,0.9)" }}>5M+</span>
+                    <span className="stat-number">5M+</span>
                     <span>Ausgelieferte Impressionen</span>
                   </div>
                   <span className="bdr"></span>
                   <div className="text-center">
-                    <span className="stat-number" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, letterSpacing: "1px", fontSize: "50px", display: "block", color: "rgba(255,255,255,0.9)" }}>6M+ €</span>
+                    <span className="stat-number">6M+ &euro;</span>
                     <span>Verwaltetes Werbebudget</span>
                   </div>
                 </div>

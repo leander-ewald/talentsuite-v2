@@ -135,7 +135,8 @@ const Testimonials = () => {
                         Verifiziert
                       </div>
                     </div>
-                    <div className="card_right">
+                    <div className="card_right" style={{ position: "relative" }}>
+                      <span className="testimonial-quote-mark">&ldquo;</span>
                       <div className="ratings" aria-label="5 von 5 Sternen">
                         <i className="bi bi-star-fill"></i>
                         <i className="bi bi-star-fill"></i>

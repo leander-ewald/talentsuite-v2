@@ -37,16 +37,17 @@ const Footer = () => {
       <footer>
         <img src="/assets/circle.png" className="blur_image" alt="" aria-hidden="true" />
         <div className="container">
-          <div className="row">
-            {/* Logo */}
-            <div className="col-12 col-lg-5">
+          {/* 4-Column Grid */}
+          <div className="footer-grid">
+            {/* Column 1: Brand */}
+            <div className="footer-col">
               <Link href="/" aria-label="TalentSuite Startseite">
                 <img src="/logo.png" alt="TalentSuite Logo" className="logo" />
               </Link>
-            </div>
-            {/* Social Icons */}
-            <div className="col-12 col-lg-7">
-              <nav className="social_icons" aria-label="Social Media" style={{ flexDirection: "row", justifyContent: "flex-end", gap: "12px", flexWrap: "wrap" }}>
+              <p>
+                Fullservice-Agentur für Performance Recruiting, Neukundengewinnung und E-Commerce im DACH-Raum.
+              </p>
+              <nav className="social_icons" aria-label="Social Media">
                 <a href="https://www.tiktok.com/@talentsuite" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                   <i className="bi bi-tiktok"></i>
                 </a>
@@ -65,60 +66,47 @@ const Footer = () => {
               </nav>
             </div>
 
-            {/* Divider */}
-            <div className="col-12">
-              <div className="devider">
-                <span></span>
-              </div>
+            {/* Column 2: Leistungen */}
+            <div className="footer-col">
+              <h4>Leistungen</h4>
+              <Link href="/services/performanceRecruiting">Performance Recruiting</Link>
+              <Link href="/services/customerAcquisition">Neukundengewinnung</Link>
+              <Link href="/services/ecommerce">Fullservice E-Commerce</Link>
+              <Link href="/services/socialMediaManagement">Social Media</Link>
+              <Link href="/services/contentProduktion">Content Produktion</Link>
+              <Link href="/services/webDevelopment">Web Development</Link>
             </div>
 
-            {/* Service Links */}
-            <div className="col-12">
-              <nav className="footer_menu" aria-label="Services Navigation">
-                <Link href="/services/performanceRecruiting">Performance Recruiting</Link>
-                <Link href="/services/customerAcquisition">Neukundengewinnung</Link>
-                <Link href="/services/ecommerce">Fullservice E-Commerce</Link>
-                <Link href="/services/socialMediaManagement">Social Media Management</Link>
-                <Link href="/services/contentProduktion">Content Produktion</Link>
-                <Link href="/services/webDevelopment">Web Development</Link>
-              </nav>
+            {/* Column 3: Regionen */}
+            <div className="footer-col">
+              <h4>Regionen</h4>
+              <Link href="/blog/mitarbeitergewinnung-maerkischer-kreis">Märkischer Kreis</Link>
+              <Link href="/blog/mitarbeitergewinnung-suedwestfalen">Südwestfalen</Link>
+              <Link href="/blog/mitarbeitergewinnung-iserlohn">Iserlohn</Link>
+              <Link href="/blog/mitarbeitergewinnung-hemer">Hemer</Link>
+              <Link href="/blog/mitarbeitergewinnung-menden">Menden</Link>
+              <Link href="/blog/mitarbeitergewinnung-hagen">Hagen</Link>
+              <Link href="/blog/mitarbeitergewinnung-luedenscheid">Lüdenscheid</Link>
+              <Link href="/blog/mitarbeitergewinnung-dortmund">Dortmund</Link>
             </div>
 
-            {/* Regionen */}
-            <div className="col-12">
-              <div className="footer_regionen" style={{ padding: "24px 0 16px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                <p style={{ fontSize: "0.8rem", fontWeight: "600", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "12px" }}>
-                  Mitarbeitergewinnung in der Region
-                </p>
-                <nav aria-label="Regionale Seiten" style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px" }}>
-                  <Link href="/blog/mitarbeitergewinnung-maerkischer-kreis" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Märkischer Kreis</Link>
-                  <Link href="/blog/mitarbeitergewinnung-suedwestfalen" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Südwestfalen</Link>
-                  <span style={{ color: "rgba(255,255,255,0.15)" }}>|</span>
-                  <Link href="/blog/mitarbeitergewinnung-iserlohn" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Iserlohn</Link>
-                  <Link href="/blog/mitarbeitergewinnung-hemer" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Hemer</Link>
-                  <Link href="/blog/mitarbeitergewinnung-menden" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Menden</Link>
-                  <Link href="/blog/mitarbeitergewinnung-hagen" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Hagen</Link>
-                  <Link href="/blog/mitarbeitergewinnung-luedenscheid" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Lüdenscheid</Link>
-                  <Link href="/blog/mitarbeitergewinnung-dortmund" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Dortmund</Link>
-                  <Link href="/blog/mitarbeitergewinnung-arnsberg" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Arnsberg</Link>
-                  <Link href="/blog/mitarbeitergewinnung-unna" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Unna</Link>
-                  <Link href="/blog/mitarbeitergewinnung-schwerte" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Schwerte</Link>
-                  <Link href="/blog/mitarbeitergewinnung-altena" style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Altena</Link>
-                </nav>
-              </div>
+            {/* Column 4: Rechtliches */}
+            <div className="footer-col">
+              <h4>Rechtliches</h4>
+              <Link href="/datenschutz">Datenschutzerklärung</Link>
+              <Link href="/agb">AGB</Link>
+              <Link href="/impressum">Impressum</Link>
             </div>
+          </div>
 
-            {/* Bottom Bar */}
-            <div className="col-12">
-              <div className="btm_bar">
-                <p>Copyright © {currentYear} TalentSuite – Alle Rechte vorbehalten.</p>
-                <p>
-                  <Link href="/datenschutz">Datenschutzerklärung</Link> •{" "}
-                  <Link href="/agb">Allgemeine Geschäftsbedingungen</Link> •{" "}
-                  <Link href="/impressum">Impressum</Link>
-                </p>
-              </div>
-            </div>
+          {/* Divider */}
+          <div className="devider">
+            <span></span>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="btm_bar" style={{ marginTop: 0 }}>
+            <p>Copyright © {currentYear} TalentSuite – Alle Rechte vorbehalten.</p>
           </div>
         </div>
       </footer>

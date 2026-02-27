@@ -62,20 +62,7 @@ const Services = () => {
             <div key={index} className="col-12 col-md-6 col-lg-6 col-xl-4">
               <div className="service_card h-100 p-4">
                 {/* Verkaufspsychologie: Ergebnis-Badge */}
-                <span
-                  style={{
-                    display: "inline-block",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    backgroundColor: "rgba(2, 59, 91, 0.5)",
-                    border: "1px solid rgba(2, 59, 91, 0.8)",
-                    color: "#4da6d9",
-                    padding: "4px 12px",
-                    borderRadius: "100px",
-                    marginBottom: "12px",
-                    opacity: 1,
-                  }}
-                >
+                <span className="service-badge">
                   {service.badge}
                 </span>
                 <h3 className="mb-2">{service.title}</h3>
