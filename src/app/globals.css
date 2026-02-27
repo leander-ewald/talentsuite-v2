@@ -386,6 +386,13 @@ img {
   }
 }
 
+/* ── Mobile: Hide decorative glow, prevent overflow ── */
+@media (max-width: 767px) {
+  .glow {
+    display: none;
+  }
+}
+
 /* ── Safe Area (iPhone Notch/Dynamic Island) ── */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .safe-bottom {

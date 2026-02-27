@@ -72,7 +72,7 @@ export default function Footer() {
 
       {/* Footer */}
       <footer className="bg-[rgba(0,0,0,0.2)] border-t border-[rgba(255,255,255,0.06)]">
-        <div className="container py-16">
+        <div className="container py-16 pb-[max(4rem,env(safe-area-inset-bottom))]">
           {/* Top: Logo + Social */}
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 mb-12">
             <Link href="/" aria-label="TalentSuite Startseite">

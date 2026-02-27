@@ -92,11 +92,10 @@ export default function HeroSection() {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        preload="metadata"
+        preload="auto"
         aria-hidden="true"
-      >
-        <source src="https://cre8ify.fra1.cdn.digitaloceanspaces.com/talentsuite/video.mp4" type="video/mp4" />
-      </video>
+        src="https://cre8ify.fra1.cdn.digitaloceanspaces.com/talentsuite/video.mp4"
+      />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary)] via-[rgba(9,22,34,0.7)] to-[rgba(9,22,34,0.4)]" />

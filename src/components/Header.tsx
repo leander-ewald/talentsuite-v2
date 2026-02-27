@@ -66,7 +66,7 @@ export default function Header() {
       <div
         className={`mx-4 mt-4 rounded-2xl transition-all duration-300 ${
           scrolled
-            ? "bg-[rgba(9,22,34,0.85)] backdrop-blur-xl [-webkit-backdrop-filter:blur(24px)] border border-[rgba(255,255,255,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+            ? "bg-[rgb(9,22,34)] lg:bg-[rgba(9,22,34,0.85)] backdrop-blur-xl [-webkit-backdrop-filter:blur(24px)] border border-[rgba(255,255,255,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
             : "bg-transparent"
         }`}
       >

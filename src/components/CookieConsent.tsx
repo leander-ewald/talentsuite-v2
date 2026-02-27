@@ -65,11 +65,11 @@ export default function CookieConsent() {
           </div>
         )}
 
-        <div className="flex gap-2.5 flex-wrap mt-4">
-          <button onClick={acceptAll} className="btn-primary flex-1 min-w-[130px] sm:min-w-[160px] justify-center">
+        <div className="flex flex-col sm:flex-row gap-2.5 mt-4">
+          <button onClick={acceptAll} className="btn-primary sm:flex-1 justify-center">
             Alle akzeptieren
           </button>
-          <button onClick={acceptEssential} className="btn-outline flex-1 min-w-[130px] sm:min-w-[160px] justify-center">
+          <button onClick={acceptEssential} className="btn-outline sm:flex-1 justify-center">
             Nur notwendige
           </button>
           <button
