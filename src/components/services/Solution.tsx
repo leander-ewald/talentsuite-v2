@@ -21,7 +21,7 @@ export default function Solution({ title, description, items }: SolutionProps) {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
           <p className="text-[rgba(255,255,255,0.6)] leading-relaxed">{description}</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {items.map((item, i) => (
             <div key={i} className="glass-card p-6">
               <span className="block text-3xl font-bold text-[var(--color-accent)] mb-3" style={{ fontFamily: "var(--font-display)" }}>

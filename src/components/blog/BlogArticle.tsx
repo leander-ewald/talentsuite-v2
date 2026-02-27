@@ -60,13 +60,13 @@ const BlogArticle = ({
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
-      <section style={{ padding: "3rem 1.5rem 1rem" }}>
-        <div className="max-w-3xl mx-auto">
+      <section className="section" style={{ paddingBottom: "1rem" }}>
+        <div className="container max-w-3xl">
           <div style={{ marginBottom: "0.75rem", display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
-            {category && <span style={{ background: "rgba(2,59,91,0.15)", color: "#023B5B", padding: "4px 12px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: "600" }}>{category}</span>}
+            {category && <span className="badge">{category}</span>}
             {readingTime && <span style={{ opacity: 0.6, fontSize: "0.9rem" }}>{readingTime}</span>}
           </div>
-          <h1 style={{ fontSize: "2.2rem", fontWeight: "800", lineHeight: "1.3", marginBottom: "1rem" }}>{title}</h1>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-4">{title}</h1>
           <AuthorMini
             name={authorName || "Robert Engel"}
             role={authorRole || "Gründer & Geschäftsführer"}
@@ -76,9 +76,9 @@ const BlogArticle = ({
         </div>
       </section>
 
-      <section style={{ padding: "1rem 1.5rem 3rem" }}>
-        <div className="max-w-3xl mx-auto">
-          <article style={{ fontSize: "1.05rem", lineHeight: "1.8" }}>
+      <section style={{ paddingBottom: "3rem" }}>
+        <div className="container max-w-3xl">
+          <article style={{ fontSize: "1.05rem", lineHeight: "1.8", color: "rgba(255,255,255,0.8)" }}>
             {children}
           </article>
 
@@ -97,11 +97,11 @@ const BlogArticle = ({
           </div>
 
           {relatedArticles && relatedArticles.length > 0 && (
-            <div style={{ marginTop: "2rem", paddingTop: "2rem", borderTop: "1px solid rgba(0,0,0,0.1)" }}>
+            <div style={{ marginTop: "2rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
               <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>Weitere Artikel</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {relatedArticles.map((article, i) => (
-                  <Link key={i} href={article.href} style={{ display: "block", padding: "1rem", background: "rgba(2,59,91,0.04)", borderRadius: "10px", textDecoration: "none", color: "inherit", border: "1px solid rgba(0,0,0,0.06)" }}>
+                  <Link key={i} href={article.href} className="glass-card" style={{ display: "block", padding: "1rem", textDecoration: "none", color: "inherit" }}>
                     <span style={{ fontSize: "0.8rem", opacity: 0.5 }}>{article.category}</span>
                     <p style={{ fontWeight: "600", margin: "4px 0 0", fontSize: "0.95rem" }}>{article.title}</p>
                   </Link>
@@ -111,7 +111,7 @@ const BlogArticle = ({
           )}
 
           <div style={{ marginTop: "2rem", textAlign: "center" }}>
-            <Link href="/blog" style={{ color: "#023B5B", fontWeight: "600" }}>&larr; Zurück zur Übersicht</Link>
+            <Link href="/blog" style={{ color: "#4da6d9", fontWeight: "600" }}>&larr; Zurück zur Übersicht</Link>
           </div>
         </div>
       </section>

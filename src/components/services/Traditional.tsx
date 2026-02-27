@@ -15,8 +15,8 @@ export default function Traditional({ title, description, data }: TraditionalPro
   return (
     <section className="section" aria-label="Herausforderungen">
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {data.map((item, i) => (
               <div key={i} className="glass-card p-5 text-center">
                 <img src={item.img} alt={item.name} loading="lazy" className="w-12 h-12 rounded-full mx-auto mb-3 object-cover" />

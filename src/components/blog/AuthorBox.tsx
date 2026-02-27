@@ -14,7 +14,7 @@ export const AuthorMini = ({ name = "Robert Engel", role = "Gründer & Geschäft
       color: "white", fontWeight: "700", fontSize: "0.85rem"
     }}>RE</div>
     <div style={{ fontSize: "0.88rem", lineHeight: "1.3" }}>
-      <Link href="/autor/robert-engel" style={{ fontWeight: "600", color: "#023B5B", textDecoration: "none" }}>{name}</Link>
+      <Link href="/autor/robert-engel" style={{ fontWeight: "600", color: "#4da6d9", textDecoration: "none" }}>{name}</Link>
       <span style={{ opacity: 0.5 }}> · {role}</span>
     </div>
     {date && (
@@ -48,7 +48,7 @@ const AuthorBox = ({
 }) => {
   return (
     <div style={{
-      background: "rgba(2,59,91,0.04)", border: "1px solid rgba(2,59,91,0.1)",
+      background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)",
       borderRadius: "16px", padding: "1.75rem", marginTop: "2.5rem", marginBottom: "1.5rem"
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "1rem" }}>
@@ -60,23 +60,23 @@ const AuthorBox = ({
         }}>RE</div>
         <div>
           <div style={{ fontSize: "0.72rem", textTransform: "uppercase", letterSpacing: "0.08em", opacity: 0.5, marginBottom: "2px" }}>Über den Autor</div>
-          <Link href={profileUrl} style={{ fontSize: "1.1rem", fontWeight: "700", color: "#023B5B", textDecoration: "none" }}>{name}</Link>
+          <Link href={profileUrl} style={{ fontSize: "1.1rem", fontWeight: "700", color: "#4da6d9", textDecoration: "none" }}>{name}</Link>
           <div style={{ fontSize: "0.88rem", opacity: 0.65, marginTop: "1px" }}>{role}</div>
         </div>
       </div>
-      <p style={{ fontSize: "0.95rem", lineHeight: "1.7", margin: "0 0 1rem", color: "#333" }}>{bio}</p>
+      <p style={{ fontSize: "0.95rem", lineHeight: "1.7", margin: "0 0 1rem", color: "rgba(255,255,255,0.6)" }}>{bio}</p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "1.25rem" }}>
         {credentials.map((c, i) => (
           <span key={i} style={{
-            background: "rgba(2,59,91,0.08)", color: "#023B5B",
+            background: "rgba(27,152,224,0.1)", color: "#4da6d9",
             padding: "4px 10px", borderRadius: "6px", fontSize: "0.78rem", fontWeight: "500"
           }}>✓ {c}</span>
         ))}
       </div>
       <div style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
         <Link href={profileUrl} style={{
-          fontSize: "0.88rem", fontWeight: "600", color: "#023B5B", textDecoration: "none",
-          padding: "6px 16px", border: "1px solid rgba(2,59,91,0.2)", borderRadius: "8px"
+          fontSize: "0.88rem", fontWeight: "600", color: "#4da6d9", textDecoration: "none",
+          padding: "6px 16px", border: "1px solid rgba(27,152,224,0.2)", borderRadius: "8px"
         }}>Vollständiges Profil →</Link>
         {linkedin && (
           <a href={linkedin} target="_blank" rel="noopener noreferrer" style={{

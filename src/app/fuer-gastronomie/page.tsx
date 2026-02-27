@@ -3,9 +3,9 @@ import React from "react";
 import Link from "next/link";
 
 const positionen = [
-  { name: "Koch/K\u00F6chin", slug: "gastro", stellen: "38.000", cpa: "10-18\u20AC" },
-  { name: "Servicekraft", slug: "gastro", stellen: "31.000", cpa: "8-15\u20AC" },
-  { name: "Hotelfachkraft", slug: "gastro", stellen: "18.000", cpa: "12-20\u20AC" },
+  { name: "Koch/K\u00F6chin", slug: "gastronomie", stellen: "38.000", cpa: "10-18\u20AC" },
+  { name: "Servicekraft", slug: "gastronomie", stellen: "31.000", cpa: "8-15\u20AC" },
+  { name: "Hotelfachkraft", slug: "gastronomie", stellen: "18.000", cpa: "12-20\u20AC" },
 ];
 
 const benefits = [

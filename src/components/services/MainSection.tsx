@@ -14,7 +14,7 @@ interface MainSectionProps {
 
 export default function MainSection({ title, description, buttonText, buttonLink = "https://calendar.app.google/QFoADWcRwwuYUoky8", imageSrc, imageAlt, trustBadges = true }: MainSectionProps) {
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden" aria-label={typeof imageAlt === "string" ? imageAlt : "Service Hero"}>
+    <section className="relative pt-24 md:pt-32 pb-16 md:pb-20 overflow-hidden" aria-label={typeof imageAlt === "string" ? imageAlt : "Service Hero"}>
       <div className="glow -top-32 -right-32" />
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

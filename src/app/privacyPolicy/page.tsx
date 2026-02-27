@@ -37,7 +37,7 @@ export default function PrivacyPolicy() {
                   Musterstraße 123, 12345 Berlin
                   <br />
                   E-Mail:{" "}
-                  <a href="mailto:datenschutz@talentsuite.de" className="text-blue-600 underline">
+                  <a href="mailto:datenschutz@talentsuite.de" style={{ color: "#4da6d9", textDecoration: "underline" }}>
                     datenschutz@talentsuite.de
                   </a>
                 </p>
@@ -77,8 +77,8 @@ export default function PrivacyPolicy() {
               <p className="text-sm mb-2">
                 Unsere Website verwendet Cookies, um die Benutzerfreundlichkeit zu verbessern. Sie können die Speicherung
                 von Cookies in Ihrem Browser deaktivieren. Details finden Sie in unserer{" "}
-                <Link href="/cookie-richtlinie" className="underline">
-                  Cookie-Richtlinie
+                <Link href="/datenschutz" style={{ color: "#4da6d9", textDecoration: "underline" }}>
+                  Datenschutzerklärung
                 </Link>
                 .
               </p>

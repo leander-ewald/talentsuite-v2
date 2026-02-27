@@ -35,7 +35,7 @@ const steps = [
 
 const testimonials = [
   { name: "Jessica Pacha-Mollé", role: "Head of HR – Heizkurier GmbH", from: "Köln/Bonn", to: "Deutschland", img: "/assets/Jessicas.png", review: "Mit TalentSuite haben wir unsere Employer Brand spürbar gestärkt. Durch hochwertigen Content und gezielte Performance-Recruiting-Kampagnen setzen sie unsere Vorstellungen punktgenau um." },
-  { name: "Jan Röhrig", role: "Leitung Merchandise & E-Commerce – Iserlohn Roosters", from: "Iserlohn", to: "Deutschland", img: "/assets/jan.png", review: "TalentSuite hat unseren Onlineauftritt auf ein neues Level gehoben – von der Shopstruktur bis zur technischen Umsetzung. Das Team versteht es, Marken digital stark und verkaufsfähig zu machen." },
+  { name: "Jan Röhrig", role: "Leitung Merchandise & E-Commerce – Iserlohn Roosters", from: "Iserlohn", to: "Deutschland", img: "/assets/Jan.png", review: "TalentSuite hat unseren Onlineauftritt auf ein neues Level gehoben – von der Shopstruktur bis zur technischen Umsetzung. Das Team versteht es, Marken digital stark und verkaufsfähig zu machen." },
   { name: "Joel Schüssler", role: "COO – Just Virtual Food Brands", from: "Zürich", to: "Schweiz", img: "/assets/Joel.png", review: "Ob Contentproduktion, Performance Recruiting oder Neukundengewinnung – alle Bereiche liefern konstant starke Ergebnisse. Ein echtes Fullservice-Erlebnis." },
 ];
 

@@ -20,7 +20,7 @@ export default function Industries({ title, description, industries }: Industrie
           <h2 className="text-3xl md:text-4xl font-bold mb-3">{title}</h2>
           {description && <p className="text-[rgba(255,255,255,0.6)] leading-relaxed">{description}</p>}
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           {industries.map((ind, i) => (
             <div key={i} className="glass-card p-4 text-center">
               <div className="text-3xl mb-2">{ind.icon}</div>
