@@ -39,31 +39,31 @@ export default function About() {
 
           {/* Images: Bento Grid */}
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <div className="space-y-3 sm:space-y-4">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)]">
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.08)] flex-1">
                 <img
                   src="/assets/about-1.png"
                   alt="TalentSuite Team bei der Strategieentwicklung für Kunden"
                   loading="lazy"
-                  className="w-full h-32 sm:h-40 md:h-48 object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)]">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.08)] flex-1">
                 <img
                   src="/assets/about-2.png"
                   alt="Datengetriebenes Marketing-Dashboard mit Kampagnen-Ergebnissen"
                   loading="lazy"
-                  className="w-full h-32 sm:h-40 md:h-48 object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
-            <div className="sm:pt-8">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)]">
+            <div className="pt-6 sm:pt-10">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.08)] h-full">
                 <img
                   src="/assets/about-3.png"
                   alt="Erfolgreiche Recruiting-Kampagne Ergebnisse auf Social Media"
                   loading="lazy"
-                  className="w-full h-full min-h-[220px] sm:min-h-[280px] md:min-h-[340px] object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
